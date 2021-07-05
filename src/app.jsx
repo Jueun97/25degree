@@ -4,10 +4,6 @@ import styles from "./app.module.css";
 import Header from "./component/header/header";
 import Inform from "./component/user_inform/inform";
 
-<<<<<<< Updated upstream
-function App() {
-  return <h1>hello world</h1>;
-=======
 function App({ authService, getData }) {
   return (
     <div className={styles.app}>
@@ -23,7 +19,6 @@ function App({ authService, getData }) {
       </BrowserRouter>
     </div>
   );
->>>>>>> Stashed changes
 }
 
 export default App;
