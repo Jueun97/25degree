@@ -1,0 +1,51 @@
+@value makerWhite, makerOrange, makerBlack from '../../common/colors.css';
+
+.header {
+  display: flex;
+  width: 100%;
+  background-color: makerWhite;
+  justify-content: space-around;
+  align-items: baseline;
+  border-bottom: solid 1px;
+}
+
+.logo {
+  color: makerOrange;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.inputbox {
+  height: 2.3rem;
+  width: 15rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: gray;
+}
+
+.inputBtn {
+  width: 2.3rem;
+  height: 2.3rem;
+  font-size: 1.3rem;
+}
+
+.loginBtn {
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.loginBtn:hover {
+  color: makerOrange;
+}
+
+.divider {
+  background-color: makerBlack;
+  width: 100%;
+  height: 1px;
+  margin: auto;
+}
