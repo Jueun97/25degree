@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useHistory } from "react-router";
 import Button from "./button/button";
 import styles from "./inform.module.css";
 
-const Login = ({ onFind, authService, getData }) => {
-  const [user, setUser] = useState([]);
+const Login = ({ onFind, authService, user }) => {
   const history = useHistory();
   const idRef = useRef();
   const passwordRef = useRef();
@@ -23,12 +22,6 @@ const Login = ({ onFind, authService, getData }) => {
       .then((data) => goToHome(data.user.uid));
   };
 
-  useEffect(() => {
-    getData //
-      .getUserInfo()
-      .then((datas) => setUser(datas));
-  }, [getData]);
-
   console.log(user);
 
   const handleLogin = () => {
@@ -39,7 +32,7 @@ const Login = ({ onFind, authService, getData }) => {
     console.log(idInput, passwordInput);
 
     user.forEach((users) => {
-      if (users.userId == idInput && users.password == passwordInput) {
+      if (users.userId === idInput && users.password === passwordInput) {
         console.log("login");
         logined = true;
         goToHome(users.userId);

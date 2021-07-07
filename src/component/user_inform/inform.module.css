@@ -80,3 +80,21 @@
   font-size: 1.3rem;
   margin: 0;
 }
+
+.classify {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  margin-bottom: 2em;
+}
+
+.classifyBtn {
+  font-size: 1.3rem;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+}
+.classifyBtn:hover {
+  color: makerOrange;
+}

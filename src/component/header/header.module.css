@@ -5,8 +5,9 @@
   width: 100%;
   background-color: makerWhite;
   justify-content: space-around;
-  align-items: baseline;
+  align-items: center;
   border-bottom: solid 1px;
+  padding: 0.5em 0;
 }
 
 .logo {

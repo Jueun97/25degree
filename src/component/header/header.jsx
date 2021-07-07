@@ -2,6 +2,7 @@ import styles from "./header.module.css";
 import { FaSearch } from "react-icons/fa";
 import { useHistory, useLocation } from "react-router";
 import { useEffect, useState } from "react";
+import Card from "../card/card";
 
 const Header = ({ authService }) => {
   const [id, setId] = useState(null);
@@ -24,6 +25,9 @@ const Header = ({ authService }) => {
     setId(null);
     authService.logout();
   };
+  const onMenu = () => {
+    console.log("wow");
+  };
   return (
     <header className={styles.header}>
       <h2 className={styles.logo}>25도씨</h2>
@@ -34,11 +38,7 @@ const Header = ({ authService }) => {
         </button>
       </div>
 
-      {id && (
-        <button className={styles.loginBtn} onClick={onLogout}>
-          로그아웃
-        </button>
-      )}
+      {id && <Card onLogout={onLogout} />}
       {id == null && (
         <button className={styles.loginBtn} onClick={onLogin}>
           로그인
