@@ -1,4 +1,4 @@
-@value makerWhite, makerOrange, makerGrey from '../../common/colors.css';
+@value makerWhite, makerGrey from '../../common/colors.css';
 
 .menucontainer {
   position: relative;
