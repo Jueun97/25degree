@@ -12,19 +12,15 @@ const Daily = ({ daily }) => {
         return (
           <div className={styles.tempData}>
             <div className={styles.temp}>
-              <p
-                className={styles.text}
-                style={{ color: "blue" }}
-              >{`${Math.round(item.temp.min)}°`}</p>
+              <p className={styles.textMin}>{`${Math.round(
+                item.temp.min
+              )}°`}</p>
               <p className={styles.text}>/</p>
-              <p
-                className={styles.text}
-                style={{ color: "red" }}
-              >{`${Math.round(item.temp.max)}°`}</p>
+              <p className={styles.textMax}>{`${Math.round(
+                item.temp.max
+              )}°`}</p>
             </div>
-            <p className={styles.text} style={{ fontWeight: "bold" }}>
-              {day[date]}
-            </p>
+            <p className={styles.textDay}>{day[date]}</p>
           </div>
         );
       })}

@@ -2,7 +2,7 @@
 
 .container {
   display: flex;
-  overflow-y: auto;
+  overflow-x: auto;
   background-color: makerWhite;
   margin: 0.5em;
 }
@@ -14,10 +14,32 @@
 
 .temp {
   display: flex;
+  align-items: center;
 }
 
 .text {
   font-size: 0.8rem;
   margin: 0.2em;
   word-break: keep-all;
+}
+
+.textMin {
+  font-size: 0.8rem;
+  margin: 0.2em;
+  word-break: keep-all;
+  color: blue;
+}
+
+.textMax {
+  font-size: 0.8rem;
+  margin: 0.2em;
+  word-break: keep-all;
+  color: red;
+}
+
+.textDay {
+  font-size: 0.8rem;
+  margin: 0.2em;
+  word-break: keep-all;
+  font-weight: bold;
 }

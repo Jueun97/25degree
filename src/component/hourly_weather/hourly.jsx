@@ -3,16 +3,24 @@ import styles from "./hourly.module.css";
 
 const Hourly = ({ hourly }) => {
   let date = new Date().getHours() - 1;
+  let day = ["내일", "모레", "글피"];
+  let cnt = -1;
 
   return (
     <section>
       <div className={styles.container}>
         {hourly.map((item) => {
-          date != 24 ? date++ : (date = 0);
+          // date != 24 ? date++ : ((date = 0), cnt++);
+          if (date != 24) date++;
+          else {
+            date = 0;
+            cnt++;
+          }
           return (
             <div className={styles.temp}>
               <p className={styles.text}>{Math.round(item.temp)}° </p>
-              <p className={styles.text}>{date}시</p>
+              {date != 0 && <p className={styles.text}>{date}시</p>}
+              {date === 0 && <p className={styles.textDay}>{day[cnt]}</p>}
             </div>
           );
         })}

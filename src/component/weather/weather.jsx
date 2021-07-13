@@ -2,6 +2,7 @@ import React from "react";
 import { IoMdHeartEmpty, IoMdSunny } from "react-icons/io";
 import Daily from "../daily_weather/daily";
 import Hourly from "../hourly_weather/hourly";
+import Loading from "../loading/loading";
 import styles from "./weather.module.css";
 
 const Weather = ({ data }) => {
@@ -23,7 +24,7 @@ const Weather = ({ data }) => {
           <Daily daily={data.daily} />
         </div>
       )}
-      {data.currentIcon === null && <div className={styles.loader10} />}
+      {data.currentIcon === null && <Loading />}
     </section>
   );
 };

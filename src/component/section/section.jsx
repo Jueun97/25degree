@@ -26,6 +26,7 @@ const Section = ({ getData }) => {
         );
     });
   }, []);
+  console.log(data);
   return (
     <section className={styles.section}>
       <Weather data={data} />
