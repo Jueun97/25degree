@@ -1,7 +1,10 @@
-import React,{useRef} from 'react';
+import React, { useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './upload.module.css';
 
-const Upload = (props) => {
+const Upload = ({ data, uploadPost, uploadImages }) => {
+    const history = useHistory();
+    
     const messageRef = useRef();    
     const genderRef = useRef(); 
     const overcoatRef = useRef();   
@@ -10,8 +13,13 @@ const Upload = (props) => {
     const underwearRef = useRef();  
     const suitablityRef = useRef(); 
     const styleRef = useRef();
+    const image1Ref = useRef();
+    const image2Ref = useRef();
+    const image3Ref = useRef();
+    const image4Ref = useRef();
+    const image5Ref = useRef();
 
-    const onClick = (event) => {
+    const onClick = async (event) => {
         event.preventDefault();
         const message = messageRef.current.value;
         const gender = genderRef.current.value;
@@ -21,6 +29,18 @@ const Upload = (props) => {
         const underwear = underwearRef.current.value;
         const suitablity = suitablityRef.current.value;
         const style = styleRef.current.value;
+        const images = []
+        for (let i = 0; i < 5; i++){
+            var image = eval("image" + (i + 1) + "Ref.current.files[0]");
+            if (image)
+                images.push(image)
+        }
+        const imagesUrl = await uploadImages.uploadImage(images);
+        
+        const upload_data = { imagesUrl, message, gender, overcoat, top, type, underwear, suitablity, style }
+        uploadPost(upload_data);
+        data.uploadPost(upload_data);
+        history.push({pathname:'/mypage'})
     }
     
     return (
@@ -30,11 +50,11 @@ const Upload = (props) => {
                 <div className={styles.imageBox}>
                     <h2 className={styles.subtitle}>사진업로드</h2>
                     <div className={styles.images}>
-                        <input className={styles.image} type="file" />
-                        <input className={styles.image} type="file" />
-                        <input className={styles.image} type="file" />
-                        <input className={styles.image} type="file" />
-                        <input className={styles.image} type="file" />
+                        <input ref={image1Ref}className={styles.image} type="file" />
+                        <input ref={image2Ref}className={styles.image} type="file" />
+                        <input ref={image3Ref}className={styles.image} type="file" />
+                        <input ref={image4Ref}className={styles.image} type="file" />
+                        <input ref={image5Ref}className={styles.image} type="file" />
                     </div>    
                 </div>
                 <div className={styles.messageBox}>
