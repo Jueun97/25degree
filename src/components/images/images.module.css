@@ -1,0 +1,13 @@
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex:1;
+    border: 1px solid lightgray;
+    padding: 0.1em 1em;
+    width: 100%;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    flex-flow: wrap;    
+    scroll-snap-type: y mandatory;
+}
