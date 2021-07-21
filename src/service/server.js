@@ -4,18 +4,19 @@ const app = express();
 const port = 8000;
 
 const mysql = require("mysql");
+require("dotenv").config();
 const db = mysql.createConnection({
-  host: "132.226.23.77",
-  port: "3306",
-  user: "grace",
-  password: "1234",
-  database: "25degree",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
 });
 
 db.connect();
 
 app.use(cors());
-app.get("/", function (req, res) {
+app.get("/UserInfo", function (req, res) {
   db.query("Select * from UserInfo", function (error, results) {
     if (error) {
       console.log(error);
@@ -25,4 +26,5 @@ app.get("/", function (req, res) {
     }
   });
 });
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

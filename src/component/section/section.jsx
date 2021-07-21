@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import Recommend from "../recommend/recommend";
 import Weather from "../weather/weather";
 import styles from "./section.module.css";
+import Geocode from "react-geocode";
+import GoogleMap from "../../service/geocode";
+import Loading from "../loading/loading";
 
 const Section = ({ getData }) => {
   const [data, setData] = useState({
@@ -10,12 +13,11 @@ const Section = ({ getData }) => {
     daily: null,
     hourly: null,
   });
-  useEffect(() => {
+  const [address, setAddress] = useState("");
+  useEffect(async () => {
     navigator.geolocation.getCurrentPosition((pos) => {
-      const latitude = pos.coords.latitude;
-      const longitude = pos.coords.longitude;
       getData //
-        .getWeather(latitude, longitude)
+        .getWeather(pos.coords.latitude, pos.coords.longitude)
         .then((datas) =>
           setData({
             currentTemp: datas.current.temp,
@@ -24,12 +26,18 @@ const Section = ({ getData }) => {
             hourly: datas.hourly,
           })
         );
+      GoogleMap(pos.coords.latitude, pos.coords.longitude).then((res) => {
+        console.log(res);
+        setAddress(res);
+      });
+      console.log(address);
     });
-  }, []);
-  console.log(data);
+  }, [getData]);
+
   return (
     <section className={styles.section}>
-      <Weather data={data} />
+      {address && <Weather data={data} address={address} />}
+      {address === null && <Loading />}
       <Recommend temp={data.currentTemp} />
     </section>
   );

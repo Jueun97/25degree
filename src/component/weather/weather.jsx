@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoMdHeartEmpty, IoMdSunny } from "react-icons/io";
 import Daily from "../daily_weather/daily";
 import Hourly from "../hourly_weather/hourly";
 import Loading from "../loading/loading";
 import styles from "./weather.module.css";
 
-const Weather = ({ data }) => {
+const Weather = ({ data, address }) => {
+  console.log(address);
   return (
     <section className={styles.weather}>
       {data.currentIcon != null && (
         <div>
+          <h1
+            className={styles.address}
+          >{`${address.state} ${address.city}의 현재 날씨`}</h1>
           <div className={styles.current}>
             <img
               className={styles.weatherImg}

@@ -10,7 +10,6 @@ const Hourly = ({ hourly }) => {
     <section>
       <div className={styles.container}>
         {hourly.map((item) => {
-          // date != 24 ? date++ : ((date = 0), cnt++);
           if (date != 24) date++;
           else {
             date = 0;

@@ -98,3 +98,11 @@
 .classifyBtn:hover {
   color: makerOrange;
 }
+
+.form {
+  text-align: center;
+}
+
+.clicked {
+  color: makerOrange;
+}

@@ -7,6 +7,10 @@
   height: 15em;
 }
 
+.address {
+  text-align: center;
+}
+
 .icon {
   font-size: 3rem;
 }

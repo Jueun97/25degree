@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./app";
 import AuthService from "./service/auth_server";
-import GetData from "./data/getData";
+import GetData from "./service/getData";
 
 const authService = new AuthService();
 const getData = new GetData();
