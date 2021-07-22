@@ -23,6 +23,7 @@ function App({ authService, getData }) {
       </BrowserRouter>
     </div>
   );
+
 }
 
 export default App;
