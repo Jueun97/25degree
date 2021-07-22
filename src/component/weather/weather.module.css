@@ -1,0 +1,32 @@
+@value makerWhite,makerBlue, makerBlack, makerOrange, makerGrey from '../../common/colors.css';
+
+.weather {
+  background-color: makerGrey;
+  margin: 1em;
+  width: 50%;
+  height: 15em;
+}
+
+.address {
+  text-align: center;
+}
+
+.icon {
+  font-size: 3rem;
+}
+
+.current {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.5em;
+  height: 5.5em;
+}
+
+.weatherImg {
+  width: 5rem;
+}
+
+.cuurentTemp {
+  font-size: 2rem;
+}

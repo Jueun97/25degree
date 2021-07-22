@@ -1,0 +1,24 @@
+@value makerWhite from '../../common/colors.css';
+
+.container {
+  display: flex;
+  overflow-x: auto;
+  background-color: makerWhite;
+  margin: 0.5em;
+}
+
+.temp {
+  margin: 0.2em 0.3em;
+  text-align: center;
+}
+.text {
+  font-size: 0.8rem;
+  margin: 0.2em;
+  word-break: keep-all;
+}
+.textDay {
+  font-size: 0.8rem;
+  margin: 0.2em;
+  word-break: keep-all;
+  font-weight: bold;
+}
