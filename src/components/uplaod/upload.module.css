@@ -1,0 +1,51 @@
+.upload{
+    width: 60%;
+    margin:auto;
+    background-color: #F8F8F8;
+    padding: 3em 0;
+}
+.title{
+    text-align: center;
+    font-size: 2.5em;
+    margin:0;
+}
+.subtitle{
+    margin-left: 0.7em;
+    font-size: 1.5em;
+}
+
+.image{
+    width: 10em;
+    height: 10em;
+    margin: 3px 5px;
+    margin-left: 2em;
+    border: 1px solid black;
+    
+}
+.message{
+    margin-left: 2em;
+    width: 80%;
+    height: 100px;
+}
+.categories{
+    text-align: center;
+}
+.category{
+    width: 8em;
+    height: 3em;
+    margin: 0.5em;
+    font-size: 1.3em;
+}
+.button{
+    width: 5em;
+    height: 3em;
+    display: block;
+    margin: auto;
+    margin-top: 2em;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 1px solid #014F66;
+    background-color: #014F66;
+    color:white;
+
+}
