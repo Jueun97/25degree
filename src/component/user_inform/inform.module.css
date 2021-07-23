@@ -1,0 +1,108 @@
+@value makerGrey, makerOrange, makerBlue, makerBlack, makerWhite from '../../common/colors.css';
+
+.informBox {
+  background-color: makerGrey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30rem;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.logo {
+  font-size: 2rem;
+  color: makerOrange;
+  padding: 1em;
+  margin: 0;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+}
+
+.inputBox {
+  width: 15rem;
+  height: 2.1rem;
+}
+
+.btn {
+  background-color: makerBlue;
+  color: makerWhite;
+  font-weight: bold;
+  font-size: 1rem;
+  outline: none;
+  border: 0;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin: 1em;
+  cursor: pointer;
+}
+
+.loginBtn {
+  background-color: makerWhite;
+  color: makerBlue;
+  font-weight: bold;
+  font-size: 1rem;
+  outline: 1rem;
+  border: 0.1em solid makerBlue;
+  width: 9rem;
+  height: 2rem;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin: 0 1em;
+  cursor: pointer;
+}
+
+.divider {
+  background-color: makerBlack;
+  width: 80%;
+  height: 1px;
+  margin: 1.5em 0;
+}
+
+.section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 25rem;
+  padding: 0.8em;
+}
+
+.text {
+  width: 4.5rem;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.classify {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  margin-bottom: 2em;
+}
+
+.classifyBtn {
+  font-size: 1.3rem;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+}
+.classifyBtn:hover {
+  color: makerOrange;
+}
+
+.form {
+  text-align: center;
+}
+
+.clicked {
+  color: makerOrange;
+}

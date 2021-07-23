@@ -1,0 +1,16 @@
+@value makerWhite, makerGrey from '../../common/colors.css';
+
+.recommend {
+  background-color: makerGrey;
+  margin: 1em;
+  width: 50%;
+  height: 15em;
+}
+
+.illus {
+  width: 11em;
+}
+
+.message {
+  margin: 1em;
+}
