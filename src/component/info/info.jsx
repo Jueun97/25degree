@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 
-const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComment,filteredLikes,pushLikes,popLikes }) => {
+const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComment,filteredLikes,pushLikes,popLikes,userId }) => {
     const messageRef = useRef();
     const [filteredLikesId, setFilteredLikesId] = useState('');
     const [edit, setEdit] = useState(false);
@@ -16,7 +16,7 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
     useEffect(() => {
         //해당 게시물 좋아요 클릭여부 체크 
         for (let i = 0; i < filteredLikes.length; i++) {
-            if (filteredLikes[i].userId === 'zxnm1234') {
+            if (filteredLikes[i].userId === userId) {
                 setFilteredLikesId(filteredLikes[i].likeId);
                 setLikedIcon(fasHeart);
                 break;
@@ -36,24 +36,25 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
         setDropdown(false);
     }
     const onDelete = () => {
-        deletePost(post.postId);
+        deletePost(post.postId, userId);
         history.push({
-            pathname: '/mypage'
+            pathname: '/mypage',
+            state:{userId}
         })
     }
     const onIconClick = () => {
         if (likedIcon === farHeart) {
-            pushLikes(post.postId, 'zxnm1234');
+            pushLikes(post.postId, userId);
             setLikedIcon(fasHeart);
         }
         else {
-            popLikes(post.postId, 'zxnm1234');
+            popLikes(post.postId, userId);
             setLikedIcon(farHeart);
         }
     }
     const onSubmit = () => {
         //데이터처리
-        updatePost(post.postId,messageRef.current.value)
+        updatePost(post.postId,messageRef.current.value,userId)
         setEdit(false);
     }
     return (
@@ -61,7 +62,7 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
             <header className={styles.header}>
                 <div className={styles.userContainer}>
                     <img className={styles.image} src={process.env.PUBLIC_URL + '/images/react.png'} alt="'" />
-                    <span className={styles.user}>@Jueun97</span>
+                    <span className={styles.user}>@{userId}</span>
                 </div>
                 <FontAwesomeIcon className={styles.icon} icon={faBars} onClick={onOpenDropdown} />
                 {dropdown &&
@@ -90,7 +91,7 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
                 <FontAwesomeIcon className={styles.likedIcon} icon={likedIcon} onClick={onIconClick} />
                 <span className={styles.likedMessage}>{filteredLikes.length}명이 공감하였습니다.</span>
                 </section>
-                <Comments data={data} filteredComments={filteredComments} uploadComment={uploadComment} postId={post.postId}></Comments>
+                <Comments data={data} filteredComments={filteredComments} uploadComment={uploadComment} postId={post.postId} userId={userId}></Comments>
             </>
             }
         </div>

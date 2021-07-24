@@ -4,20 +4,98 @@ import styles from "./app.module.css";
 import Header from "./component/header/header";
 import Section from "./component/section/section";
 import Inform from "./component/user_inform/inform";
+import Upload from './component/uplaod/upload';
+import Mypage from './component/mypage/mypage';
+import Details from './component/details/details';
 import ContactUs from "./service/emailjs";
 
-function App({ authService, getData }) {
+function App({ authService, getData,uploadImages }) {
+  const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [likes, setLikes] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  useEffect( () => {
+    getData.getPost().then(data => {
+      let tempdata = [...data];
+      tempdata.map(data => data.images = data.images.split(','));
+      setPosts(tempdata);
+      tempdata = tempdata.filter(post => post.userId === 'zxnm1234');
+      setFilteredPosts(tempdata);
+    });
+    getData.getComment().then(data => {
+      setComments(data);
+    })
+    getData.getLikes().then(data => {
+      setLikes(data);
+    })
+  },[setPosts,setComments])
+
+
+  const uploadPost = (post) => {
+    const tempPosts = [...filteredPosts ];
+    const postId = new Date();
+    const newPost = { postId:postId, userId: '@jueun9922', images:post.imagesUrl, description: post.message, gender: post.gender, overcoat: post.overcoat, top: post.top, constitution: post.type, underwear: post.underwear, sutiablity:"sutiablity", style: post.style, degree: 'degree', region: 'region' };
+    tempPosts.push(newPost);
+    setFilteredPosts(tempPosts);
+  }
+  const updatePost = (postId, message,userId) => {
+    const tempPosts = [ ...filteredPosts ];
+    tempPosts.map(post => {
+      if (post.postId === postId)
+        post.description = message
+    })
+    getData.updatePost({postId,message,userId})
+    setFilteredPosts(tempPosts);
+  }
+  const deletePost = (postId, userId) => {
+    let tempPosts = [...filteredPosts];
+    tempPosts = tempPosts.filter(post => {
+      return post.postId !== postId
+    })
+    getData.deletePost(postId,userId);
+    setFilteredPosts(tempPosts);
+  }
+  const uploadComment = (upload_data) => {
+    const tempComments = [...comments];
+    tempComments.push(upload_data);
+    getData.uploadComment(upload_data);
+    setComments(tempComments);
+  }
+  const pushLikes = (postId,userId) => {
+    //userId 정보도 필요함!!
+    const tempLikes = [...likes];
+    tempLikes.push({ likeId: new Date(), userId: userId, postId: postId });
+    getData.uploadLikes({postId,userId});
+    setLikes(tempLikes);
+  }
+  const popLikes = (postId,userId) => {
+    //userId 정보도 필요함!!
+    const tempLikes = [...likes];
+    const index = tempLikes.findIndex(like => like.postId === postId && like.userId===userId);
+    tempLikes.splice(index, 1);
+    getData.deleteLikes({postId,userId});
+    setLikes(tempLikes);
+  }
   return (
     <div className={styles.app}>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Header authService={authService} />
+            <Header authService={authService} userId={null} />
             <Section getData={getData} />
             <ContactUs getData={getData} />
           </Route>
           <Route exact path="/login">
             <Inform authService={authService} getData={getData} />
+          </Route>
+          <Route exact path="/mypage">
+            <Mypage posts={filteredPosts} likes={likes}></Mypage>
+          </Route>
+          <Route exact path="/upload">
+          <Upload data={getData} uploadPost={uploadPost} uploadImages={uploadImages}></Upload>
+          </Route>
+          <Route path="/detail">
+            <Details data={filteredPosts} updatePost={updatePost} deletePost={deletePost} comments={comments} uploadComment={uploadComment} likes={likes} pushLikes={pushLikes} popLikes={popLikes}></Details>
           </Route>
         </Switch>
       </BrowserRouter>

@@ -1,12 +1,12 @@
 import React,{useRef} from 'react';
 import styles from './comments.module.css';
 import Comment from '../comment/comment';
-const Comments = ({filteredComments,uploadComment,postId }) => {
+const Comments = ({filteredComments,uploadComment,postId,userId }) => {
     const commentRef = useRef();
     const onClick = () => {
         const comment = commentRef.current.value;
         commentRef.current.value = '';
-        const upload_data = { postId:postId, description:comment, writer: 'zxnm1234' };
+        const upload_data = { postId:postId, description:comment, writer: userId };
         uploadComment(upload_data);
     }
     return (

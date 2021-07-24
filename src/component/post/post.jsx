@@ -2,12 +2,12 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './post.module.css';
 
-const Post = ({ post }) => {
+const Post = ({ post,userId}) => {
     const history = useHistory();
     const onClick = () => {
         history.push({
             pathname: '/detail',
-            state: { post:post}
+            state: { post,userId}
         });
     }
     return (

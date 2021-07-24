@@ -4,15 +4,14 @@ import { useHistory, useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import Card from "../card/card";
 
-const Header = ({ authService }) => {
-  const [id, setId] = useState(null);
+const Header = ({ authService,userId }) => {
+  const [id, setId] = useState(userId? userId : null);
 
   const history = useHistory();
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location);
-    if (location.state != null) {
+    if (location.state != null && id == null) {
       setId(location.state.id);
     }
   }, [location]);
@@ -38,7 +37,7 @@ const Header = ({ authService }) => {
         </button>
       </div>
 
-      {id && <Card onLogout={onLogout} />}
+      {id && <Card onLogout={onLogout} userId={id} />}
       {id == null && (
         <button className={styles.loginBtn} onClick={onLogin}>
           로그인
