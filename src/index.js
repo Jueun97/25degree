@@ -2,10 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./app";
+import AuthService from "./service/auth_server";
+import GetData from "./service/getData";
 
+const authService = new AuthService();
+const getData = new GetData();
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App authService={authService} getData={getData} />
   </React.StrictMode>,
   document.getElementById("root")
 );
