@@ -1,0 +1,92 @@
+.info{
+    width: 100%;
+    border: 1px solid lightgray;
+    overflow-y: scroll;
+    padding: 0.5em 1em;
+    flex:1;
+}
+.header{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 1em;
+    position: relative;
+}
+.icon{
+    font-size: 2em;
+    cursor: pointer;
+}
+.dropdown{
+    position: absolute;
+    right:0;
+    top: 2.3em;
+    display: flex;
+    flex-direction: column;
+    width: 7em;
+    height: 5em;
+}
+.button1{
+    border: 0;
+    border-bottom: 1px solid lightgray;
+}
+.button2{
+    border:0
+}
+.button1,.button2{
+    height: 100%;
+    outline-style: none;
+    cursor: pointer;
+}
+.button1:hover,.button2:hover{
+    background-color: lightslategray;
+}
+.userContainer{
+    display: flex;
+    align-items: center;
+}
+.image{
+    width: 3em;
+    border-radius: 50%;
+}
+.user{
+    margin-left: 0.5em;
+    font-weight: bolder;
+}
+.message{
+    overflow:visible;
+    width: 100%;
+    font-size: large;
+    height: 20em;
+    resize:none;
+    outline: none;
+    border-color: lightgray;
+}
+.updateMessageContainer{
+    text-align: center;
+    margin-top: 1em;
+}
+.messageButton{
+    width: 4em;
+    font-size: large;
+    padding: 0.3em;
+    margin-top: 3em;
+    cursor: pointer;
+}
+.category{ 
+    word-break:break-all;
+    overflow: scroll; 
+}
+.likedContainer{
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
+}
+.likedIcon{
+    font-size: 2em;
+    margin-right: 0.2em;
+    cursor: pointer;
+    color: red;
+}
+.likedMessage{
+    font-size: 1em;
+    font-weight: bold;
+}
