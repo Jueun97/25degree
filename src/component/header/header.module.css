@@ -12,6 +12,7 @@
 
 .logo {
   color: makerOrange;
+  cursor: pointer;
 }
 
 .search {

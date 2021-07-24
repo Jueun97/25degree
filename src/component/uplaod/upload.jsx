@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory,useLocation} from 'react-router-dom';
 import styles from './upload.module.css';
 
 const Upload = ({ data, uploadPost, uploadImages }) => {
     const history = useHistory();
-    
+    const location = useLocation();
+
     const messageRef = useRef();    
     const genderRef = useRef(); 
     const overcoatRef = useRef();   
@@ -37,10 +38,10 @@ const Upload = ({ data, uploadPost, uploadImages }) => {
         }
         const imagesUrl = await uploadImages.uploadImage(images);
         
-        const upload_data = { imagesUrl, message, gender, overcoat, top, type, underwear, suitablity, style }
+        const upload_data = { userId:location.state.userId,imagesUrl, message, gender, overcoat, top, type, underwear, suitablity, style }
         uploadPost(upload_data);
-        data.uploadPost(upload_data);
-        history.push({pathname:'/mypage'})
+        data.uploadPost(upload_data,location.state.userId);
+        history.push({pathname:'/',state:{id:location.state.userId}})
     }
     
     return (

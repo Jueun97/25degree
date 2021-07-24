@@ -15,8 +15,12 @@ const Header = ({ authService,userId }) => {
       setId(location.state.id);
     }
   }, [location]);
-  console.log(id);
-
+  const onClickLogo = () => {
+    history.push({
+      pathname: '/',
+      state: { id:userId}
+  });
+  }
   const onLogin = () => {
     history.push("/login");
   };
@@ -29,7 +33,7 @@ const Header = ({ authService,userId }) => {
   };
   return (
     <header className={styles.header}>
-      <h2 className={styles.logo}>25도씨</h2>
+      <h2 className={styles.logo} onClick={onClickLogo} >25도씨</h2>
       <div className={styles.search}>
         <input type="search" placeholder="Search" className={styles.inputbox} />
         <button className={styles.inputBtn}>
