@@ -8,6 +8,7 @@ import Upload from './component/uplaod/upload';
 import Mypage from './component/mypage/mypage';
 import Details from './component/details/details';
 import ContactUs from "./service/emailjs";
+import Posts from "./component/posts/posts";
 
 function App({ authService, getData,uploadImages }) {
   const [posts, setPosts] = useState([]);
@@ -28,13 +29,14 @@ function App({ authService, getData,uploadImages }) {
     getData.getLikes().then(data => {
       setLikes(data);
     })
+    
   },[setPosts,setComments])
 
 
   const uploadPost = (post) => {
     const tempPosts = [...filteredPosts ];
     const postId = new Date();
-    const newPost = { postId:postId, userId: '@jueun9922', images:post.imagesUrl, description: post.message, gender: post.gender, overcoat: post.overcoat, top: post.top, constitution: post.type, underwear: post.underwear, sutiablity:"sutiablity", style: post.style, degree: 'degree', region: 'region' };
+    const newPost = { postId:postId, userId: post.userId, images:post.imagesUrl, description: post.message, gender: post.gender, overcoat: post.overcoat, top: post.top, constitution: post.type, underwear: post.underwear, sutiablity:"sutiablity", style: post.style, degree: 'degree', region: 'region' };
     tempPosts.push(newPost);
     setFilteredPosts(tempPosts);
   }
@@ -83,6 +85,7 @@ function App({ authService, getData,uploadImages }) {
           <Route exact path="/">
             <Header authService={authService} userId={null} />
             <Section getData={getData} />
+            <Posts posts={posts}></Posts>
             <ContactUs getData={getData} />
           </Route>
           <Route exact path="/login">

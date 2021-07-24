@@ -62,7 +62,7 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
             <header className={styles.header}>
                 <div className={styles.userContainer}>
                     <img className={styles.image} src={process.env.PUBLIC_URL + '/images/react.png'} alt="'" />
-                    <span className={styles.user}>@{userId}</span>
+                    <span className={styles.user}>@{post.userId}</span>
                 </div>
                 <FontAwesomeIcon className={styles.icon} icon={faBars} onClick={onOpenDropdown} />
                 {dropdown &&
