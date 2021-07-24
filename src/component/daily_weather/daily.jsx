@@ -10,7 +10,7 @@ const Daily = ({ daily }) => {
       {daily.map((item) => {
         date === 6 ? (date = 0) : date++;
         return (
-          <div className={styles.tempData}>
+          <div className={styles.tempData} key={item.dt}>
             <div className={styles.temp}>
               <p className={styles.textMin}>{`${Math.round(
                 item.temp.min

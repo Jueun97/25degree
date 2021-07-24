@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
-import { IoMdHeartEmpty, IoMdSunny } from "react-icons/io";
+import React from "react";
 import Daily from "../daily_weather/daily";
 import Hourly from "../hourly_weather/hourly";
 import Loading from "../loading/loading";
 import styles from "./weather.module.css";
 
 const Weather = ({ data, address }) => {
-  console.log(address);
   return (
     <section className={styles.weather}>
       {data.currentIcon != null && (

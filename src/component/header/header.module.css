@@ -12,20 +12,15 @@
 
 .logo {
   color: makerOrange;
-  cursor: pointer;
 }
 
-.search {
+.select {
   display: flex;
   align-items: center;
-}
-
-.inputbox {
   height: 2.3rem;
   width: 15rem;
   cursor: pointer;
   font-size: 1rem;
-  color: gray;
 }
 
 .inputBtn {

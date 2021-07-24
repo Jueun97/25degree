@@ -9,8 +9,6 @@ const Join = (props) => {
   const genderRef = useRef();
 
   const handleJoin = () => {
-    let joined = false;
-
     const nameInput = nameRef.current.value;
     const idInput = idRef.current.value;
     const passwordInput = passwordRef.current.value;

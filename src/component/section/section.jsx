@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import Recommend from "../recommend/recommend";
 import Weather from "../weather/weather";
 import styles from "./section.module.css";
-import Geocode from "react-geocode";
 import GoogleMap from "../../service/geocode";
 import Loading from "../loading/loading";
 
-const Section = ({ getData }) => {
+const Section = ({ getData, city }) => {
   const [data, setData] = useState({
     currentTemp: null,
     currentIcon: null,
@@ -14,25 +13,38 @@ const Section = ({ getData }) => {
     hourly: null,
   });
   const [address, setAddress] = useState("");
-  useEffect(async () => {
-    navigator.geolocation.getCurrentPosition((pos) => {
+  useEffect(() => {
+    if (city === "location") {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        getData //
+          .getWeather(pos.coords.latitude, pos.coords.longitude)
+          .then((datas) =>
+            setData({
+              currentTemp: datas.current.temp,
+              currentIcon: datas.current.weather[0].icon,
+              daily: datas.daily,
+              hourly: datas.hourly,
+            })
+          );
+        GoogleMap(pos.coords.latitude, pos.coords.longitude).then((res) => {
+          setAddress(res);
+        });
+      });
+    } else {
       getData //
-        .getWeather(pos.coords.latitude, pos.coords.longitude)
-        .then((datas) =>
+        .getWeather(city[0].coord.lat, city[0].coord.lon)
+        .then((datas) => {
+          console.log(datas);
           setData({
             currentTemp: datas.current.temp,
             currentIcon: datas.current.weather[0].icon,
             daily: datas.daily,
             hourly: datas.hourly,
-          })
-        );
-      GoogleMap(pos.coords.latitude, pos.coords.longitude).then((res) => {
-        console.log(res);
-        setAddress(res);
-      });
-      console.log(address);
-    });
-  }, [getData]);
+          });
+        });
+      setAddress({ state: "", city: city[0].value });
+    }
+  }, [getData, city]);
 
   return (
     <section className={styles.section}>

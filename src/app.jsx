@@ -11,6 +11,10 @@ import ContactUs from "./service/emailjs";
 import Posts from "./component/posts/posts";
 
 function App({ authService, getData, uploadImages }) {
+  const [city, setCity] = useState("location");
+  const changeCity = (cityData) => {
+    setCity(cityData);
+  };
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
@@ -97,8 +101,12 @@ function App({ authService, getData, uploadImages }) {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Header authService={authService} userId={null} />
-            <Section getData={getData} />
+            <Header
+              authService={authService}
+              userId={null}
+              changeCity={changeCity}
+            />
+            <Section getData={getData} city={city} />
             <Posts posts={posts}></Posts>
             <ContactUs getData={getData} />
           </Route>

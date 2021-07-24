@@ -19,7 +19,23 @@ const Login = ({ onFind, authService, user }) => {
   const onLogin = (event) => {
     authService //
       .login(event.target.name)
-      .then((data) => goToHome(data.user.uid));
+      .then((data) => {
+        console.log(data);
+        if (event.target.name === "Google") {
+          console.log(
+            data.user.uid,
+            data.user.bc.displayName,
+            data.user.bc.email
+          );
+        } else if (event.target.name === "Github") {
+          console.log(
+            data.user.uid,
+            data.additionalUserInfo.username,
+            data.user.email
+          );
+        }
+        goToHome(data.user.uid);
+      });
   };
 
   console.log(user);

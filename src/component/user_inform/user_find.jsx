@@ -48,7 +48,7 @@ const Find = ({ user }) => {
     event.preventDefault();
     console.log(data);
 
-    if (data != "no data") {
+    if (data !== "no data") {
       emailjs
         .sendForm(
           "25degree",
