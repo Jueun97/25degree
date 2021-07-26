@@ -11,9 +11,8 @@ import Posts from "./component/posts/posts";
 
 function App({ authService, getData, uploadImages }) {
   const [city, setCity] = useState("location");
-  const changeCity = (cityData) => {
-    setCity(cityData);
-  };
+  const [user, setUser] = useState([]);
+
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
@@ -32,8 +31,40 @@ function App({ authService, getData, uploadImages }) {
     getData.getLikes().then((data) => {
       setLikes(data);
     });
+    getData //
+      .getUserInfo()
+      .then((datas) => setUser(datas));
   }, [getData]);
 
+  const changeCity = (cityData) => {
+    setCity(cityData);
+  };
+  const loginedUser = (userData) => {
+    const tempUser = [...user];
+    const newUser = {
+      userId: userData.userId,
+      name: userData.name,
+      gender: null,
+      password: userData.password,
+      email: userData.email,
+      profile: null,
+    };
+    tempUser.push(newUser);
+    getData.addUser(newUser);
+  };
+  const joinUser = (userData) => {
+    const tempUser = [...user];
+    const joinUser = {
+      userId: userData.userId,
+      name: userData.name,
+      gender: userData.gender,
+      password: userData.password,
+      email: userData.email,
+      profile: null,
+    };
+    tempUser.push(joinUser);
+    getData.addUser(joinUser);
+  };
   const uploadPost = (post) => {
     const tempPosts = [...posts];
     const tempFilteredPosts = [...filteredPosts];
@@ -62,12 +93,11 @@ function App({ authService, getData, uploadImages }) {
   const updatePost = (postId, message, userId) => {
     const tempPosts = [...filteredPosts];
     tempPosts.map((post) => {
-      if (post.postId === postId)
-        post.description = message;
-      return post
+      if (post.postId === postId) post.description = message;
+      return post;
     });
     getData.updatePost({ postId, message, userId });
-    console.log("update post posts, filteredposts",posts,filteredPosts);
+    console.log("update post posts, filteredposts", posts, filteredPosts);
     setFilteredPosts(tempPosts);
   };
   const deletePost = (postId, userId) => {
@@ -117,7 +147,12 @@ function App({ authService, getData, uploadImages }) {
             <Posts posts={posts}></Posts>
           </Route>
           <Route exact path="/login">
-            <Inform authService={authService} getData={getData} />
+            <Inform
+              authService={authService}
+              user={user}
+              loginedUser={loginedUser}
+              joinUser={joinUser}
+            />
           </Route>
           <Route exact path="/mypage">
             <Mypage posts={filteredPosts} likes={likes}></Mypage>

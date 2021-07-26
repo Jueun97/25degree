@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import Button from "./button/button";
 import styles from "./inform.module.css";
 
-const Login = ({ onFind, authService, user }) => {
+const Login = ({ onFind, authService, user, loginedUser }) => {
   const history = useHistory();
   const idRef = useRef();
   const passwordRef = useRef();
@@ -22,34 +22,31 @@ const Login = ({ onFind, authService, user }) => {
       .then((data) => {
         console.log(data);
         if (event.target.name === "Google") {
-          console.log(
-            data.user.uid,
-            data.user.bc.displayName,
-            data.user.bc.email
-          );
+          loginedUser({
+            userId: data.user.bc.displayName,
+            name: data.user.bc.displayName,
+            password: data.user.uid,
+            email: data.user.bc.email,
+          });
         } else if (event.target.name === "Github") {
-          console.log(
-            data.user.uid,
-            data.additionalUserInfo.username,
-            data.user.email
-          );
+          loginedUser({
+            userId: data.additionalUserInfo.username,
+            name: data.additionalUserInfo.username,
+            password: data.user.uid,
+            email: data.user.email,
+          });
         }
         goToHome(data.user.uid);
       });
   };
-
-  console.log(user);
 
   const handleLogin = () => {
     let logined = false;
     const idInput = idRef.current.value;
     const passwordInput = passwordRef.current.value;
 
-    console.log(idInput, passwordInput);
-
     user.forEach((users) => {
       if (users.userId === idInput && users.password === passwordInput) {
-        console.log("login");
         logined = true;
         goToHome(users.userId);
       }

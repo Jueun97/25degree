@@ -12,12 +12,10 @@ const Header = ({ authService, changeCity }) => {
   const selectRef = useRef();
 
   useEffect(() => {
-    console.log(location);
     if (location.state != null) {
       setId(location.state.id);
     }
   }, [location]);
-  console.log(id);
 
   const onLogin = () => {
     history.push("/login");

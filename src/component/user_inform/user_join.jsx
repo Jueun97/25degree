@@ -1,12 +1,17 @@
 import React, { useRef } from "react";
 import styles from "./inform.module.css";
 
-const Join = (props) => {
+const Join = ({ joinUser }) => {
   const nameRef = useRef();
   const idRef = useRef();
   const passwordRef = useRef();
   const emailRef = useRef();
   const genderRef = useRef();
+
+  const joined = () => {
+    alert("가입이 완료되었습니다:)");
+    window.location.reload();
+  };
 
   const handleJoin = () => {
     const nameInput = nameRef.current.value;
@@ -15,7 +20,14 @@ const Join = (props) => {
     const emailInput = emailRef.current.value;
     const genderInput = genderRef.current.value;
 
-    console.log(idInput, passwordInput, nameInput, emailInput, genderInput);
+    joinUser({
+      userId: idInput,
+      name: nameInput,
+      gender: genderInput,
+      password: passwordInput,
+      email: emailInput,
+    });
+    joined();
   };
 
   const onKeyPress = (event) => {
