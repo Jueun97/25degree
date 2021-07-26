@@ -24,7 +24,7 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
         }
         if (likedIcon === '')
             setLikedIcon(farHeart);
-    },[filteredLikes,likedIcon,filteredLikesId])
+    },[userId,filteredLikes, filteredLikesId, likedIcon])
     const onOpenDropdown = () => {
         if (dropdown)
             setDropdown(false);
@@ -36,6 +36,7 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
         setDropdown(false);
     }
     const onDelete = () => {
+        console.log("userID",userId)
         deletePost(post.postId, userId);
         history.push({
             pathname: '/mypage',

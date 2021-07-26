@@ -7,10 +7,10 @@ const Daily = ({ daily }) => {
 
   return (
     <section className={styles.container}>
-      {daily.map((item) => {
+      {daily.map((item,index) => {
         date === 6 ? (date = 0) : date++;
         return (
-          <div className={styles.tempData}>
+          <div className={styles.tempData} key={index}>
             <div className={styles.temp}>
               <p className={styles.textMin}>{`${Math.round(
                 item.temp.min

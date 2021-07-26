@@ -7,7 +7,6 @@ import Inform from "./component/user_inform/inform";
 import Upload from "./component/uplaod/upload";
 import Mypage from "./component/mypage/mypage";
 import Details from "./component/details/details";
-import ContactUs from "./service/emailjs";
 import Posts from "./component/posts/posts";
 
 function App({ authService, getData, uploadImages }) {
@@ -29,10 +28,11 @@ function App({ authService, getData, uploadImages }) {
     getData.getLikes().then((data) => {
       setLikes(data);
     });
-  }, [setPosts, setComments]);
+  }, [getData]);
 
   const uploadPost = (post) => {
-    const tempPosts = [...filteredPosts];
+    const tempPosts = [...posts];
+    const tempFilteredPosts = [...filteredPosts];
     const postId = new Date();
     const newPost = {
       postId: postId,
@@ -49,25 +49,31 @@ function App({ authService, getData, uploadImages }) {
       degree: "degree",
       region: "region",
     };
+    getData.uploadPost(newPost);
     tempPosts.push(newPost);
-    setFilteredPosts(tempPosts);
+    setPosts(tempPosts);
+    tempFilteredPosts.push(newPost);
+    setFilteredPosts(tempFilteredPosts);
   };
   const updatePost = (postId, message, userId) => {
     const tempPosts = [...filteredPosts];
     tempPosts.map((post) => {
-      if (post.postId === postId) post.description = message;
+      if (post.postId === postId)
+        post.description = message;
+      return post
     });
     getData.updatePost({ postId, message, userId });
-    console.log("wow");
+    console.log("update post posts, filteredposts",posts,filteredPosts);
     setFilteredPosts(tempPosts);
   };
   const deletePost = (postId, userId) => {
-    let tempPosts = [...filteredPosts];
-    tempPosts = tempPosts.filter((post) => {
+    let tempFilteredPosts = [...filteredPosts];
+    tempFilteredPosts = tempFilteredPosts.filter((post) => {
       return post.postId !== postId;
     });
     getData.deletePost(postId, userId);
-    setFilteredPosts(tempPosts);
+    setFilteredPosts(tempFilteredPosts);
+    console.log("deletePost",posts,filteredPosts)
   };
   const uploadComment = (upload_data) => {
     const tempComments = [...comments];
@@ -100,7 +106,6 @@ function App({ authService, getData, uploadImages }) {
             <Header authService={authService} userId={null} />
             <Section getData={getData} />
             <Posts posts={posts}></Posts>
-            <ContactUs getData={getData} />
           </Route>
           <Route exact path="/login">
             <Inform authService={authService} getData={getData} />
@@ -110,7 +115,6 @@ function App({ authService, getData, uploadImages }) {
           </Route>
           <Route exact path="/upload">
             <Upload
-              data={getData}
               uploadPost={uploadPost}
               uploadImages={uploadImages}
             ></Upload>

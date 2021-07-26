@@ -14,7 +14,7 @@ const Header = ({ authService,userId }) => {
     if (location.state != null && id == null) {
       setId(location.state.id);
     }
-  }, [location]);
+  }, [id,location.state]);
   const onClickLogo = () => {
     history.push({
       pathname: '/',
@@ -27,9 +27,6 @@ const Header = ({ authService,userId }) => {
   const onLogout = () => {
     setId(null);
     authService.logout();
-  };
-  const onMenu = () => {
-    console.log("wow");
   };
   return (
     <header className={styles.header}>

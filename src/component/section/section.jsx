@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Recommend from "../recommend/recommend";
 import Weather from "../weather/weather";
 import styles from "./section.module.css";
-import Geocode from "react-geocode";
 import GoogleMap from "../../service/geocode";
 import Loading from "../loading/loading";
 
@@ -14,7 +13,7 @@ const Section = ({ getData }) => {
     hourly: null,
   });
   const [address, setAddress] = useState("");
-  useEffect(async () => {
+  useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
       getData //
         .getWeather(pos.coords.latitude, pos.coords.longitude)

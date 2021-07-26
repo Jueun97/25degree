@@ -36,12 +36,15 @@ const Upload = ({ data, uploadPost, uploadImages }) => {
             if (image)
                 images.push(image)
         }
-        const imagesUrl = await uploadImages.uploadImage(images);
-        
-        const upload_data = { userId:location.state.userId,imagesUrl, message, gender, overcoat, top, type, underwear, suitablity, style }
-        uploadPost(upload_data);
-        data.uploadPost(upload_data,location.state.userId);
-        history.push({pathname:'/',state:{id:location.state.userId}})
+        console.log(">>>",images,images.length,message)
+        if (images.length === 0 || message === '') {
+            alert("내용을 채워주세요!");
+        } else {
+            const imagesUrl = await uploadImages.uploadImage(images);
+            const upload_data = { userId: location.state.userId, imagesUrl, message, gender, overcoat, top, type, underwear, suitablity, style }
+            uploadPost(upload_data);
+            history.push({ pathname: '/', state: { id: location.state.userId } })
+        }
     }
     
     return (
@@ -71,21 +74,45 @@ const Upload = ({ data, uploadPost, uploadImages }) => {
                         </select>
                         <select ref={overcoatRef}className={styles.category} name="overcoat" id="">
                             <option value="overcoat">아우터</option>
+                            <option value="overcoat">가디건</option>
+                            <option value="overcoat">자켓</option>
+                            <option value="overcoat">코트</option>
+                            <option value="overcoat">점퍼</option>
+                            <option value="overcoat">야상</option>
+                            <option value="overcoat">패딩</option>
                         </select>
                         <select ref={topRef}className={styles.category} name="top" id="">
                             <option value="top">상의</option>
+                            <option value="top">티셔츠</option>
+                            <option value="top">니트/스웨터</option>
+                            <option value="top">셔츠/남방</option>
+                            <option value="top">맨투맨</option>
+                            <option value="top">후드</option>
+                            <option value="top">블라우스</option>
+                            <option value="top">민소매/나시</option>
                         </select>
                         <select ref={typeRef}className={styles.category} name="type" id="">
                             <option value="type">체질</option>
+                            <option value="type">더위를 많이 타요</option>
+                            <option value="type">추위를 많이 타요</option>
                         </select>
                         <select ref={underwearRef}className={styles.category} name="underwear" id="">
-                            <option value="underwear">속옷</option>
+                            <option value="underwear">이너웨어</option>
+                            <option value="underwear">레깅스</option>
+                            <option value="underwear">내복</option>
                         </select>
                         <select ref={suitablityRef}className={styles.category} name="suitablity" id="">
                             <option value="suitablity">적당함</option>
+                            <option value="suitablity">좀 춥게 입은 듯..?🥶</option>
+                            <option value="suitablity">좀 덥게 입은 듯..?🥵</option>
+                            <option value="suitablity">적당하게 입었다!🥳</option>
                         </select>
-                        <select ref={styleRef}className={styles.category} name="style" id="">
+                        <select ref={styleRef}className={styles.category} name="style" id="" value="스타일">
                             <option value="style">스타일</option>
+                            <option value="style">오피스룩</option>
+                            <option value="style">학생룩</option>
+                            <option value="style">캐주얼룩</option>
+                            <option value="style">데이트룩</option>
                         </select>
                     </div>    
                 </div>

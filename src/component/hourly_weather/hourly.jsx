@@ -9,16 +9,16 @@ const Hourly = ({ hourly }) => {
   return (
     <section>
       <div className={styles.container}>
-        {hourly.map((item) => {
-          if (date != 24) date++;
+        {hourly.map((item,index) => {
+          if (date !== 24) date++;
           else {
             date = 0;
             cnt++;
           }
           return (
-            <div className={styles.temp}>
+            <div className={styles.temp} key={index}>
               <p className={styles.text}>{Math.round(item.temp)}° </p>
-              {date != 0 && <p className={styles.text}>{date}시</p>}
+              {date !== 0 && <p className={styles.text}>{date}시</p>}
               {date === 0 && <p className={styles.textDay}>{day[cnt]}</p>}
             </div>
           );
