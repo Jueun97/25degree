@@ -5,7 +5,7 @@ import { useLocation } from "react-router";
 import Header from '../header/header';
 const Mypage = ({ posts, likes }) => {
     const location = useLocation();
-    const [userId, setUserId] = useState(location.state.userId);
+    const [userId] = useState(location.state.userId);
     const [filteredPosts, setFilteredPosts] = useState(posts);
     const [filteredLikedPosts, setFilteredLikedPosts] = useState('');
     useEffect(() => {

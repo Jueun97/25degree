@@ -9,6 +9,7 @@ import Images from "./service/images";
 const authService = new AuthService();
 const getData = new GetData();
 const uploadImages = new Images();
+
 ReactDOM.render(
   <React.StrictMode>
     <App authService={authService} uploadImages={uploadImages} getData={getData} />

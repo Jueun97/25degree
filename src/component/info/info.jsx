@@ -24,18 +24,21 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
         }
         if (likedIcon === '')
             setLikedIcon(farHeart);
-    },[filteredLikes,likedIcon,filteredLikesId])
+    },[userId,filteredLikes, filteredLikesId, likedIcon])
     const onOpenDropdown = () => {
         if (dropdown)
             setDropdown(false);
-        else
-            setDropdown(true);
+        else {
+            if (userId === post.userId)
+                setDropdown(true);
+        }
     }
     const onEdit = () => {
         setEdit(true);
         setDropdown(false);
     }
     const onDelete = () => {
+        console.log("userID",userId)
         deletePost(post.postId, userId);
         history.push({
             pathname: '/mypage',

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useHistory,useLocation} from 'react-router-dom';
 import styles from './upload.module.css';
 
-const Upload = ({ data, uploadPost, uploadImages }) => {
+const Upload = ({uploadPost, uploadImages }) => {
     const history = useHistory();
     const location = useLocation();
 
@@ -36,12 +36,15 @@ const Upload = ({ data, uploadPost, uploadImages }) => {
             if (image)
                 images.push(image)
         }
-        const imagesUrl = await uploadImages.uploadImage(images);
-        
-        const upload_data = { userId:location.state.userId,imagesUrl, message, gender, overcoat, top, type, underwear, suitablity, style }
-        uploadPost(upload_data);
-        data.uploadPost(upload_data,location.state.userId);
-        history.push({pathname:'/',state:{id:location.state.userId}})
+        console.log(">>>",images,images.length,message)
+        if (images.length === 0 || message === '') {
+            alert("내용을 채워주세요!");
+        } else {
+            const imagesUrl = await uploadImages.uploadImage(images);
+            const upload_data = { userId: location.state.userId, imagesUrl, message, gender, overcoat, top, type, underwear, suitablity, style }
+            uploadPost(upload_data);
+            history.push({ pathname: '/', state: { id: location.state.userId } })
+        }
     }
     
     return (
@@ -66,26 +69,50 @@ const Upload = ({ data, uploadPost, uploadImages }) => {
                     <h2 className={styles.subtitle}>카테고리</h2>
                     <div className={styles.categories}>
                         <select ref={genderRef}className={styles.category} name="gender" id="">
-                            <option value="male">male</option>
-                            <option value="female">female</option>
+                            <option>male</option>
+                            <option>female</option>
                         </select>
-                        <select ref={overcoatRef}className={styles.category} name="overcoat" id="">
-                            <option value="overcoat">아우터</option>
+                        <select ref={overcoatRef} className={styles.category} name="overcoat" id="">
+                            <option>아우터</option>
+                            <option>가디건</option>
+                            <option>자켓</option>
+                            <option>코트</option>
+                            <option>점퍼</option>
+                            <option>야상</option>
+                            <option>패딩</option>
                         </select>
-                        <select ref={topRef}className={styles.category} name="top" id="">
-                            <option value="top">상의</option>
+                        <select ref={topRef} className={styles.category} name="top" id="">
+                            <option>상의</option>
+                            <option>티셔츠</option>
+                            <option>니트/스웨터</option>
+                            <option>셔츠/남방</option>
+                            <option>맨투맨</option>
+                            <option>후드</option>
+                            <option>블라우스</option>
+                            <option>민소매/나시</option>
                         </select>
-                        <select ref={typeRef}className={styles.category} name="type" id="">
-                            <option value="type">체질</option>
+                        <select ref={typeRef} className={styles.category} name="type" id="">
+                            <option>체질</option>
+                            <option>더위를 많이 타요</option>
+                            <option>추위를 많이 타요</option>
                         </select>
-                        <select ref={underwearRef}className={styles.category} name="underwear" id="">
-                            <option value="underwear">속옷</option>
+                        <select ref={underwearRef} className={styles.category} name="underwear" id="">
+                            <option>이너웨어</option>
+                            <option>레깅스</option>
+                            <option>내복</option>
                         </select>
-                        <select ref={suitablityRef}className={styles.category} name="suitablity" id="">
-                            <option value="suitablity">적당함</option>
+                        <select ref={suitablityRef} className={styles.category} name="suitablity" id="">
+                            <option>적당함</option>
+                            <option>좀 춥게 입은 듯..?🥶</option>
+                            <option>좀 덥게 입은 듯..?🥵</option>
+                            <option>적당하게 입었다!🥳</option>
                         </select>
-                        <select ref={styleRef}className={styles.category} name="style" id="">
-                            <option value="style">스타일</option>
+                        <select ref={styleRef} className={styles.category} name="style" id="">
+                            <option>스타일</option>
+                            <option>오피스룩</option>
+                            <option>학생룩</option>
+                            <option>캐주얼룩</option>
+                            <option>데이트룩</option>
                         </select>
                     </div>    
                 </div>
