@@ -65,7 +65,7 @@ app.get('/Likes', function(req, res){
 app.post('/uploadPost', function (req, res) {
   console.log(req.body);
   const userId = req.body.userId;
-  const images = req.body.imagesUrl.toString();
+  const images = req.body.images.toString();
   const message = req.body.message;
   const gender = req.body.gender;
   const overcoat = req.body.overcoat;
