@@ -4,7 +4,7 @@
   background-color: makerGrey;
   margin: 1em;
   width: 50%;
-  height: 15em;
+  height: 17em;
 }
 
 .illus {
@@ -13,4 +13,10 @@
 
 .message {
   margin: 1em;
+}
+
+@media screen and (max-width: 700px) {
+  .recommend {
+    width: 100%;
+  }
 }

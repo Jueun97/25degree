@@ -4,7 +4,7 @@
   background-color: makerGrey;
   margin: 1em;
   width: 50%;
-  height: 15em;
+  height: 17em;
 }
 
 .address {
@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: space-around;
   padding: 0.5em;
-  height: 5.5em;
+  height: 3.5em;
 }
 
 .weatherImg {
@@ -29,4 +29,10 @@
 
 .cuurentTemp {
   font-size: 2rem;
+}
+
+@media screen and (max-width: 700px) {
+  .weather {
+    width: 100%;
+  }
 }
