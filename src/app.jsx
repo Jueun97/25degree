@@ -44,7 +44,7 @@ function App({ authService, getData, uploadImages }) {
       top: post.top,
       constitution: post.type,
       underwear: post.underwear,
-      sutiablity: "sutiablity",
+      suitablity: post.suitablity,
       style: post.style,
       degree: "degree",
       region: "region",
