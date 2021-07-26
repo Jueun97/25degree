@@ -4,8 +4,9 @@ import Weather from "../weather/weather";
 import styles from "./section.module.css";
 import GoogleMap from "../../service/geocode";
 import Loading from "../loading/loading";
+import Posts from "../posts/posts";
 
-const Section = ({ getData, city }) => {
+const Section = ({ getData, city, posts }) => {
   const [data, setData] = useState({
     currentTemp: null,
     currentIcon: null,
@@ -48,9 +49,14 @@ const Section = ({ getData, city }) => {
 
   return (
     <section className={styles.section}>
-      {address && <Weather data={data} address={address} />}
-      {address === null && <Loading />}
-      <Recommend temp={data.currentTemp} />
+      <section className={styles.weather}>
+        {address && <Weather data={data} address={address} />}
+        {address === null && <Loading />}
+        <Recommend temp={data.currentTemp} />
+      </section>
+      <section className={styles.posts}>
+        <Posts posts={posts}></Posts>
+      </section>
     </section>
   );
 };

@@ -143,8 +143,7 @@ function App({ authService, getData, uploadImages }) {
               userId={null}
               changeCity={changeCity}
             />
-            <Section getData={getData} city={city} />
-            <Posts posts={posts}></Posts>
+            <Section getData={getData} city={city} posts={posts} />
           </Route>
           <Route exact path="/login">
             <Inform
