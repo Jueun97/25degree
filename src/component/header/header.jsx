@@ -4,11 +4,11 @@ import { useHistory, useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import Card from "../card/card";
 
-const Header = ({ authService,userId }) => {
-  const [id, setId] = useState(userId? userId : null);
-
+const Header = ({ authService, userId }) => {
   const history = useHistory();
   const location = useLocation();
+
+  const [id, setId] = useState(userId? userId : location.state.id);
 
   useEffect(() => {
     if (location.state != null && id == null) {
@@ -18,7 +18,7 @@ const Header = ({ authService,userId }) => {
   const onClickLogo = () => {
     history.push({
       pathname: '/',
-      state: { id:userId}
+      state: { id:id}
   });
   }
   const onLogin = () => {

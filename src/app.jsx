@@ -67,13 +67,14 @@ function App({ authService, getData, uploadImages }) {
     setFilteredPosts(tempPosts);
   };
   const deletePost = (postId, userId) => {
+    const tempPosts = [...posts];
     let tempFilteredPosts = [...filteredPosts];
     tempFilteredPosts = tempFilteredPosts.filter((post) => {
       return post.postId !== postId;
     });
     getData.deletePost(postId, userId);
+    setPosts(tempPosts);
     setFilteredPosts(tempFilteredPosts);
-    console.log("deletePost",posts,filteredPosts)
   };
   const uploadComment = (upload_data) => {
     const tempComments = [...comments];
