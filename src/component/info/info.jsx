@@ -28,8 +28,10 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
     const onOpenDropdown = () => {
         if (dropdown)
             setDropdown(false);
-        else
-            setDropdown(true);
+        else {
+            if (userId === post.userId)
+                setDropdown(true);
+        }
     }
     const onEdit = () => {
         setEdit(true);
