@@ -3,17 +3,17 @@ import Posts from '../posts/posts';
 import styles from './mypage.module.css';
 import { useLocation } from "react-router";
 import Header from '../header/header';
-const Mypage = ({ posts, likes }) => {
+const Mypage = ({ filterPosts, filteredPostsOriginal ,posts, likes }) => {
     const location = useLocation();
     const [userId] = useState(location.state.userId);
-    const [filteredPosts, setFilteredPosts] = useState(posts);
+    const [filteredPosts, setFilteredPosts] = useState(filteredPostsOriginal);
     const [filteredLikedPosts, setFilteredLikedPosts] = useState('');
     useEffect(() => {
-        setFilteredPosts(posts);
-
-    },[posts])
+        console.log("hello")
+        filterPosts(userId);
+    },[])
     function onClickMypost(){
-        setFilteredPosts(posts);
+        setFilteredPosts(filteredPosts);
         setFilteredLikedPosts('');
     }
     function onClickLikes(){

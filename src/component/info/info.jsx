@@ -41,7 +41,7 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
         console.log("userID",userId)
         deletePost(post.postId, userId);
         history.push({
-            pathname: '/mypage',
+            pathname: '/',
             state:{userId}
         })
     }

@@ -22,8 +22,6 @@ function App({ authService, getData, uploadImages }) {
       let tempdata = [...data];
       tempdata.map((data) => (data.images = data.images.split(",")));
       setPosts(tempdata);
-      tempdata = tempdata.filter((post) => post.userId === "zxnm1234");
-      setFilteredPosts(tempdata);
     });
     getData.getComment().then((data) => {
       setComments(data);
@@ -65,6 +63,12 @@ function App({ authService, getData, uploadImages }) {
     tempUser.push(joinUser);
     getData.addUser(joinUser);
   };
+  const filterPosts = (userId) => {
+    console.log("filter!!!");
+    let tempPosts = [...posts];
+    tempPosts = tempPosts.filter((post) => post.userId === userId);
+    setFilteredPosts(tempPosts);
+  }
   const uploadPost = (post) => {
     const tempPosts = [...posts];
     const tempFilteredPosts = [...filteredPosts];
@@ -91,24 +95,34 @@ function App({ authService, getData, uploadImages }) {
     setFilteredPosts(tempFilteredPosts);
   };
   const updatePost = (postId, message, userId) => {
-    const tempPosts = [...filteredPosts];
+    const tempPosts = [...posts];
+    const tempFilteredPosts = [...filteredPosts];
     tempPosts.map((post) => {
+      if (post.postId === postId) post.description = message;
+      return post;
+    });
+    tempFilteredPosts.map((post) => {
       if (post.postId === postId) post.description = message;
       return post;
     });
     getData.updatePost({ postId, message, userId });
     console.log("update post posts, filteredposts", posts, filteredPosts);
-    setFilteredPosts(tempPosts);
+    setPosts(tempPosts);
+    setFilteredPosts(tempFilteredPosts);
   };
   const deletePost = (postId, userId) => {
-    const tempPosts = [...posts];
+    let tempPosts = [...posts];
     let tempFilteredPosts = [...filteredPosts];
+    tempPosts = tempPosts.filter((post) => {
+      return post.postId !== postId;
+    });
     tempFilteredPosts = tempFilteredPosts.filter((post) => {
       return post.postId !== postId;
     });
     getData.deletePost(postId, userId);
     setPosts(tempPosts);
     setFilteredPosts(tempFilteredPosts);
+    console.log("delete",posts,filteredPosts)
   };
   const uploadComment = (upload_data) => {
     const tempComments = [...comments];
@@ -154,7 +168,7 @@ function App({ authService, getData, uploadImages }) {
             />
           </Route>
           <Route exact path="/mypage">
-            <Mypage posts={filteredPosts} likes={likes}></Mypage>
+            <Mypage filterPosts={filterPosts} filteredPostsOriginal={filteredPosts} posts={posts} likes={likes}></Mypage>
           </Route>
           <Route exact path="/upload">
             <Upload
