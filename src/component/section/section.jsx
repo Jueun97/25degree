@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from 'react-router';
 import Recommend from "../recommend/recommend";
 import Weather from "../weather/weather";
 import styles from "./section.module.css";
@@ -7,6 +8,7 @@ import Loading from "../loading/loading";
 import Posts from "../posts/posts";
 
 const Section = ({ getData, city, posts }) => {
+  const location = useLocation();
   const [data, setData] = useState({
     currentTemp: null,
     currentIcon: null,
@@ -55,7 +57,7 @@ const Section = ({ getData, city, posts }) => {
         <Recommend temp={data.currentTemp} />
       </section>
       <section className={styles.posts}>
-        <Posts posts={posts}></Posts>
+        <Posts posts={posts} userId={location.state ? location.state.userId : null }></Posts>
       </section>
     </section>
   );
