@@ -82,13 +82,17 @@ const Join = ({ joinUser }) => {
       </div>
       <div className={styles.section}>
         <p className={styles.text}>성별</p>
-        <input
+        <select name="gender" ref={genderRef} className={styles.inputBox}id="">
+          <option>male</option>
+          <option>female</option>
+        </select>
+    {/*     <input
           ref={genderRef}
           type="text"
           placeholder="성별을 입력하세요"
           className={styles.inputBox}
           onKeyPress={onKeyPress}
-        />
+        /> */}
       </div>
       <button className={styles.btn} onClick={onClick}>
         가입
