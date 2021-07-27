@@ -5,23 +5,30 @@ import Card from "../card/card";
 import city from "../../service/location.json";
 
 const Header = ({ authService, changeCity }) => {
-  const [id, setId] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const history = useHistory();
   const location = useLocation();
   const selectRef = useRef();
 
   useEffect(() => {
-    if (location.state != null) {
-      setId(location.state.id);
+    console.log("header id",location.state)
+    if (location.state) {
+      setUserId(location.state.userId);
     }
   }, [location]);
-
+  const onClickLogo = () => {
+    history.push({
+      pathname: '/',
+      state: { userId}
+  });
+  }
   const onLogin = () => {
     history.push("/login");
   };
   const onLogout = () => {
-    setId(null);
+    setUserId(null);
+    location.state.userId = null
     authService.logout();
   };
   const onChange = () => {
@@ -33,7 +40,7 @@ const Header = ({ authService, changeCity }) => {
   };
   return (
     <header className={styles.header}>
-      <h2 className={styles.logo}>25도씨</h2>
+      <h2 className={styles.logo}  onClick={onClickLogo}>25도씨</h2>
       <div className={styles.search}>
         <select
           ref={selectRef}
@@ -56,8 +63,8 @@ const Header = ({ authService, changeCity }) => {
         </select>
       </div>
 
-      {id && <Card onLogout={onLogout} />}
-      {id == null && (
+      {userId && <Card onLogout={onLogout} userId={userId} />}
+      {userId == null && (
         <button className={styles.loginBtn} onClick={onLogin}>
           로그인
         </button>

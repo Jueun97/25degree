@@ -12,7 +12,7 @@ const Login = ({ onFind, authService, user, loginedUser }) => {
     history.push({
       pathname: "/",
       state: {
-        id: userId,
+        userId
       },
     });
   };
