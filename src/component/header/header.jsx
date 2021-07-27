@@ -28,7 +28,7 @@ const Header = ({ authService, changeCity }) => {
   };
   const onLogout = () => {
     setUserId(null);
-    location.state.userId = null
+    location.state.userId = null;
     authService.logout();
   };
   const onChange = () => {

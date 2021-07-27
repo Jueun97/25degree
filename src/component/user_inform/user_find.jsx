@@ -3,37 +3,54 @@ import styles from "./inform.module.css";
 import emailjs from "emailjs-com";
 
 const Find = ({ user }) => {
-  const [action, setAction] = useState("id");
+  const [action, setAction] = useState('');
+  const [actionDone, setActionDone] = useState(true);
   const [data, setData] = useState("no data");
   const [state, setState] = useState(false);
   const nameRef = useRef();
   const emailRef = useRef();
+  const formRef = useRef();
 
   const handelAction = (event) => {
     setAction(event.target.name);
+    setActionDone(false);
   };
+  const buttonStatus = (actionName) => {
+    if (actionDone)
+      return;
+    else {
+      if (action === actionName)
+        return styles.active;
+      else
+        return styles.inactive;
+    }
+  }
 
   const handleFind = () => {
     const nameInput = nameRef.current.value;
     const emailInput = emailRef.current.value;
     let finded = false;
-
-    user.forEach((users) => {
-      if (users.name === nameInput && users.email === emailInput) {
-        setState(true);
-        finded = true;
-        if (action === "id") setData(users.userId);
-        else if (action === "password") setData(users.password);
-        alert(
-          "확인되었습니다. 아래 버튼을 클릭하면 이메일로 회원정보가 전송됩니다."
-        );
-        console.log(users.userId);
-      }
-    });
-
-    if (!finded) {
-      alert("정보가 없습니다.");
+    if (action === '')
+      alert("아이디찾기인지 비밀번호찾기인지 클릭해주세요:)");
+    else {
+      user.forEach((users) => {
+        if (users.name === nameInput && users.email === emailInput) {
+          setState(true);
+          finded = true;
+          if (action === "id") setData(users.userId);
+          else if (action === "password") setData(users.password);
+          alert(
+            "확인되었습니다. 아래 버튼을 클릭하면 이메일로 회원정보가 전송됩니다."
+          );
+          console.log(users.userId);
+        }
+      });
+      if (!finded) 
+        alert("정보가 없습니다.");
+      
     }
+
+
   };
 
   const onKeyPress = (event) => {
@@ -65,24 +82,29 @@ const Find = ({ user }) => {
           }
         );
       setState(false);
+      setActionDone(true);
+      setAction('');
+      formRef.current.reset();
       setData("no data");
+      alert("전송완료! 이메일을 확인해주세용")
+      const name = ``
     }
   };
   return (
     <div className={styles.input}>
       <div className={styles.classify}>
-        <button name="id" className={styles.classifyBtn} onClick={handelAction}>
+        <button name="id" className={`${styles.classifyBtn} ${buttonStatus("id")}`} onClick={handelAction}>
           아이디 찾기
         </button>
-        <button
+        <button 
           name="password"
-          className={styles.classifyBtn}
+          className={`${styles.classifyBtn} ${buttonStatus("password")}`}
           onClick={handelAction}
         >
           비밀번호 찾기
         </button>
       </div>
-      <form className={styles.form} onSubmit={sendEmail}>
+      <form ref={formRef} className={styles.form} onSubmit={sendEmail}>
         <div className={styles.section}>
           <p className={styles.text}>이름</p>
           <input
