@@ -28,7 +28,8 @@ const Header = ({ authService, changeCity }) => {
   };
   const onLogout = () => {
     setUserId(null);
-    location.state.userId = null;
+    history.replace(location.state.userId, null);
+    history.push("/");
     authService.logout();
   };
   const onChange = () => {
