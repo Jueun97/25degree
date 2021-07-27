@@ -43,7 +43,7 @@ const Upload = ({uploadPost, uploadImages }) => {
             const imagesUrl = await uploadImages.uploadImage(images);
             const upload_data = { userId: location.state.userId, imagesUrl, message, gender, overcoat, top, type, underwear, suitablity, style }
             uploadPost(upload_data);
-            history.push({ pathname: '/', state: { id: location.state.userId } })
+            history.push({ pathname: '/', state: { userId: location.state.userId } })
         }
     }
     
