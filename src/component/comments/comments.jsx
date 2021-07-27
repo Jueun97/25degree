@@ -11,11 +11,10 @@ const Comments = ({filteredComments,uploadComment,postId,userId }) => {
     }
     return (
         <section className={styles.container}>
-        <div className={styles.reply}>
-            <img className={styles.image} src={process.env.PUBLIC_URL + '/images/react.png'} alt="'" />
+                {userId &&  <div className={styles.reply}><img className={styles.image} src={process.env.PUBLIC_URL + '/images/react.png'} alt="'" />
             <input ref={commentRef} className={styles.input} type="text" />
             <input className={styles.button} type="submit" value="확인" onClick={onClick}></input>
-        </div>
+            </div>}
         <div className={styles.comment}> 
             {filteredComments.map((comment,index) => ( <Comment key={index} comment={comment}></Comment>))
                 }
