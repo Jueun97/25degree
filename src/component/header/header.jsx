@@ -4,9 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Card from "../card/card";
 import city from "../../service/location.json";
 
-const Header = ({ authService, changeCity }) => {
+const Header = ({ authService, changeCity,users}) => {
   const [userId, setUserId] = useState(null);
-
   const history = useHistory();
   const location = useLocation();
   const selectRef = useRef();
@@ -64,7 +63,7 @@ const Header = ({ authService, changeCity }) => {
         </select>
       </div>
 
-      {userId && <Card onLogout={onLogout} userId={userId} />}
+      {userId && <Card onLogout={onLogout} userId={userId}/>}
       {userId == null && (
         <button className={styles.loginBtn} onClick={onLogin}>
           로그인
