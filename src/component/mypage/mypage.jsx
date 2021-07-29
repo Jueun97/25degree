@@ -6,22 +6,27 @@ import Header from '../header/header';
 const Mypage = ({ filterPosts, filteredPostsOriginal ,posts, likes }) => {
     const location = useLocation();
     const [userId] = useState(location.state.userId);
-    const [filteredPosts, setFilteredPosts] = useState(filteredPostsOriginal);
+    const [filteredPosts, setFilteredPosts] = useState(posts);
     const [filteredLikedPosts, setFilteredLikedPosts] = useState('');
     useEffect(() => {
-        console.log("hello")
-        filterPosts(userId);
+        console.log("hello", posts, filteredPosts)
+        setFilteredPosts(posts.filter(post=>post.userId==userId))
     },[])
-    function onClickMypost(){
-        setFilteredPosts(filteredPosts);
+    function onClickMypost() {
+        let tempPosts = [...posts];
+        tempPosts = tempPosts.filter(post => post.userId===userId);
+        console.log(tempPosts)
+        setFilteredPosts(tempPosts);
         setFilteredLikedPosts('');
     }
-    function onClickLikes(){
+    function onClickLikes() {
+        console.log(likes)
         let tempLikes = [...likes];
         tempLikes = tempLikes.filter(like => like.userId === userId);
         let tempPosts = [...posts];
         tempPosts = tempPosts.filter(post => tempLikes.map(like => like.postId).includes(post.postId));
         setFilteredLikedPosts(tempPosts);
+        setFilteredPosts('');
     }
     return (
         <>
@@ -35,7 +40,7 @@ const Mypage = ({ filterPosts, filteredPostsOriginal ,posts, likes }) => {
                 <button className={styles.button} onClick={onClickLikes}>좋아요</button>
             </div>
             {filteredLikedPosts && <Posts posts={filteredLikedPosts} userId={userId}></Posts>}
-            {!filteredLikedPosts &&  <Posts posts={filteredPosts} userId={userId}></Posts>}
+            {filteredPosts &&  <Posts posts={filteredPosts} userId={userId}></Posts>}
 
         </>
     )

@@ -16,7 +16,7 @@ const Section = ({ getData, city, posts }) => {
     daily: null,
     hourly: null,
   });
-  const [filteredPosts, setFIlteredPosts] = useState(posts);
+  const [filteredPosts, setFIlteredPosts] = useState('');
   const [address, setAddress] = useState("");
   useEffect(() => {
     if (city === "location") {
@@ -65,7 +65,7 @@ const Section = ({ getData, city, posts }) => {
       </section>
       <section className={styles.posts}>
         <Category onClickCategory={onClickCategory}></Category> 
-        <Posts posts={filteredPosts} userId={location.state ? location.state.userId : null}></Posts>
+        <Posts posts={filteredPosts?filteredPosts:posts} userId={location.state ? location.state.userId : null}></Posts>
       </section>
     </section>
   );

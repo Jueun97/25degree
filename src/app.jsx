@@ -7,7 +7,6 @@ import Inform from "./component/user_inform/inform";
 import Upload from "./component/uplaod/upload";
 import Mypage from "./component/mypage/mypage";
 import Details from "./component/details/details";
-import Join from "./component/user_inform/user_join";
 
 function App({ authService, getData, uploadImages }) {
   const [city, setCity] = useState("location");
@@ -63,14 +62,12 @@ function App({ authService, getData, uploadImages }) {
     tempUser.push(joinUser);
     getData.addUser(joinUser);
   };
-  const updateUser = (userData) => {
-    getData.updateUser(userData);
-  };
   const filterPosts = (userId) => {
-    console.log("filter!!!");
+    console.log("filter!!!1111",posts);
     let tempPosts = [...posts];
     tempPosts = tempPosts.filter((post) => post.userId === userId);
     setFilteredPosts(tempPosts);
+    console.log("filter!!!222",filteredPosts);
   }
   const uploadPost = (post) => {
     const tempPosts = [...posts];
@@ -112,6 +109,9 @@ function App({ authService, getData, uploadImages }) {
     console.log("update post posts, filteredposts", posts, filteredPosts);
     setPosts(tempPosts);
     setFilteredPosts(tempFilteredPosts);
+  };
+  const updateUser = (userData) => {
+    getData.updateUser(userData);
   };
   const deletePost = (postId, userId) => {
     let tempPosts = [...posts];
@@ -157,6 +157,7 @@ function App({ authService, getData, uploadImages }) {
           <Route exact path="/">
             <Header
               authService={authService}
+              userId={null}
               changeCity={changeCity}
             />
             <Section getData={getData} city={city} posts={posts} />

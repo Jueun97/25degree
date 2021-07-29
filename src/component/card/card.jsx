@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styles from "./card.module.css";
 import { useHistory } from 'react-router-dom';
 
-const Card = ({ onLogout, userId, userInfo }) => {
+const Card = ({ onLogout, userId }) => {
   const dropdownRef = useRef(null);
   const history = useHistory();
   const [active, setActive] = useState(false);
