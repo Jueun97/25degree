@@ -104,10 +104,10 @@ app.post("/uploadPost", function (req, res) {
   const gender = req.body.gender;
   const overcoat = req.body.overcoat;
   const top = req.body.top;
-  const underwear = 1;
+  const underwear = req.body.underwear;
   const suitablity = req.body.suitablity;
   const style = req.body.style;
-  const type = req.body.type;
+  const type = req.body.constitution;
   const degree = req.body.degree ? req.body.degree : 0;
   const region = req.body.region ? req.body.region : "korea";
   const query = `insert into UserPost (userId,images,description,gender,overcoat,top,underwear,suitablity,style,type,degree,region) values ('${userId}','${images}','${message}','${gender}','${overcoat}','${top}',${underwear},'${suitablity}','${style}','${type}',${degree},'${region}')`;

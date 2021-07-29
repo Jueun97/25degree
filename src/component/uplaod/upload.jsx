@@ -103,9 +103,9 @@ const Upload = ({uploadPost, uploadImages }) => {
                         </select>
                         <select ref={suitablityRef} className={styles.category} name="suitablity" id="">
                             <option>적당함</option>
-                            <option>좀 춥게 입은 듯..?🥶</option>
-                            <option>좀 덥게 입은 듯..?🥵</option>
-                            <option>적당하게 입었다!🥳</option>
+                            <option>좀 춥게 입은 듯..?</option>
+                            <option>좀 덥게 입은 듯..?</option>
+                            <option>적당하게 입었다!</option>
                         </select>
                         <select ref={styleRef} className={styles.category} name="style" id="">
                             <option>스타일</option>

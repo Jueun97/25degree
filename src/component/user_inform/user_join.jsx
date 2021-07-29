@@ -18,6 +18,7 @@ const Join = ({ authService,joinUser,updateUser,userInfo }) => {
     history.push({
       pathname: '/'
     })
+    window.location.reload();
 
     
   }
