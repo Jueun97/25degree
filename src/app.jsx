@@ -7,6 +7,7 @@ import Inform from "./component/user_inform/inform";
 import Upload from "./component/uplaod/upload";
 import Mypage from "./component/mypage/mypage";
 import Details from "./component/details/details";
+import GoogleMap from "./service/geocode";
 
 function App({ authService, getData, uploadImages }) {
   const [city, setCity] = useState("location");
@@ -16,6 +17,46 @@ function App({ authService, getData, uploadImages }) {
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
+
+  const [data, setData] = useState({
+    currentTemp: null,
+    currentIcon: null,
+    daily: null,
+    hourly: null,
+  });
+  const [address, setAddress] = useState("");
+  useEffect(() => {
+    if (city === "location") {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        getData //
+          .getWeather(pos.coords.latitude, pos.coords.longitude)
+          .then((datas) =>
+            setData({
+              currentTemp: datas.current.temp,
+              currentIcon: datas.current.weather[0].icon,
+              daily: datas.daily,
+              hourly: datas.hourly,
+            })
+          );
+        GoogleMap(pos.coords.latitude, pos.coords.longitude).then((res) => {
+          setAddress(res);
+        });
+      });
+    } else {
+      getData //
+        .getWeather(city[0].coord.lat, city[0].coord.lon)
+        .then((datas) => {
+          console.log(datas);
+          setData({
+            currentTemp: datas.current.temp,
+            currentIcon: datas.current.weather[0].icon,
+            daily: datas.daily,
+            hourly: datas.hourly,
+          });
+        });
+      setAddress({ state: "", city: city[0].value });
+    }
+  }, [getData, city]);
   useEffect(() => {
     getData.getPost().then((data) => {
       let tempdata = [...data];
@@ -147,7 +188,7 @@ function App({ authService, getData, uploadImages }) {
               userId={null}
               changeCity={changeCity}
             />
-            <Section getData={getData} city={city} posts={posts} />
+            <Section data={data} address={address} posts={posts} />
           </Route>
           <Route exact path="/login">
             <Inform authService={authService} user={user} joinUser={joinUser} />

@@ -43,15 +43,19 @@ const Join = ({ joinUser, updateUser, userInfo, user }) => {
         joined();
       }
     } else {
-      updateUser({
-        defaultUserId: userInfo.userId,
-        userId: idInput,
-        name: nameInput,
-        gender: genderInput,
-        password: passwordInput,
-        email: emailInput,
-      });
-      updated();
+      if (redundancy === "unused" || redundancy === "") {
+        alert("아이디 중복을 확인해주세요!");
+      } else {
+        updateUser({
+          defaultUserId: userInfo.userId,
+          userId: idInput,
+          name: nameInput,
+          gender: genderInput,
+          password: passwordInput,
+          email: emailInput,
+        });
+        updated();
+      }
     }
   };
 
@@ -80,7 +84,6 @@ const Join = ({ joinUser, updateUser, userInfo, user }) => {
       setRedundancy("used");
     }
   };
-  console.log(redundancy);
   return (
     <section className={styles.input}>
       <div className={styles.section}>
