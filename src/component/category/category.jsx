@@ -7,7 +7,7 @@ const Category = ({onClickCategory}) => {
     }
     return (
         <div className={styles.container}>
-                        <button className={styles.category} onClick={onClick} value=''>전체</button>
+            <button className={styles.category} onClick={onClick} value=''>전체</button>
             <button className={styles.category} onClick={onClick} value='오피스룩'>오피스룩</button>
             <button className={styles.category} onClick={onClick} value='학생룩'>학생룩</button>
             <button className={styles.category} onClick={onClick} value='캐주얼룩'>캐주얼룩</button>
