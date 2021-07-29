@@ -36,12 +36,12 @@ function App({ authService, getData, uploadImages }) {
   const changeCity = (cityData) => {
     setCity(cityData);
   };
-  const loginedUser = (userData) => {
+  const joinUser = (userData) => {
     const tempUser = [...user];
     const newUser = {
       userId: userData.userId,
       name: userData.name,
-      gender: null,
+      gender: userData.gender || null,
       password: userData.password,
       email: userData.email,
       profile: null,
@@ -49,26 +49,13 @@ function App({ authService, getData, uploadImages }) {
     tempUser.push(newUser);
     getData.addUser(newUser);
   };
-  const joinUser = (userData) => {
-    const tempUser = [...user];
-    const joinUser = {
-      userId: userData.userId,
-      name: userData.name,
-      gender: userData.gender,
-      password: userData.password,
-      email: userData.email,
-      profile: null,
-    };
-    tempUser.push(joinUser);
-    getData.addUser(joinUser);
-  };
   const filterPosts = (userId) => {
-    console.log("filter!!!1111",posts);
+    console.log("filter!!!1111", posts);
     let tempPosts = [...posts];
     tempPosts = tempPosts.filter((post) => post.userId === userId);
     setFilteredPosts(tempPosts);
-    console.log("filter!!!222",filteredPosts);
-  }
+    console.log("filter!!!222", filteredPosts);
+  };
   const uploadPost = (post) => {
     const tempPosts = [...posts];
     const tempFilteredPosts = [...filteredPosts];
@@ -125,7 +112,7 @@ function App({ authService, getData, uploadImages }) {
     getData.deletePost(postId, userId);
     setPosts(tempPosts);
     setFilteredPosts(tempFilteredPosts);
-    console.log("delete",posts,filteredPosts)
+    console.log("delete", posts, filteredPosts);
   };
   const uploadComment = (upload_data) => {
     const tempComments = [...comments];
@@ -163,18 +150,23 @@ function App({ authService, getData, uploadImages }) {
             <Section getData={getData} city={city} posts={posts} />
           </Route>
           <Route exact path="/login">
-            <Inform
-              authService={authService}
-              user={user}
-              loginedUser={loginedUser}
-              joinUser={joinUser}
-            />
+            <Inform authService={authService} user={user} joinUser={joinUser} />
           </Route>
           <Route exact path="/settings">
-            <Inform authService={authService} actionStatus={'join'} updateUser={updateUser} users={user}></Inform>
+            <Inform
+              authService={authService}
+              actionStatus={"join"}
+              updateUser={updateUser}
+              users={user}
+            ></Inform>
           </Route>
           <Route exact path="/mypage">
-            <Mypage filterPosts={filterPosts} filteredPostsOriginal={filteredPosts} posts={posts} likes={likes}></Mypage>
+            <Mypage
+              filterPosts={filterPosts}
+              filteredPostsOriginal={filteredPosts}
+              posts={posts}
+              likes={likes}
+            ></Mypage>
           </Route>
           <Route exact path="/upload">
             <Upload

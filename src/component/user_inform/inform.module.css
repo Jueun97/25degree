@@ -30,6 +30,10 @@
   height: 2.1rem;
 }
 
+.id {
+  width: 11rem;
+}
+
 .btn {
   background-color: makerBlue;
   color: makerWhite;
@@ -98,10 +102,10 @@
 .classifyBtn:hover {
   color: makerOrange;
 }
-.active{
+.active {
   color: makerOrange;
 }
-.inactive{
+.inactive {
   color: black;
   pointer-events: none;
 }
@@ -112,4 +116,22 @@
 
 .clicked {
   color: makerOrange;
+}
+
+.redundancy {
+  font-size: 0.8rem;
+  width: 5em;
+  padding: 0;
+  margin: 0.1em;
+}
+
+.alertNo {
+  font-size: 0.8rem;
+  color: red;
+  margin: 0;
+}
+.alertYes {
+  font-size: 0.8rem;
+  color: green;
+  margin: 0;
 }

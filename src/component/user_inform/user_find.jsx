@@ -3,7 +3,7 @@ import styles from "./inform.module.css";
 import emailjs from "emailjs-com";
 
 const Find = ({ user }) => {
-  const [action, setAction] = useState('');
+  const [action, setAction] = useState("");
   const [actionDone, setActionDone] = useState(true);
   const [data, setData] = useState("no data");
   const [state, setState] = useState(false);
@@ -16,22 +16,18 @@ const Find = ({ user }) => {
     setActionDone(false);
   };
   const buttonStatus = (actionName) => {
-    if (actionDone)
-      return;
+    if (actionDone) return;
     else {
-      if (action === actionName)
-        return styles.active;
-      else
-        return styles.inactive;
+      if (action === actionName) return styles.active;
+      else return styles.inactive;
     }
-  }
+  };
 
   const handleFind = () => {
     const nameInput = nameRef.current.value;
     const emailInput = emailRef.current.value;
     let finded = false;
-    if (action === '')
-      alert("아이디찾기인지 비밀번호찾기인지 클릭해주세요:)");
+    if (action === "") alert("아이디찾기인지 비밀번호찾기인지 클릭해주세요:)");
     else {
       user.forEach((users) => {
         if (users.name === nameInput && users.email === emailInput) {
@@ -45,12 +41,8 @@ const Find = ({ user }) => {
           console.log(users.userId);
         }
       });
-      if (!finded) 
-        alert("정보가 없습니다.");
-      
+      if (!finded) alert("정보가 없습니다.");
     }
-
-
   };
 
   const onKeyPress = (event) => {
@@ -83,20 +75,24 @@ const Find = ({ user }) => {
         );
       setState(false);
       setActionDone(true);
-      setAction('');
+      setAction("");
       formRef.current.reset();
       setData("no data");
-      alert("전송완료! 이메일을 확인해주세용")
-      const name = ``
+      alert("전송완료! 이메일을 확인해주세용");
+      const name = ``;
     }
   };
   return (
     <div className={styles.input}>
       <div className={styles.classify}>
-        <button name="id" className={`${styles.classifyBtn} ${buttonStatus("id")}`} onClick={handelAction}>
+        <button
+          name="id"
+          className={`${styles.classifyBtn} ${buttonStatus("id")}`}
+          onClick={handelAction}
+        >
           아이디 찾기
         </button>
-        <button 
+        <button
           name="password"
           className={`${styles.classifyBtn} ${buttonStatus("password")}`}
           onClick={handelAction}

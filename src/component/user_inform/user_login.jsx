@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import Button from "./button/button";
 import styles from "./inform.module.css";
 
-const Login = ({ onFind, authService, user, loginedUser }) => {
+const Login = ({ onFind, authService, user, joinUser }) => {
   const history = useHistory();
   const idRef = useRef();
   const passwordRef = useRef();
@@ -12,7 +12,7 @@ const Login = ({ onFind, authService, user, loginedUser }) => {
     history.push({
       pathname: "/",
       state: {
-        userId
+        userId,
       },
     });
   };
@@ -22,17 +22,17 @@ const Login = ({ onFind, authService, user, loginedUser }) => {
       .then((data) => {
         console.log(data);
         if (event.target.name === "Google") {
-          loginedUser({
-            userId: data.user.bc.displayName,
+          joinUser({
+            userId: data.user.uid.substring(0, 15),
             name: data.user.bc.displayName,
-            password: data.user.uid,
+            password: data.user.uid.substring(0, 15),
             email: data.user.bc.email,
           });
         } else if (event.target.name === "Github") {
-          loginedUser({
-            userId: data.additionalUserInfo.username,
+          joinUser({
+            userId: data.user.uid.substring(0, 15),
             name: data.additionalUserInfo.username,
-            password: data.user.uid,
+            password: data.user.uid.substring(0, 15),
             email: data.user.email,
           });
         }
