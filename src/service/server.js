@@ -26,7 +26,7 @@ app.get("/UserInfo", function (req, res) {
     if (error) {
       console.log(error);
     } else {
-      console.log(results);
+      //console.log(results);
       res.send(results);
     }
   });
@@ -70,6 +70,23 @@ app.post("/addUser", function (req, res) {
   const email = req.body.email;
   const profile = req.body.profile;
   const query = `insert into UserInfo (userId,name,gender,password,email,profile) values ('${userId}','${name}','${gender}','${password}','${email}',${profile})`;
+  db.query(query, function (error, results) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+app.post("/updateUser", function (req, res) {
+  console.log(req.body);
+  const defaultUserId = req.body.defaultUserId;
+  const userId = req.body.userId;
+  const name = req.body.name;
+  const gender = req.body.gender;
+  const password = req.body.password;
+  const email = req.body.email;
+  const query = `update UserInfo set userId='${userId}',name='${name}',gender='${gender}',password='${password}',email='${email}' where userId='${defaultUserId}'`;
   db.query(query, function (error, results) {
     if (error) {
       console.log(error);

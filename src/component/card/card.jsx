@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styles from "./card.module.css";
 import { useHistory } from 'react-router-dom';
 
-const Card = ({ onLogout, userId }) => {
+const Card = ({ onLogout, userId, userInfo }) => {
   const dropdownRef = useRef(null);
   const history = useHistory();
   const [active, setActive] = useState(false);
@@ -12,6 +12,12 @@ const Card = ({ onLogout, userId }) => {
     history.push({
       pathname: '/mypage',
       state: { userId}
+  });
+  }
+  const onClickSettings = () => {
+    history.push({
+      pathname: '/settings',
+      state: {userId}
   });
   }
   const onClickUpload = () => {
@@ -36,7 +42,7 @@ const Card = ({ onLogout, userId }) => {
         <ul className={styles.list}>
           <li>
             <button className={styles.button} onClick={onClickProfile}>프로필</button>
-            <button className={styles.button}>개인정보수정</button>
+            <button className={styles.button} onClick={onClickSettings}>개인정보수정</button>
             <button className={styles.button} onClick={onClickUpload}>업로드</button>
             <button className={styles.button} onClick={onLogoutClick}>
               로그아웃

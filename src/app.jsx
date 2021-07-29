@@ -7,7 +7,7 @@ import Inform from "./component/user_inform/inform";
 import Upload from "./component/uplaod/upload";
 import Mypage from "./component/mypage/mypage";
 import Details from "./component/details/details";
-import Posts from "./component/posts/posts";
+import Join from "./component/user_inform/user_join";
 
 function App({ authService, getData, uploadImages }) {
   const [city, setCity] = useState("location");
@@ -62,6 +62,9 @@ function App({ authService, getData, uploadImages }) {
     };
     tempUser.push(joinUser);
     getData.addUser(joinUser);
+  };
+  const updateUser = (userData) => {
+    getData.updateUser(userData);
   };
   const filterPosts = (userId) => {
     console.log("filter!!!");
@@ -154,7 +157,6 @@ function App({ authService, getData, uploadImages }) {
           <Route exact path="/">
             <Header
               authService={authService}
-              userId={null}
               changeCity={changeCity}
             />
             <Section getData={getData} city={city} posts={posts} />
@@ -166,6 +168,9 @@ function App({ authService, getData, uploadImages }) {
               loginedUser={loginedUser}
               joinUser={joinUser}
             />
+          </Route>
+          <Route exact path="/settings">
+            <Inform authService={authService} actionStatus={'join'} updateUser={updateUser} users={user}></Inform>
           </Route>
           <Route exact path="/mypage">
             <Mypage filterPosts={filterPosts} filteredPostsOriginal={filteredPosts} posts={posts} likes={likes}></Mypage>
