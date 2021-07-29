@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './posts.module.css';
 import Post from '../post/post';
 
-const Posts = ({ posts, userId }) => {
+const Posts = ({ posts, userId, category }) => {
     return (
         <section className={styles.posts}>
             {Object.keys(posts).map(key => <Post key={key} post={posts[key]} userId={userId} ></Post>)}

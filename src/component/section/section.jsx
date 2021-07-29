@@ -6,6 +6,7 @@ import styles from "./section.module.css";
 import GoogleMap from "../../service/geocode";
 import Loading from "../loading/loading";
 import Posts from "../posts/posts";
+import Category from "../category/category";
 
 const Section = ({ getData, city, posts }) => {
   const location = useLocation();
@@ -15,6 +16,7 @@ const Section = ({ getData, city, posts }) => {
     daily: null,
     hourly: null,
   });
+  const [filteredPosts, setFIlteredPosts] = useState(posts);
   const [address, setAddress] = useState("");
   useEffect(() => {
     if (city === "location") {
@@ -48,6 +50,11 @@ const Section = ({ getData, city, posts }) => {
       setAddress({ state: "", city: city[0].value });
     }
   }, [getData, city]);
+  const onClickCategory = (category) => {
+    if(category)
+      posts = posts.filter(post => post.style === category)
+    setFIlteredPosts(posts);
+  }
 
   return (
     <section className={styles.section}>
@@ -57,7 +64,8 @@ const Section = ({ getData, city, posts }) => {
         <Recommend temp={data.currentTemp} />
       </section>
       <section className={styles.posts}>
-        <Posts posts={posts} userId={location.state ? location.state.userId : null }></Posts>
+        <Category onClickCategory={onClickCategory}></Category> 
+        <Posts posts={filteredPosts} userId={location.state ? location.state.userId : null}></Posts>
       </section>
     </section>
   );
