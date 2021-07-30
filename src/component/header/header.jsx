@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Card from "../card/card";
 import city from "../../service/location.json";
 
-const Header = ({ authService, changeCity,users}) => {
+const Header = ({ authService, changeCity}) => {
   const [userId, setUserId] = useState(null);
   const history = useHistory();
   const location = useLocation();

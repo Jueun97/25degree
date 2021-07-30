@@ -56,8 +56,6 @@ function App({ authService, getData, uploadImages }) {
         });
       setAddress({ state: "", city: city[0].value });
     }
-  }, [getData, city]);
-  useEffect(() => {
     getData.getPost().then((data) => {
       let tempdata = [...data];
       tempdata.map((data) => (data.images = data.images.split(",")));
@@ -72,7 +70,7 @@ function App({ authService, getData, uploadImages }) {
     getData //
       .getUserInfo()
       .then((datas) => setUser(datas));
-  }, [getData]);
+  }, [getData,city]);
 
   const changeCity = (cityData) => {
     setCity(cityData);
@@ -105,7 +103,7 @@ function App({ authService, getData, uploadImages }) {
       postId: postId,
       userId: post.userId,
       images: post.imagesUrl,
-      description: post.message,
+      description: post.description,
       gender: post.gender,
       overcoat: post.overcoat,
       top: post.top,
@@ -113,8 +111,8 @@ function App({ authService, getData, uploadImages }) {
       underwear: post.underwear,
       suitablity: post.suitablity,
       style: post.style,
-      degree: "degree",
-      region: "region",
+      degree: post.degree,
+      region: post.region,
     };
     getData.uploadPost(newPost);
     tempPosts.push(newPost);
@@ -213,6 +211,8 @@ function App({ authService, getData, uploadImages }) {
             <Upload
               uploadPost={uploadPost}
               uploadImages={uploadImages}
+              locationInfo={address}
+              data={data}
             ></Upload>
           </Route>
           <Route path="/detail">

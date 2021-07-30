@@ -2,7 +2,8 @@ import React, { useRef } from 'react';
 import { useHistory,useLocation} from 'react-router-dom';
 import styles from './upload.module.css';
 
-const Upload = ({uploadPost, uploadImages }) => {
+const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
+    console.log("upload",locationInfo)
     const history = useHistory();
     const location = useLocation();
 
@@ -22,7 +23,7 @@ const Upload = ({uploadPost, uploadImages }) => {
 
     const onClick = async (event) => {
         event.preventDefault();
-        const message = messageRef.current.value;
+        const description = messageRef.current.value;
         const gender = genderRef.current.value;
         const overcoat = overcoatRef.current.value;
         const top = topRef.current.value;
@@ -30,18 +31,20 @@ const Upload = ({uploadPost, uploadImages }) => {
         const underwear = underwearRef.current.value;
         const suitablity = suitablityRef.current.value;
         const style = styleRef.current.value;
+        const degree = data.currentTemp;
+        const region = locationInfo.state? locationInfo.state : locationInfo.city;
         const images = []
         for (let i = 0; i < 5; i++){
             var image = eval("image" + (i + 1) + "Ref.current.files[0]");
             if (image)
                 images.push(image)
         }
-        console.log(">>>",images,images.length,message)
-        if (images.length === 0 || message === '') {
+        console.log(">>>",images,images.length,description)
+        if (images.length === 0 || description === '') {
             alert("내용을 채워주세요!");
         } else {
             const imagesUrl = await uploadImages.uploadImage(images);
-            const upload_data = { userId: location.state.userId, imagesUrl, message, gender, overcoat, top, type, underwear, suitablity, style }
+            const upload_data = { userId: location.state.userId, imagesUrl, description, gender, overcoat, top, type, underwear, suitablity, style,degree,region}
             uploadPost(upload_data);
             history.push({ pathname: '/', state: { userId: location.state.userId } })
         }

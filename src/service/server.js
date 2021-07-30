@@ -100,7 +100,7 @@ app.post("/uploadPost", function (req, res) {
   console.log(req.body);
   const userId = req.body.userId;
   const images = req.body.images.toString();
-  const message = req.body.message;
+  const description = req.body.description;
   const gender = req.body.gender;
   const overcoat = req.body.overcoat;
   const top = req.body.top;
@@ -110,7 +110,7 @@ app.post("/uploadPost", function (req, res) {
   const type = req.body.constitution;
   const degree = req.body.degree ? req.body.degree : 0;
   const region = req.body.region ? req.body.region : "korea";
-  const query = `insert into UserPost (userId,images,description,gender,overcoat,top,underwear,suitablity,style,type,degree,region) values ('${userId}','${images}','${message}','${gender}','${overcoat}','${top}',1,'${suitablity}','${style}','${type}',${degree},'${region}')`;
+  const query = `insert into UserPost (userId,images,description,gender,overcoat,top,underwear,suitablity,style,type,degree,region) values ('${userId}','${images}','${description}','${gender}','${overcoat}','${top}',1,'${suitablity}','${style}','${type}',${degree},'${region}')`;
   db.query(query, function (error, results) {
     if (error) {
       console.log(error);
