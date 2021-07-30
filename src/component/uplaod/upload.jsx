@@ -1,9 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useHistory,useLocation} from 'react-router-dom';
 import styles from './upload.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
-    console.log("upload",locationInfo)
+    const [image1, setImage1] = useState('');
+    const [image2, setImage2] = useState('');
+    const [image3, setImage3] = useState('');
+    const [image4, setImage4] = useState('');
+    const [image5, setImage5] = useState('');
+
     const history = useHistory();
     const location = useLocation();
 
@@ -15,11 +22,11 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
     const underwearRef = useRef();  
     const suitablityRef = useRef(); 
     const styleRef = useRef();
-    const image1Ref = useRef();
-    const image2Ref = useRef();
-    const image3Ref = useRef();
-    const image4Ref = useRef();
-    const image5Ref = useRef();
+    const image1FileRef = useRef();
+    const image2FileRef = useRef();
+    const image3FileRef = useRef();
+    const image4FileRef = useRef();
+    const image5FileRef = useRef();
 
     const onClick = async (event) => {
         event.preventDefault();
@@ -49,6 +56,35 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
             history.push({ pathname: '/', state: { userId: location.state.userId } })
         }
     }
+    const onChangeImage = (event) => {
+        const imageId = event.target.id
+        const reader = new FileReader();
+        reader.onload = e => {
+            switch (imageId) {
+                case 'image1':
+                    setImage1(e.target.result);
+                    break;
+                case 'image2':
+                    setImage2(e.target.result);
+                    break;
+                case 'image3':
+                    setImage3(e.target.result);
+                    break;
+                case 'image4':
+                    setImage4(e.target.result);
+                    break;
+                case 'image5':
+                    setImage5(e.target.result);
+                    break;
+                default:
+                new Error("잘못된 정보입니다",imageId)    ;
+                    
+            }
+        }
+        // reader가 이미지 읽도록 하기
+        reader.readAsDataURL(event.target.files[0]);
+
+    }
     
     return (
         <form className={styles.upload}>
@@ -57,11 +93,31 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
                 <div className={styles.imageBox}>
                     <h2 className={styles.subtitle}>사진업로드</h2>
                     <div className={styles.images}>
-                        <input ref={image1Ref}className={styles.image} type="file" />
-                        <input ref={image2Ref}className={styles.image} type="file" />
-                        <input ref={image3Ref}className={styles.image} type="file" />
-                        <input ref={image4Ref}className={styles.image} type="file" />
-                        <input ref={image5Ref}className={styles.image} type="file" />
+                        <label htmlFor="image1" className={styles.imageLabel}>
+                            {!image1 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
+                            {image1 && <img src={image1} alt="image-preview" className={styles.preview} />}
+                        </label>
+                        <input ref={image1FileRef} id="image1" className={styles.imageFile} type="file"  accept="image/png, image/jpeg" onChange={onChangeImage}/>
+                        <label htmlFor="image2" className={styles.imageLabel}>
+                            {!image2 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
+                            {image2 && <img src={image2} alt="image-preview" className={styles.preview} />}
+                        </label>
+                        <input ref={image2FileRef} id="image2" className={styles.imageFile} type="file" accept="image/png, image/jpeg"  onChange={onChangeImage}/>
+                        <label htmlFor="image3" className={styles.imageLabel}>
+                            {!image3 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
+                            {image3 && <img src={image3} alt="image-preview" className={styles.preview} />}
+                        </label>
+                        <input ref={image3FileRef} id="image3" className={styles.imageFile} type="file"  accept="image/png, image/jpeg" onChange={onChangeImage}/>
+                        <label htmlFor="image4" className={styles.imageLabel}>
+                            {!image4 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
+                            {image4 && <img src={image4} alt="image-preview" className={styles.preview} />}
+                        </label>
+                        <input ref={image4FileRef} id="image4" className={styles.imageFile} type="file"  accept="image/png, image/jpeg" onChange={onChangeImage}/>
+                        <label htmlFor="image5" className={styles.imageLabel}>
+                            {!image5 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
+                            {image5 && <img src={image5} alt="image-preview" className={styles.preview} />}
+                        </label>
+                        <input ref={image5FileRef} id="image5" className={styles.imageFile} type="file"  accept="image/png, image/jpeg" onChange={onChangeImage}/>
                     </div>    
                 </div>
                 <div className={styles.messageBox}>
