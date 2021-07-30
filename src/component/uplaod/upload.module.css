@@ -1,71 +1,74 @@
-.upload{
-    width: 60%;
-    margin:auto;
-    background-color: #F8F8F8;
-    padding: 3em 0;
+.upload {
+  width: 60%;
+  margin: auto;
+  background-color: #f8f8f8;
+  padding: 3em 0;
 }
-.title{
-    text-align: center;
-    font-size: 2.5em;
-    margin:0;
+.title {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 0;
+  font-family: "Gaegu", cursive;
 }
-.subtitle{
-    margin-left: 0.7em;
-    font-size: 1.5em;
+.subtitle {
+  margin-left: 0.7em;
+  font-size: 1.3em;
+  font-family: "Noto Sans KR", sans-serif;
 }
-.images{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.images {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
-.imageLabel{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 7em;
-    height: 7em;
-    margin: 3px 5px; 
-    border: 1px solid black;  
-    cursor: pointer;
+.imageLabel {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 7em;
+  height: 7em;
+  margin: 3px 5px;
+  border: 1px solid black;
+  cursor: pointer;
 }
-.icon{
-    font-size:larger;
-    transition: all 100ms linear;
+.icon {
+  font-size: larger;
+  transition: all 100ms linear;
 }
-.imageLabel:hover .icon{
-    transform: scale(1.2);
+.imageLabel:hover .icon {
+  transform: scale(1.2);
 }
-.preview{
-    width: 100%;
-    height: 100%;
+.preview {
+  width: 100%;
+  height: 100%;
 }
-.imageFile{
-    display: none;
+.imageFile {
+  display: none;
 }
-.message{
-    margin-left: 2em;
-    width: 80%;
-    height: 100px;
+.message {
+  margin-left: 2em;
+  width: 80%;
+  height: 100px;
 }
-.categories{
-    text-align: center;
+.categories {
+  text-align: center;
 }
-.category{
-    width: 8em;
-    height: 3em;
-    margin: 0.5em;
-    font-size: 1.3em;
+.category {
+  width: 5.5em;
+  height: 2.5em;
+  margin: 0.5em;
+  font-size: 1em;
+  font-family: "Noto Sans KR", sans-serif;
 }
-.button{
-    width: 5em;
-    height: 3em;
-    display: block;
-    margin: auto;
-    margin-top: 2em;
-    font-size: 1em;
-    border-radius: 10px;
-    border: 1px solid #014F66;
-    background-color: #014F66;
-    color:white;
-
+.button {
+  width: 5em;
+  height: 2em;
+  display: block;
+  margin: auto;
+  margin-top: 2em;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 0;
+  background-color: #014f66;
+  color: white;
+  padding: 0.5em 1em;
 }

@@ -1,31 +1,33 @@
-.header{
-    background-color: blanchedalmond;
-    height: 4em;
+.header {
+  background-color: blanchedalmond;
+  height: 4em;
 }
-.profile{
-    text-align: center;
-    padding: 2em;
-    border-bottom: 1px solid black;
-    width: 75%;
-    margin:auto;
+.profile {
+  text-align: center;
+  padding: 2em;
+  border-bottom: 1px solid black;
+  width: 75%;
+  margin: auto;
+  font-family: "Noto Sans KR", sans-serif;
 }
-.image{
-    width: 15em;
-    border: 1px solid lightgray;
-    border-radius: 100%;
-    margin-top: 3em;
+.image {
+  width: 15em;
+  border: 1px solid lightgray;
+  border-radius: 100%;
+  margin-top: 3em;
 }
-.buttons{
-    text-align: center;
+.buttons {
+  text-align: center;
 }
-.button{
-    width: 5em;
-    height: 2.2em;
-    margin: 1em;
-    cursor: pointer;
-    border:none;
-    color:white;
-    background-color: #014F66;
-    font-size: 1.3em;
-    border-radius: 5px;
+.button {
+  width: 5em;
+  height: 2.2em;
+  margin: 1em;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: #014f66;
+  font-size: 1.3em;
+  border-radius: 5px;
+  font-family: "Noto Sans KR", sans-serif;
 }
