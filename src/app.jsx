@@ -196,7 +196,7 @@ function App({ authService, getData, uploadImages }) {
               authService={authService}
               actionStatus={"join"}
               updateUser={updateUser}
-              users={user}
+              user={user}
             ></Inform>
           </Route>
           <Route exact path="/mypage">

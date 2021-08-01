@@ -10,8 +10,7 @@ const Inform = ({
   user,
   joinUser,
   updateUser,
-  actionStatus,
-  users,
+  actionStatus
 }) => {
   const location = useLocation();
   const [action, setAction] = useState(actionStatus ? actionStatus : "login");
@@ -20,8 +19,8 @@ const Inform = ({
   useEffect(() => {
     if (location.state) {
       console.log("settings", location.state);
-      const userinfo = users.filter(
-        (user) => user.userId === location.state.userId
+      const userinfo = user.filter(
+        (u) => u.userId === location.state.userId
       );
       setUserinfo(userinfo[0]);
     }
