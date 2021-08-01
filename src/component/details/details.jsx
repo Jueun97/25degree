@@ -11,9 +11,11 @@ const Details = ({data,updatePost,comments,deletePost,uploadComment,likes,popLik
     const filteredLikes = likes.filter(like => like.postId === post.postId);
 
     return (
-        <div className={styles.details}>
-            <Images images={post.images}></Images>
-            <Info data={data}post={post} updatePost={updatePost} deletePost={deletePost} filteredComments={filteredComments} uploadComment={uploadComment} filteredLikes={filteredLikes} popLikes={popLikes} pushLikes={pushLikes} userId={userId}></Info>
+        <div className={styles.container}>
+            <div className={styles.details}>
+                <Images images={post.images}></Images>
+                <Info data={data}post={post} updatePost={updatePost} deletePost={deletePost} filteredComments={filteredComments} uploadComment={uploadComment} filteredLikes={filteredLikes} popLikes={popLikes} pushLikes={pushLikes} userId={userId}></Info>
+            </div>
         </div>
     );
 };
