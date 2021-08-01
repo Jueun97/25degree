@@ -1,4 +1,4 @@
-@value makerWhite from '../../common/colors.css';
+@value makerWhite, makerOrange from '../../common/colors.css';
 
 .container {
   display: flex;
@@ -15,10 +15,18 @@
   font-size: 0.8rem;
   margin: 0.2em;
   word-break: keep-all;
+  font-weight: 600;
+}
+.textTime {
+  font-size: 0.8rem;
+  margin: 0.2em;
+  word-break: keep-all;
+  font-weight: 400;
 }
 .textDay {
   font-size: 0.8rem;
   margin: 0.2em;
   word-break: keep-all;
   font-weight: bold;
+  color: navy;
 }
