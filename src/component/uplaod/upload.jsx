@@ -41,8 +41,8 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
         const degree = data.currentTemp;
         const region = locationInfo.state? locationInfo.state : locationInfo.city;
         const images = []
-        for (let i = 0; i < 5; i++){
-            var image = eval("image" + (i + 1) + "Ref.current.files[0]");
+        for (let i = 0; i < 5; i++) {
+            let image = eval("image" + (i + 1) + "FileRef.current.files[0]");
             if (image)
                 images.push(image)
         }
@@ -87,6 +87,7 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
     }
     
     return (
+        <div className={styles.container}>
         <form className={styles.upload}>
             <h1 className={styles.title}>너의 날씨를 기록해</h1>
             <section>
@@ -177,8 +178,8 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
                 </div>
             </section>
             <button className={styles.button} onClick={onClick}>확인</button>
-        </form>
-    )
+            </form>
+        </div>)
 };
 
 export default Upload;

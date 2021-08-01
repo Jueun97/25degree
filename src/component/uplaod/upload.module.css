@@ -1,3 +1,8 @@
+.container{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
 .upload {
   width: 60%;
   margin: auto;
@@ -71,4 +76,5 @@
   background-color: #014f66;
   color: white;
   padding: 0.5em 1em;
+  cursor:pointer;
 }
