@@ -5,6 +5,9 @@
   padding: 0.5em 1em;
   flex: 1;
 }
+.info::-webkit-scrollbar {
+  border: none;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -78,6 +81,10 @@
   word-break: break-all;
   overflow: scroll;
   font-family: "Gaegu", cursive;
+  border-bottom: 1px solid lightgray;
+}
+.category::-webkit-scrollbar {
+  border: none;
 }
 .likedContainer {
   display: flex;

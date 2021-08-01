@@ -11,3 +11,6 @@
     flex-flow: wrap;    
     scroll-snap-type: y mandatory;
 }
+.image::-webkit-scrollbar {
+    border: none;
+  }

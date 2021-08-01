@@ -21,3 +21,6 @@
   -webkit-box-orient: vertical;
   font-family: "Noto Sans KR", sans-serif;
 }
+.message::-webkit-scrollbar {
+  border: none;
+}

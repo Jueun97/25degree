@@ -28,5 +28,7 @@
     height: 80%;
     overflow-y: scroll;
     padding: 0.5em 0em;
-
 }
+.comment::-webkit-scrollbar {
+    border: none;
+  }
