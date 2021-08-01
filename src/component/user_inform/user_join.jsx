@@ -43,7 +43,7 @@ const Join = ({ joinUser, updateUser, userInfo, user }) => {
         joined();
       }
     } else {
-      if (redundancy === "unused" || redundancy === "") {
+      if (redundancy === "unused" || redundancy === "" && idRef.current.value !== userInfo.userId) {
         alert("아이디 중복을 확인해주세요!");
       } else {
         updateUser({
