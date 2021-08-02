@@ -30,6 +30,7 @@ const Inform = ({
   };
 
   return (
+    <div className={styles.container}>
     <div className={styles.informBox}>
       <h1 className={styles.logo}>25도씨</h1>
       {action === "login" && (
@@ -50,7 +51,8 @@ const Inform = ({
           user={user}
         />
       )}
-    </div>
+      </div>
+      </div>
   );
 };
 
