@@ -6,19 +6,22 @@ import city from "../../service/location.json";
 
 const Header = ({ authService, changeCity}) => {
   const [userId, setUserId] = useState(null);
+  const [userProfile, setUserProfile] = useState('');
   const history = useHistory();
   const location = useLocation();
   const selectRef = useRef();
 
   useEffect(() => {
+    console.log(location.state)
     if (location.state) {
       setUserId(location.state.userId);
+      setUserProfile(location.state.userProfile);
     }
   }, [location]);
   const onClickLogo = () => {
     history.push({
       pathname: '/',
-      state: { userId}
+      state: {userId,userProfile}
   });
   }
   const onLogin = () => {
@@ -62,7 +65,7 @@ const Header = ({ authService, changeCity}) => {
         </select>
       </div>
 
-      {userId && <Card onLogout={onLogout} userId={userId}/>}
+      {userId && <Card onLogout={onLogout} userId={userId} userProfile={userProfile}/>}
       {userId == null && (
         <button className={styles.loginBtn} onClick={onLogin}>
           로그인

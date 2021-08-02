@@ -46,7 +46,6 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
             if (image)
                 images.push(image)
         }
-        console.log(">>>",images,images.length,description)
         if (images.length === 0 || description === '') {
             alert("내용을 채워주세요!");
         } else {

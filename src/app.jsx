@@ -83,7 +83,7 @@ function App({ authService, getData, uploadImages }) {
       gender: userData.gender || null,
       password: userData.password,
       email: userData.email,
-      profile: null,
+      profile: userData.profile,
     };
     tempUser.push(newUser);
     getData.addUser(newUser);
@@ -189,7 +189,7 @@ function App({ authService, getData, uploadImages }) {
             <Section data={data} address={address} posts={posts} />
           </Route>
           <Route exact path="/login">
-            <Inform authService={authService} user={user} joinUser={joinUser} />
+            <Inform authService={authService} user={user} joinUser={joinUser} uploadImages={uploadImages} />
           </Route>
           <Route exact path="/settings">
             <Inform
@@ -197,6 +197,7 @@ function App({ authService, getData, uploadImages }) {
               actionStatus={"join"}
               updateUser={updateUser}
               user={user}
+              uploadImages={uploadImages}
             ></Inform>
           </Route>
           <Route exact path="/mypage">

@@ -12,6 +12,7 @@
   border: 1px solid makerDarkGrey;
   border-radius: 100%;
   margin-top: 3em;
+  cursor: pointer;
 }
 .buttons {
   text-align: center;

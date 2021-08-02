@@ -69,7 +69,7 @@ app.post("/addUser", function (req, res) {
   const password = req.body.password;
   const email = req.body.email;
   const profile = req.body.profile;
-  const query = `insert into UserInfo (userId,name,gender,password,email,profile) values ('${userId}','${name}','${gender}','${password}','${email}',${profile})`;
+  const query = `insert into UserInfo (userId,name,gender,password,email,profile) values ('${userId}','${name}','${gender}','${password}','${email}','${profile}')`;
   db.query(query, function (error, results) {
     if (error) {
       console.log(error);
@@ -86,7 +86,12 @@ app.post("/updateUser", function (req, res) {
   const gender = req.body.gender;
   const password = req.body.password;
   const email = req.body.email;
-  const query = `update UserInfo set userId='${userId}',name='${name}',gender='${gender}',password='${password}',email='${email}' where userId='${defaultUserId}'`;
+  const profile = req.body.profile;
+  let query = ''
+  if (profile === null)
+    query = `update UserInfo set userId='${userId}',name='${name}',gender='${gender}',password='${password}',email='${email}' where userId='${defaultUserId}'`;
+  else
+  query = `update UserInfo set userId='${userId}',name='${name}',gender='${gender}',password='${password}',email='${email}',profile='${profile}' where userId='${defaultUserId}'`;
   db.query(query, function (error, results) {
     if (error) {
       console.log(error);

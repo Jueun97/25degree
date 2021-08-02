@@ -2,13 +2,14 @@ import React, { useRef, useState } from "react";
 import { useHistory } from "react-router";
 import styles from "./inform.module.css";
 
-const Join = ({ joinUser, updateUser, userInfo, user }) => {
+const Join = ({ joinUser, updateUser, userInfo, user,uploadImages }) => {
   const [redundancy, setRedundancy] = useState("");
   const nameRef = useRef();
   const idRef = useRef();
   const passwordRef = useRef();
   const emailRef = useRef();
   const genderRef = useRef();
+  const profileRef = useRef();
   const history = useHistory();
   const joined = () => {
     alert("가입이 완료되었습니다:)");
@@ -22,23 +23,27 @@ const Join = ({ joinUser, updateUser, userInfo, user }) => {
     window.location.reload();
   };
 
-  const handleJoin = (join) => {
+  const handleJoin = async (join) => {
     const nameInput = nameRef.current.value;
     const idInput = idRef.current.value;
     const passwordInput = passwordRef.current.value;
     const emailInput = emailRef.current.value;
     const genderInput = genderRef.current.value;
-
+    const profile = []
+    profile.push(profileRef.current.files[0]);
+    const profileUrl = profile[0]? await uploadImages.uploadImage(profile) : null;
     if (join) {
       if (redundancy === "unused" || redundancy === "") {
         alert("아이디 중복을 확인해주세요!");
       } else {
+        
         joinUser({
           userId: idInput,
           name: nameInput,
           gender: genderInput,
           password: passwordInput,
           email: emailInput,
+          profile:profileUrl
         });
         joined();
       }
@@ -53,6 +58,7 @@ const Join = ({ joinUser, updateUser, userInfo, user }) => {
           gender: genderInput,
           password: passwordInput,
           email: emailInput,
+          profile:profileUrl
         });
         updated();
       }
@@ -155,13 +161,15 @@ const Join = ({ joinUser, updateUser, userInfo, user }) => {
           <option>male</option>
           <option>female</option>
         </select>
-        {/*     <input
-          ref={genderRef}
-          type="text"
-          placeholder="성별을 입력하세요"
+      </div>
+      <div className={styles.section}>
+        <p className={styles.text}>프로필</p>
+        <input
+          ref={profileRef}
+          type="file"
           className={styles.inputBox}
-          onKeyPress={onKeyPress}
-        /> */}
+          accept="image/png, image/jpeg"
+        />
       </div>
       {userInfo && (
         <button className={styles.btn} onClick={onClickUpdate}>

@@ -3,9 +3,10 @@ import Posts from '../posts/posts';
 import styles from './mypage.module.css';
 import { useLocation } from "react-router";
 import Header from '../header/header';
-const Mypage = ({ filterPosts, filteredPostsOriginal ,posts, likes }) => {
+const Mypage = ({posts, likes }) => {
     const location = useLocation();
     const [userId] = useState(location.state.userId);
+    const [userProfile] = useState(location.state.userProfile);
     const [filteredPosts, setFilteredPosts] = useState(posts);
     const [filteredLikedPosts, setFilteredLikedPosts] = useState('');
     const [myPostBtn, setMyPostBtn] = useState(styles.clicked);
@@ -35,7 +36,7 @@ const Mypage = ({ filterPosts, filteredPostsOriginal ,posts, likes }) => {
         <>
             <Header userId={userId}></Header>
             <section className={styles.profile}>
-                <img className={styles.image}src={process.env.PUBLIC_URL + '/images/react.png'} alt="user" />
+                <img className={styles.image}src={userProfile} alt="profile" />
                 <h1 className={styles.account}>@{userId}</h1>
             </section>
             <div className={styles.buttons}>

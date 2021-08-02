@@ -8,11 +8,12 @@ const Login = ({ onFind, authService, user, joinUser }) => {
   const idRef = useRef();
   const passwordRef = useRef();
 
-  const goToHome = (userId) => {
+  const goToHome = (userId,profile) => {
     history.push({
       pathname: "/",
       state: {
         userId,
+        userProfile: profile
       },
     });
   };
@@ -48,7 +49,7 @@ const Login = ({ onFind, authService, user, joinUser }) => {
     user.forEach((users) => {
       if (users.userId === idInput && users.password === passwordInput) {
         logined = true;
-        goToHome(users.userId);
+        goToHome(users.userId,users.profile);
       }
     });
     if (!logined) {

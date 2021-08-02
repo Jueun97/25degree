@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styles from "./card.module.css";
 import { useHistory } from 'react-router-dom';
 
-const Card = ({ onLogout, userId }) => {
+const Card = ({ onLogout, userId,userProfile }) => {
   const dropdownRef = useRef(null);
   const history = useHistory();
   const [active, setActive] = useState(false);
@@ -11,7 +11,7 @@ const Card = ({ onLogout, userId }) => {
   const onClickProfile = () => {
     history.push({
       pathname: '/mypage',
-      state: { userId}
+      state: {userId,userProfile}
   });
   }
   const onClickSettings = () => {
@@ -30,7 +30,7 @@ const Card = ({ onLogout, userId }) => {
     <div className={styles.menucontainer}>
       <button onClick={onButtonClick} className={styles.menutrigger}>
         <img
-          src="./images/profile.png"
+          src={userProfile}
           alt="profile"
           className={styles.profile}
         />

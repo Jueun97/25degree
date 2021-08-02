@@ -10,7 +10,8 @@ const Inform = ({
   user,
   joinUser,
   updateUser,
-  actionStatus
+  actionStatus,
+  uploadImages
 }) => {
   const location = useLocation();
   const [action, setAction] = useState(actionStatus ? actionStatus : "login");
@@ -49,6 +50,7 @@ const Inform = ({
           updateUser={updateUser}
           userInfo={userInfo}
           user={user}
+          uploadImages={uploadImages}
         />
       )}
       </div>
