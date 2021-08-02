@@ -19,6 +19,7 @@
   font-size: 2em;
   cursor: pointer;
 }
+
 .dropdown {
   position: absolute;
   right: 0;
@@ -98,6 +99,13 @@
   margin-right: 0.2em;
   cursor: pointer;
   color: red;
+}
+.likedIcon.noClick{
+ pointer-events: none;
+}
+.likedIcon.click{
+  pointer-events: initial;
+  cursor: pointer;
 }
 .likedMessage {
   font-size: 1em;

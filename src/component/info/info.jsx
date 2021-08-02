@@ -6,14 +6,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 
-const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComment,filteredLikes,pushLikes,popLikes,userId }) => {
+const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,filteredLikes,pushLikes,popLikes,userId }) => {
     const messageRef = useRef();
     const [filteredLikesId, setFilteredLikesId] = useState('');
     const [edit, setEdit] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const [likedIcon, setLikedIcon] = useState(farHeart);
+    const [defaultHeart, setDefaultHeart] = useState(styles.click);
     const history = useHistory();
     useEffect(() => {
+        if (userId === null) 
+            setDefaultHeart(styles.noClick);
+        
         //해당 게시물 좋아요 클릭여부 체크 
         for (let i = 0; i < filteredLikes.length; i++) {
             if (filteredLikes[i].userId === userId) {
@@ -91,10 +95,10 @@ const Info = ({ data,post, updatePost, deletePost, filteredComments, uploadComme
             </section>
             {!edit && <>
             <section className={styles.likedContainer}>
-                <FontAwesomeIcon className={styles.likedIcon} icon={likedIcon} onClick={onIconClick} />
+                <FontAwesomeIcon className={`${styles.likedIcon} ${defaultHeart}`} icon={likedIcon} onClick={onIconClick} />
                 <span className={styles.likedMessage}>{filteredLikes.length}명이 공감하였습니다.</span>
                 </section>
-                <Comments data={data} filteredComments={filteredComments} uploadComment={uploadComment} postId={post.postId} userId={userId}></Comments>
+                <Comments filteredComments={filteredComments} uploadComment={uploadComment} postId={post.postId} userId={userId}></Comments>
             </>
             }
         </div>
