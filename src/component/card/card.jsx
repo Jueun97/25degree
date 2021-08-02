@@ -30,7 +30,7 @@ const Card = ({ onLogout, userId,userProfile }) => {
     <div className={styles.menucontainer}>
       <button onClick={onButtonClick} className={styles.menutrigger}>
         <img
-          src={userProfile}
+          src={userProfile?userProfile:'./images/user.png'}
           alt="profile"
           className={styles.profile}
         />

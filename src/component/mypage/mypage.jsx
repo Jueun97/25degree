@@ -6,7 +6,7 @@ import Header from '../header/header';
 const Mypage = ({posts, likes }) => {
     const location = useLocation();
     const [userId] = useState(location.state.userId);
-    const [userProfile] = useState(location.state.userProfile);
+    const [userProfile] = useState(location.state.userProfile?location.state.userProfile:'./images/user.png');
     const [filteredPosts, setFilteredPosts] = useState(posts);
     const [filteredLikedPosts, setFilteredLikedPosts] = useState('');
     const [myPostBtn, setMyPostBtn] = useState(styles.clicked);

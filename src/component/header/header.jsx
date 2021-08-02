@@ -12,7 +12,6 @@ const Header = ({ authService, changeCity}) => {
   const selectRef = useRef();
 
   useEffect(() => {
-    console.log(location.state)
     if (location.state) {
       setUserId(location.state.userId);
       setUserProfile(location.state.userProfile);
