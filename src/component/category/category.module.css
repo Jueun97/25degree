@@ -19,7 +19,13 @@
   margin: 0 2px;
   font-family: "Noto Sans KR", sans-serif;
 }
-.category:hover {
+.category.unClicked:hover {
+  background-color: makerOrange;
+}
+.category.unClicked{
+  background-color: makerBlue;
+}
+.category.clicked{
   background-color: makerOrange;
 }
 @media screen and (max-width: 900px) {

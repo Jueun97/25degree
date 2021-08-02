@@ -1,18 +1,15 @@
-.header {
-  background-color: blanchedalmond;
-  height: 4em;
-}
+@value makerWhite,makerBlue,makerBlack,makerDarkGrey,makerOrange from '../../common/colors.css';
 .profile {
   text-align: center;
   padding: 2em;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid makerBlack;
   width: 75%;
   margin: auto;
   font-family: "Noto Sans KR", sans-serif;
 }
 .image {
   width: 15em;
-  border: 1px solid lightgray;
+  border: 1px solid makerDarkGrey;
   border-radius: 100%;
   margin-top: 3em;
 }
@@ -25,9 +22,18 @@
   margin: 1em;
   cursor: pointer;
   border: none;
-  color: white;
-  background-color: #014f66;
+  color: makerWhite;
+  background-color: makerBlue;
   font-size: 1.3em;
   border-radius: 5px;
   font-family: "Noto Sans KR", sans-serif;
+}
+.button.clicked{
+  background-color: makerOrange;
+}
+.button.unClicked{
+  background-color: makerBlue;
+}
+.button.unClicked:hover{
+  background-color: makerOrange;
 }
