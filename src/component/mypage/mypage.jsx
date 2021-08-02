@@ -11,19 +11,17 @@ const Mypage = ({ filterPosts, filteredPostsOriginal ,posts, likes }) => {
     const [myPostBtn, setMyPostBtn] = useState(styles.clicked);
     const [likesBtn, setLikesBtn] = useState(styles.unClicked);
     useEffect(() => {
-        setFilteredPosts(posts.filter(post=>post.userId==userId))
-    },[])
+        setFilteredPosts(posts.filter(post=>post.userId===userId))
+    },[posts,userId])
     function onClickMypost() {
         let tempPosts = [...posts];
         tempPosts = tempPosts.filter(post => post.userId===userId);
-        console.log(tempPosts)
         setFilteredPosts(tempPosts);
         setFilteredLikedPosts('');
         setMyPostBtn(styles.clicked);
         setLikesBtn(styles.unClicked);
     }
     function onClickLikes() {
-        console.log(likes)
         let tempLikes = [...likes];
         tempLikes = tempLikes.filter(like => like.userId === userId);
         let tempPosts = [...posts];

@@ -96,27 +96,27 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
                     <div className={styles.images}>
                         <label htmlFor="image1" className={styles.imageLabel}>
                             {!image1 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
-                            {image1 && <img src={image1} alt="image-preview" className={styles.preview} />}
+                            {image1 && <img src={image1} alt="preview" className={styles.preview} />}
                         </label>
                         <input ref={image1FileRef} id="image1" className={styles.imageFile} type="file"  accept="image/png, image/jpeg" onChange={onChangeImage}/>
                         <label htmlFor="image2" className={styles.imageLabel}>
                             {!image2 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
-                            {image2 && <img src={image2} alt="image-preview" className={styles.preview} />}
+                            {image2 && <img src={image2} alt="preview" className={styles.preview} />}
                         </label>
                         <input ref={image2FileRef} id="image2" className={styles.imageFile} type="file" accept="image/png, image/jpeg"  onChange={onChangeImage}/>
                         <label htmlFor="image3" className={styles.imageLabel}>
                             {!image3 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
-                            {image3 && <img src={image3} alt="image-preview" className={styles.preview} />}
+                            {image3 && <img src={image3} alt="preview" className={styles.preview} />}
                         </label>
                         <input ref={image3FileRef} id="image3" className={styles.imageFile} type="file"  accept="image/png, image/jpeg" onChange={onChangeImage}/>
                         <label htmlFor="image4" className={styles.imageLabel}>
                             {!image4 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
-                            {image4 && <img src={image4} alt="image-preview" className={styles.preview} />}
+                            {image4 && <img src={image4} alt="preview" className={styles.preview} />}
                         </label>
                         <input ref={image4FileRef} id="image4" className={styles.imageFile} type="file"  accept="image/png, image/jpeg" onChange={onChangeImage}/>
                         <label htmlFor="image5" className={styles.imageLabel}>
                             {!image5 && <FontAwesomeIcon className={styles.icon} icon={faPlus}  />}
-                            {image5 && <img src={image5} alt="image-preview" className={styles.preview} />}
+                            {image5 && <img src={image5} alt="preview" className={styles.preview} />}
                         </label>
                         <input ref={image5FileRef} id="image5" className={styles.imageFile} type="file"  accept="image/png, image/jpeg" onChange={onChangeImage}/>
                     </div>    

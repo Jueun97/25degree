@@ -5,7 +5,6 @@ import Loading from "../loading/loading";
 import styles from "./weather.module.css";
 
 const Weather = ({ data, address }) => {
-  console.log(data);
   return (
     <section className={styles.weather}>
       {data.currentIcon != null && (

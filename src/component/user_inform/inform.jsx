@@ -24,7 +24,7 @@ const Inform = ({
       );
       setUserinfo(userinfo[0]);
     }
-  });
+  },[location.state,user]);
   const handelAction = (name) => {
     setAction(name);
   };

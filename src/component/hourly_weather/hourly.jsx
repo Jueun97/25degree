@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./hourly.module.css";
 
 const Hourly = ({ hourly }) => {
-  console.log(hourly);
   let date = new Date().getHours() - 1;
   let day = ["내일", "모레"];
   let cnt = -1;

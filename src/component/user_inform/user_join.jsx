@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router";
 import styles from "./inform.module.css";
 
@@ -43,7 +43,7 @@ const Join = ({ joinUser, updateUser, userInfo, user }) => {
         joined();
       }
     } else {
-      if (redundancy === "unused" || redundancy === "" && idRef.current.value !== userInfo.userId) {
+      if ((redundancy === "unused" || redundancy === "") && idRef.current.value !== userInfo.userId) {
         alert("아이디 중복을 확인해주세요!");
       } else {
         updateUser({

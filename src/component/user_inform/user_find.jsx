@@ -79,7 +79,6 @@ const Find = ({ user }) => {
       formRef.current.reset();
       setData("no data");
       alert("전송완료! 이메일을 확인해주세용");
-      const name = ``;
     }
   };
   return (
