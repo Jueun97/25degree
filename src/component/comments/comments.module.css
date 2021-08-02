@@ -1,3 +1,4 @@
+@value makerBlue,makerWhite from '../../common/colors.css';
 .container{
     width: 100%;
     height: 55%;
@@ -20,8 +21,9 @@
 .button{
     height: 63%;
     outline-style: none;
-    border: 1px solid black;
-    background-color:blanchedalmond;
+    border: 1px solid makerBlue;
+    background-color:makerBlue;
+    color:makerWhite;
     cursor: pointer;
 }
 .comment{

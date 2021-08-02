@@ -1,6 +1,7 @@
+@value makerWhite, makerDarkGrey,makerBlue from '../../common/colors.css';
 .info {
   width: 100%;
-  border: 1px solid lightgray;
+  border: 1px solid makerDarkGrey;
   overflow-y: scroll;
   padding: 0.5em 1em;
   flex: 1;
@@ -29,7 +30,7 @@
 }
 .button1 {
   border: 0;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid makerDarkGrey;
 }
 .button2 {
   border: 0;
@@ -42,7 +43,8 @@
 }
 .button1:hover,
 .button2:hover {
-  background-color: lightslategray;
+  background-color: makerBlue;
+  color:makerWhite;
 }
 .userContainer {
   display: flex;
@@ -64,7 +66,7 @@
   height: 20em;
   resize: none;
   outline: none;
-  border-color: lightgray;
+  border-color: makerDarkGrey;
 }
 .updateMessageContainer {
   text-align: center;
