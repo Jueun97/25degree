@@ -115,7 +115,7 @@ app.post("/uploadPost", function (req, res) {
   const type = req.body.constitution;
   const degree = req.body.degree ? req.body.degree : 0;
   const region = req.body.region ? req.body.region : "korea";
-  const query = `insert into UserPost (userId,images,description,gender,overcoat,top,underwear,suitablity,style,type,degree,region) values ('${userId}','${images}','${description}','${gender}','${overcoat}','${top}',1,'${suitablity}','${style}','${type}',${degree},'${region}')`;
+  const query = `insert into UserPost (userId,images,description,gender,overcoat,top,underwear,suitablity,style,type,degree,region) values ('${userId}','${images}','${description}','${gender}','${overcoat}','${top}','${underwear}','${suitablity}','${style}','${type}',${degree},'${region}')`;
   db.query(query, function (error, results) {
     if (error) {
       console.log(error);
