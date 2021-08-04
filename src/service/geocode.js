@@ -24,7 +24,7 @@ const GoogleMap = async (latitude, longitude) => {
               case "locality":
                 city = response.results[0].address_components[i].long_name;
                 break;
-              case "subloacality_level_1":
+              case "sublocality_level_1":
                 city = response.results[0].address_components[i].long_name;
                 break;
               case "administrative_area_level_1":
