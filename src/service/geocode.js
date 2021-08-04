@@ -5,6 +5,7 @@ Geocode.setLanguage("ko");
 
 const GoogleMap = async (latitude, longitude) => {
   let address = {};
+  let islocated = false;
 
   await Geocode.fromLatLng(latitude, longitude)
     .then(
@@ -23,13 +24,16 @@ const GoogleMap = async (latitude, longitude) => {
             switch (response.results[0].address_components[i].types[j]) {
               case "locality":
                 city = response.results[0].address_components[i].long_name;
+                islocated = true;
                 break;
               case "administrative_area_level_1":
                 state = response.results[0].address_components[i].long_name;
                 break;
             }
           }
+          if (!islocated) city = "";
         }
+        console.log(response);
         return { state, city };
       },
       (error) => {

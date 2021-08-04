@@ -70,7 +70,7 @@ function App({ authService, getData, uploadImages }) {
     getData //
       .getUserInfo()
       .then((datas) => setUser(datas));
-  }, [getData,city]);
+  }, [getData, city]);
 
   const changeCity = (cityData) => {
     setCity(cityData);
@@ -189,7 +189,12 @@ function App({ authService, getData, uploadImages }) {
             <Section data={data} address={address} posts={posts} />
           </Route>
           <Route exact path="/login">
-            <Inform authService={authService} user={user} joinUser={joinUser} uploadImages={uploadImages} />
+            <Inform
+              authService={authService}
+              user={user}
+              joinUser={joinUser}
+              uploadImages={uploadImages}
+            />
           </Route>
           <Route exact path="/settings">
             <Inform

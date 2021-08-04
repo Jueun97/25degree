@@ -45,7 +45,7 @@
 .button1:hover,
 .button2:hover {
   background-color: makerBlue;
-  color:makerWhite;
+  color: makerWhite;
 }
 .userContainer {
   display: flex;
@@ -83,7 +83,8 @@
 .category {
   word-break: break-all;
   overflow: scroll;
-  font-family: "Gaegu", cursive;
+  font-weight: 300;
+  font-family: "Noto Sans KR", sans-serif;
   border-bottom: 1px solid lightgray;
 }
 .category::-webkit-scrollbar {
@@ -100,10 +101,10 @@
   cursor: pointer;
   color: red;
 }
-.likedIcon.noClick{
- pointer-events: none;
+.likedIcon.noClick {
+  pointer-events: none;
 }
-.likedIcon.click{
+.likedIcon.click {
   pointer-events: initial;
   cursor: pointer;
 }

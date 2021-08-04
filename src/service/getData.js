@@ -36,17 +36,17 @@ class GetData {
       });
   };
   updateUser = (userInfo) => {
-    console.log("userinfo",userInfo)
+    console.log("userinfo", userInfo);
     axios
-    .post(`${base_url}/updateUser`, userInfo)
-    .then((response) => {
-      console.log(response);
-      return response;
-    })
-    .catch((error) => {
-      console.log(`getData error ${error}`);
-    });
-  }
+      .post(`${base_url}/updateUser`, userInfo)
+      .then((response) => {
+        console.log(response);
+        return response;
+      })
+      .catch((error) => {
+        console.log(`getData error ${error}`);
+      });
+  };
   uploadPost = (upload_data) => {
     let url = `${base_url}/uploadPost`;
     let data = upload_data;

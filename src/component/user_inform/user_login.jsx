@@ -8,12 +8,12 @@ const Login = ({ onFind, authService, user, joinUser }) => {
   const idRef = useRef();
   const passwordRef = useRef();
 
-  const goToHome = (userId,profile) => {
+  const goToHome = (userId, profile) => {
     history.push({
       pathname: "/",
       state: {
         userId,
-        userProfile: profile
+        userProfile: profile,
       },
     });
   };
@@ -49,11 +49,11 @@ const Login = ({ onFind, authService, user, joinUser }) => {
     user.forEach((users) => {
       if (users.userId === idInput && users.password === passwordInput) {
         logined = true;
-        goToHome(users.userId,users.profile);
+        goToHome(users.userId, users.profile);
       }
     });
     if (!logined) {
-      alert("확인 필요");
+      alert(`아이디 또는 비밀번호를 다시 확인해주세요`);
     }
   };
 
