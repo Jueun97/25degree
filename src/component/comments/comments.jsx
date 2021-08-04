@@ -1,8 +1,17 @@
-import React,{useRef} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import styles from './comments.module.css';
 import Comment from '../comment/comment';
-const Comments = ({filteredComments,uploadComment,postId,userId }) => {
+const Comments = ({filteredComments,uploadComment,postId,userId,user }) => {
     const commentRef = useRef();
+    const [userProfile, setUserProfile] = useState(null)
+    useEffect(() => {
+        user.map(u => {
+            if (u.userId === userId) {
+                setUserProfile(u.profile);
+                return
+            }
+        })
+    })
     const onClick = () => {
         const comment = commentRef.current.value;
         commentRef.current.value = '';
@@ -11,12 +20,18 @@ const Comments = ({filteredComments,uploadComment,postId,userId }) => {
     }
     return (
         <section className={styles.container}>
-                {userId &&  <div className={styles.reply}><img className={styles.image} src={process.env.PUBLIC_URL + '/images/react.png'} alt="'" />
+            {/* 로그인 한 사용자 이미지 삽입 */}
+                {userId &&  <div className={styles.reply}><img className={styles.image} src={userProfile?userProfile:'./images/user.png'} alt="'" />
             <input ref={commentRef} className={styles.input} type="text" />
             <input className={styles.button} type="submit" value="확인" onClick={onClick}></input>
             </div>}
-        <div className={styles.comment}> 
-            {filteredComments.map((comment,index) => ( <Comment key={index} comment={comment}></Comment>))
+            <div className={styles.comment}>
+            {/* 코멘트 작성자 이미지 삽입 */}
+                {filteredComments.map((comment, index) => {
+                    const filteredUser = user.filter(u => u.userId === comment.writer)
+                    const userProfile = filteredUser[0] ? filteredUser[0].profile : null
+                    return <Comment key={index} comment={comment} userProfile={userProfile}></Comment>
+                })
                 }
         </div>  
         </section>

@@ -7,7 +7,7 @@ import Loading from "../loading/loading";
 import Posts from "../posts/posts";
 import Category from "../category/category";
 
-const Section = ({ data, address, posts }) => {
+const Section = ({ data, address, posts,user }) => {
   const location = useLocation();
 
   const [filteredPosts, setFIlteredPosts] = useState("");
@@ -29,6 +29,7 @@ const Section = ({ data, address, posts }) => {
         <Posts
           posts={filteredPosts ? filteredPosts : posts}
           userId={location.state ? location.state.userId : null}
+          user={user}
         ></Posts>
       </section>
     </section>

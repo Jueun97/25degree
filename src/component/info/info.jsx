@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 
-const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,filteredLikes,pushLikes,popLikes,userId }) => {
+const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,filteredLikes,pushLikes,popLikes,userId,userProfile,user }) => {
     const messageRef = useRef();
     const [filteredLikesId, setFilteredLikesId] = useState('');
     const [edit, setEdit] = useState(false);
@@ -68,7 +68,8 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
         <div className={styles.info}>
             <header className={styles.header}>
                 <div className={styles.userContainer}>
-                    <img className={styles.image} src={process.env.PUBLIC_URL + '/images/react.png'} alt="'" />
+                    {/* 포스트 업로드 사용자 이미지 삽입 */}
+                    <img className={styles.image} src={userProfile?userProfile:'./images/user.png'} alt="'" />
                     <span className={styles.user}>@{post.userId}</span>
                 </div>
                 <FontAwesomeIcon className={styles.icon} icon={faBars} onClick={onOpenDropdown} />
@@ -98,7 +99,7 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
                 <FontAwesomeIcon className={`${styles.likedIcon} ${defaultHeart}`} icon={likedIcon} onClick={onIconClick} />
                 <span className={styles.likedMessage}>{filteredLikes.length}명이 공감하였습니다.</span>
                 </section>
-                <Comments filteredComments={filteredComments} uploadComment={uploadComment} postId={post.postId} userId={userId}></Comments>
+                <Comments filteredComments={filteredComments} uploadComment={uploadComment} postId={post.postId} userId={userId} user={user}></Comments>
             </>
             }
         </div>

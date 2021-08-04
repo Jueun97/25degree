@@ -186,7 +186,7 @@ function App({ authService, getData, uploadImages }) {
               userId={null}
               changeCity={changeCity}
             />
-            <Section data={data} address={address} posts={posts} />
+            <Section data={data} address={address} posts={posts} user={user} />
           </Route>
           <Route exact path="/login">
             <Inform
@@ -211,6 +211,7 @@ function App({ authService, getData, uploadImages }) {
               filteredPostsOriginal={filteredPosts}
               posts={posts}
               likes={likes}
+              user={user}
             ></Mypage>
           </Route>
           <Route exact path="/upload">
@@ -231,6 +232,7 @@ function App({ authService, getData, uploadImages }) {
               likes={likes}
               pushLikes={pushLikes}
               popLikes={popLikes}
+              user={user}
             ></Details>
           </Route>
         </Switch>

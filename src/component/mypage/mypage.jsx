@@ -3,7 +3,7 @@ import Posts from '../posts/posts';
 import styles from './mypage.module.css';
 import { useLocation } from "react-router";
 import Header from '../header/header';
-const Mypage = ({posts, likes }) => {
+const Mypage = ({posts, likes,user }) => {
     const location = useLocation();
     const [userId] = useState(location.state.userId);
     const [userProfile] = useState(location.state.userProfile?location.state.userProfile:'./images/user.png');
@@ -43,8 +43,8 @@ const Mypage = ({posts, likes }) => {
             <button className={`${styles.button} ${myPostBtn}`} onClick={onClickMypost}>내 게시물</button>
                 <button className={`${styles.button} ${likesBtn}`} onClick={onClickLikes}>좋아요</button>
             </div>
-            {filteredLikedPosts && <Posts posts={filteredLikedPosts} userId={userId}></Posts>}
-            {filteredPosts &&  <Posts posts={filteredPosts} userId={userId}></Posts>}
+            {filteredLikedPosts && <Posts posts={filteredLikedPosts} userId={userId} user={user}></Posts>}
+            {filteredPosts &&  <Posts posts={filteredPosts} userId={userId}user={user}></Posts>}
 
         </>
     )

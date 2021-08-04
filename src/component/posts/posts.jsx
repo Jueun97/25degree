@@ -2,10 +2,18 @@ import React from 'react';
 import styles from './posts.module.css';
 import Post from '../post/post';
 
-const Posts = ({ posts, userId }) => {
+const Posts = ({ posts, userId, user }) => {
     return (
         <section className={styles.posts}>
-            {Object.keys(posts).map(key => <Post key={key} post={posts[key]} userId={userId} ></Post>)}
+            {posts.map((post) => {
+                const filteredUser = user.filter(u => u.userId === post.userId);
+                const userProfile = filteredUser[0]?filteredUser[0].profile:null
+                if (post.userId === user.userId) {
+                    userProfile = user.proifle;
+                    console.log(userProfile)
+                }
+               return <Post key={post.postId} post={post} userId={userId} userProfile={userProfile} user={user} ></Post>
+            })}
         </section>
     );
 };
