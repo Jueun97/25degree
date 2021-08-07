@@ -11,6 +11,8 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
     const [image4, setImage4] = useState('');
     const [image5, setImage5] = useState('');
 
+    const [loading, setLoading] = useState('');
+
     const history = useHistory();
     const location = useLocation();
 
@@ -29,6 +31,7 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
     const image5FileRef = useRef();
 
     const onClick = async (event) => {
+        setLoading(styles.loading);
         event.preventDefault();
         const description = messageRef.current.value;
         const gender = genderRef.current.value;
@@ -52,6 +55,8 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
             const imagesUrl = await uploadImages.uploadImage(images);
             const upload_data = { userId: location.state.userId, imagesUrl, description, gender, overcoat, top, type, underwear, suitablity, style,degree,region}
             uploadPost(upload_data);
+            setLoading(styles.loading);
+            alert("게시물이 업로드되었습니다!");
             history.push({ pathname: '/', state: { userId: location.state.userId } })
         }
     }
@@ -87,7 +92,7 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
     
     return (
         <div className={styles.container}>
-        <form className={styles.upload}>
+            <form className={`${styles.upload} ${loading}`}>
             <h1 className={styles.title}>너의 날씨를 기록해</h1>
             <section>
                 <div className={styles.imageBox}>
@@ -176,9 +181,10 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
                     </div>    
                 </div>
             </section>
-            <button className={styles.button} onClick={onClick}>확인</button>
+                <button className={styles.button} onClick={onClick}>확인</button>
             </form>
-        </div>)
+            <div className={`${styles.loadingBar} ${loading}`}></div>
+            </div>)
 };
 
 export default Upload;

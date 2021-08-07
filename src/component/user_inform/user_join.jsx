@@ -4,6 +4,7 @@ import styles from "./inform.module.css";
 
 const Join = ({ joinUser, updateUser, userInfo, user,uploadImages }) => {
   const [redundancy, setRedundancy] = useState("");
+  const [loading, setLoading] = useState('');
   const nameRef = useRef();
   const idRef = useRef();
   const passwordRef = useRef();
@@ -12,10 +13,12 @@ const Join = ({ joinUser, updateUser, userInfo, user,uploadImages }) => {
   const profileRef = useRef();
   const history = useHistory();
   const joined = () => {
+    setLoading('');
     alert("가입이 완료되었습니다:)");
     window.location.reload();
   };
   const updated = () => {
+    setLoading('');
     alert("수정 완료되었습니다:) 다시 로그인해주세요!");
     history.push({
       pathname: "/",
@@ -36,7 +39,6 @@ const Join = ({ joinUser, updateUser, userInfo, user,uploadImages }) => {
       if (redundancy === "unused" || redundancy === "") {
         alert("아이디 중복을 확인해주세요!");
       } else {
-        
         joinUser({
           userId: idInput,
           name: nameInput,
@@ -72,10 +74,12 @@ const Join = ({ joinUser, updateUser, userInfo, user,uploadImages }) => {
   };
   const onClick = () => {
     const join = true;
+    setLoading(styles.loading);
     handleJoin(join);
   };
   const onClickUpdate = () => {
     const join = false;
+    setLoading(styles.loading);
     handleJoin(join);
   };
   const redundancyCheck = () => {
@@ -91,8 +95,9 @@ const Join = ({ joinUser, updateUser, userInfo, user,uploadImages }) => {
     }
   };
   return (
-    <section className={styles.input}>
-      <div className={styles.section}>
+    <>
+    <section className={`${styles.input} ${loading}`}>
+        <div className={styles.section}>
         <p className={styles.text}>아이디</p>
         <div className={styles.idSection}>
           <input
@@ -182,6 +187,8 @@ const Join = ({ joinUser, updateUser, userInfo, user,uploadImages }) => {
         </button>
       )}
     </section>
+     <div className={`${styles.loadingBar} ${loading}`}></div>
+    </>
   );
 };
 

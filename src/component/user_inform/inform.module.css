@@ -1,9 +1,8 @@
-@value makerGrey, makerOrange, makerBlue, makerBlack, makerWhite from '../../common/colors.css';
+@value makerGrey, makerOrange,makerDarkGrey, makerBlue, makerBlack, makerWhite from '../../common/colors.css';
 .container{
   display: flex;
   align-items: center;
   height: 100%;
-  
 }
 .informBox {
   background-color: makerGrey;
@@ -138,4 +137,31 @@
   font-size: 0.8rem;
   color: green;
   margin: 0;
+}
+.loadingBar{
+  display: none;
+  position: absolute;
+  top: 45%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid makerDarkGrey;
+  border-top: 3px solid makerOrange;
+  animation: spin 5s linear infinite;
+}
+.input.loading{
+  pointer-events: none;
+  opacity: 0.3;
+ 
+}
+.loadingBar.loading{
+  display: block;
+}
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }

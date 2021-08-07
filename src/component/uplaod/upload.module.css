@@ -1,8 +1,9 @@
-@value makerWhite,makerBlue, makerGrey,makerBlack from '../../common/colors.css';
+@value makerWhite,makerBlue, makerDarkGrey,makerGrey,makerBlack,makerBlue,makerOrange from '../../common/colors.css';
 .container{
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .upload {
   width: 60%;
@@ -78,4 +79,30 @@
   color: makerWhite;
   padding: 0.5em 1em;
   cursor:pointer;
+}
+.loadingBar{
+  display: none;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid makerDarkGrey;
+  border-top: 3px solid makerOrange;
+  animation: spin 5s linear infinite;
+}
+.upload.loading{
+  pointer-events: none;
+  opacity: 0.3;
+ 
+}
+.loadingBar.loading{
+  display: block;
+}
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }
