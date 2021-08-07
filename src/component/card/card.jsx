@@ -23,7 +23,7 @@ const Card = ({ onLogout, userId,userProfile }) => {
   const onClickUpload = () => {
     history.push({
       pathname: '/upload',
-      state: { userId}
+      state: { userId,userProfile}
   });
   }
   return (

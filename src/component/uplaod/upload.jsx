@@ -57,7 +57,7 @@ const Upload = ({ uploadPost, uploadImages, locationInfo, data }) => {
             uploadPost(upload_data);
             setLoading(styles.loading);
             alert("게시물이 업로드되었습니다!");
-            history.push({ pathname: '/', state: { userId: location.state.userId } })
+            history.push({ pathname: '/', state: { userId: location.state.userId,userProfile:location.state.userProfile } })
         }
     }
     const onChangeImage = (event) => {
