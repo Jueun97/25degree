@@ -19,7 +19,6 @@ const Inform = ({
 
   useEffect(() => {
     if (location.state) {
-      console.log("settings", location.state);
       const userinfo = user.filter(
         (u) => u.userId === location.state.userId
       );

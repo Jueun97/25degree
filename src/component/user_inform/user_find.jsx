@@ -38,7 +38,6 @@ const Find = ({ user }) => {
           alert(
             "확인되었습니다. 아래 버튼을 클릭하면 이메일로 회원정보가 전송됩니다."
           );
-          console.log(users.userId);
         }
       });
       if (!finded) alert("정보가 없습니다.");
@@ -55,7 +54,6 @@ const Find = ({ user }) => {
   };
   const sendEmail = (event) => {
     event.preventDefault();
-    console.log(data);
 
     if (data !== "no data") {
       emailjs

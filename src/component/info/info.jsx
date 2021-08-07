@@ -42,7 +42,6 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
         setDropdown(false);
     }
     const onDelete = () => {
-        console.log("userID",userId)
         deletePost(post.postId, userId);
         history.push({
             pathname: '/',

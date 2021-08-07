@@ -10,7 +10,6 @@ const Posts = ({ posts, userId, user }) => {
                 const userProfile = filteredUser[0]?filteredUser[0].profile:null
                 if (post.userId === user.userId) {
                     userProfile = user.proifle;
-                    console.log(userProfile)
                 }
                return <Post key={post.postId} post={post} userId={userId} userProfile={userProfile} user={user} ></Post>
             })}

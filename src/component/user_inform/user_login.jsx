@@ -21,7 +21,6 @@ const Login = ({ onFind, authService, user, joinUser }) => {
     authService //
       .login(event.target.name)
       .then((data) => {
-        console.log(data);
         if (event.target.name === "Google") {
           joinUser({
             userId: data.user.uid.substring(0, 15),

@@ -88,7 +88,7 @@
   border-radius: 50%;
   border: 3px solid makerDarkGrey;
   border-top: 3px solid makerOrange;
-  animation: spin 5s linear infinite;
+  animation: spin 2s linear infinite;
 }
 .upload.loading{
   pointer-events: none;
