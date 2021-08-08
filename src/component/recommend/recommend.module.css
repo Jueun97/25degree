@@ -7,8 +7,12 @@
   height: 17em;
 }
 
-.illus {
-  width: 11em;
+.contents {
+  text-align: center;
+}
+
+.illust {
+  width: 14em;
 }
 
 .message {

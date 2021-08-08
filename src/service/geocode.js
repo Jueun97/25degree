@@ -33,7 +33,6 @@ const GoogleMap = async (latitude, longitude) => {
             }
           }
         }
-        console.log(response);
         return { state, city };
       },
       (error) => {
