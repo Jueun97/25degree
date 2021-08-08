@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import { useLocation } from "react-router";
 import Recommend from "../recommend/recommend";
 import Weather from "../weather/weather";
@@ -7,7 +7,7 @@ import Loading from "../loading/loading";
 import Posts from "../posts/posts";
 import Category from "../category/category";
 
-const Section = ({ data, address, posts,user }) => {
+const Section = ({ data, address, posts, user }) => {
   const location = useLocation();
 
   const [filteredPosts, setFIlteredPosts] = useState("");

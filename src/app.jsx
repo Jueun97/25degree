@@ -14,6 +14,7 @@ function App({ authService, getData, uploadImages }) {
   const [user, setUser] = useState([]);
 
   const [posts, setPosts] = useState([]);
+  const [reversedPosts, setreversedPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
@@ -60,6 +61,9 @@ function App({ authService, getData, uploadImages }) {
       let tempdata = [...data];
       tempdata.map((data) => (data.images = data.images.split(",")));
       setPosts(tempdata);
+      let reversedTempdata = [...data];
+      reversedTempdata = reversedTempdata.reverse();
+      setreversedPosts(reversedTempdata);
     });
     getData.getComment().then((data) => {
       setComments(data);
@@ -89,11 +93,9 @@ function App({ authService, getData, uploadImages }) {
     getData.addUser(newUser);
   };
   const filterPosts = (userId) => {
-    console.log("filter!!!1111", posts);
     let tempPosts = [...posts];
     tempPosts = tempPosts.filter((post) => post.userId === userId);
     setFilteredPosts(tempPosts);
-    console.log("filter!!!222", filteredPosts);
   };
   const uploadPost = (post) => {
     const tempPosts = [...posts];
@@ -119,6 +121,9 @@ function App({ authService, getData, uploadImages }) {
     setPosts(tempPosts);
     tempFilteredPosts.push(newPost);
     setFilteredPosts(tempFilteredPosts);
+    let reversedTempPosts = [...tempPosts];
+    reversedTempPosts = reversedTempPosts.reverse();
+    setreversedPosts(reversedTempPosts);
   };
   const updatePost = (postId, message, userId) => {
     const tempPosts = [...posts];
@@ -151,7 +156,9 @@ function App({ authService, getData, uploadImages }) {
     getData.deletePost(postId, userId);
     setPosts(tempPosts);
     setFilteredPosts(tempFilteredPosts);
-    console.log("delete", posts, filteredPosts);
+    let reversedTempPosts = [...tempPosts];
+    reversedTempPosts = reversedTempPosts.reverse()
+    setreversedPosts(reversedTempPosts);
   };
   const uploadComment = (upload_data) => {
     const tempComments = [...comments];
@@ -186,7 +193,7 @@ function App({ authService, getData, uploadImages }) {
               userId={null}
               changeCity={changeCity}
             />
-            <Section data={data} address={address} posts={posts} user={user} />
+            <Section data={data} address={address} posts={reversedPosts} user={user} />
           </Route>
           <Route exact path="/login">
             <Inform
