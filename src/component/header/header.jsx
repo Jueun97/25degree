@@ -4,13 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Card from "../card/card";
 import city from "../../service/location.json";
 
-const Header = ({ authService, changeCity}) => {
+const Header = ({ authService, changeCity, mypageSign }) => {
   const [userId, setUserId] = useState(null);
-  const [userProfile, setUserProfile] = useState('');
+  const [userProfile, setUserProfile] = useState("");
   const history = useHistory();
   const location = useLocation();
   const selectRef = useRef();
-
+  const headerType = mypageSign === "MyPage" ? styles.hidden : styles.visible;
   useEffect(() => {
     if (location.state) {
       setUserId(location.state.userId);
@@ -19,10 +19,10 @@ const Header = ({ authService, changeCity}) => {
   }, [location]);
   const onClickLogo = () => {
     history.push({
-      pathname: '/',
-      state: {userId,userProfile}
-  });
-  }
+      pathname: "/",
+      state: { userId, userProfile },
+    });
+  };
   const onLogin = () => {
     history.push("/login");
   };
@@ -41,8 +41,10 @@ const Header = ({ authService, changeCity}) => {
   };
   return (
     <header className={styles.header}>
-      <h2 className={styles.logo}  onClick={onClickLogo}>25도씨</h2>
-      <div className={styles.search}>
+      <h2 className={styles.logo} onClick={onClickLogo}>
+        25도씨
+      </h2>
+      <div className={`${headerType}`}>
         <select
           ref={selectRef}
           className={styles.select}
@@ -64,7 +66,9 @@ const Header = ({ authService, changeCity}) => {
         </select>
       </div>
 
-      {userId && <Card onLogout={onLogout} userId={userId} userProfile={userProfile}/>}
+      {userId && (
+        <Card onLogout={onLogout} userId={userId} userProfile={userProfile} />
+      )}
       {userId == null && (
         <button className={styles.loginBtn} onClick={onLogin}>
           로그인
