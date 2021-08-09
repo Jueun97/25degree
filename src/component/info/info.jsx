@@ -73,7 +73,7 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
             <header className={styles.header}>
                 <div className={styles.userContainer}>
                     {/* 포스트 업로드 사용자 이미지 삽입 */}
-                    <img className={styles.image} src={userProfile?userProfile:'./images/user.png'} alt="'" />
+                    <img className={styles.image} src={userProfile === 'null' ? './images/user.png' : userProfile } alt="'" />
                     <span className={styles.user}>@{post.userId}</span>
                 </div>
                 <FontAwesomeIcon className={styles.icon} icon={faBars} onClick={onOpenDropdown} />

@@ -8,9 +8,9 @@ const Mypage = ({ posts, likes, user }) => {
   const location = useLocation();
   const [userId] = useState(location.state.userId);
   const [userProfile] = useState(
-    location.state.userProfile
-      ? location.state.userProfile
-      : "./images/user.png"
+    location.state.userProfile === 'null'
+      ? './images/user.png'
+      :location.state.userProfile
   );
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [filteredLikedPosts, setFilteredLikedPosts] = useState("");
