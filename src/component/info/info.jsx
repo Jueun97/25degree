@@ -13,9 +13,9 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
     const [dropdown, setDropdown] = useState(false);
     const [likedIcon, setLikedIcon] = useState(farHeart);
     const [defaultHeart, setDefaultHeart] = useState(styles.click);
-    const [overcoat] = useState(post.overcoat == '아우터' ? '' : `#${post.overcoat}`)
-    const [underwear] = useState(post.underwear == '이너웨어' ? '' : `#${post.underwear}`)
-    const [type] = useState(post.type == '체질' ? '' : `#${post.type}`)
+    const [overcoat] = useState(post.overcoat === '아우터' ? '' : `#${post.overcoat}`)
+    const [underwear] = useState(post.underwear === '이너웨어' ? '' : `#${post.underwear}`)
+    const [type] = useState(post.type === '체질' ? '' : `#${post.type}`)
     const history = useHistory();
     useEffect(() => {
         if (userId === null) 

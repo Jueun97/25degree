@@ -5,7 +5,7 @@ const Comments = ({filteredComments,uploadComment,postId,userId,user }) => {
     const commentRef = useRef();
     const [userProfile, setUserProfile] = useState(null)
     useEffect(() => {
-        user.map(u => {
+        user.forEach(u => {
             if (u.userId === userId) {
                 setUserProfile(u.profile);
                 return
