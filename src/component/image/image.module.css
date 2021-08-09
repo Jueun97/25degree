@@ -11,6 +11,6 @@
 @media screen and (max-height: 400px) {
     .image{
         height: 500px;
-      scroll-snap-align:unset; 
+        scroll-snap-align:unset; 
     }
 }

@@ -43,6 +43,7 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
     }
     const onDelete = () => {
         deletePost(post.postId, userId);
+        alert("게시물이 삭제되었습니다.");
         history.push({
             pathname: '/',
             state:{userId}
@@ -62,6 +63,7 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
         //데이터처리
         updatePost(post.postId,messageRef.current.value,userId)
         setEdit(false);
+        alert("게시물이 수정되었습니다.");
     }
     return (
         <div className={styles.info}>

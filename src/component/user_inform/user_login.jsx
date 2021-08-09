@@ -9,6 +9,7 @@ const Login = ({ onFind, authService, user, joinUser }) => {
   const passwordRef = useRef();
 
   const goToHome = (userId, profile) => {
+    alert("로그인 되었습니다.");
     history.push({
       pathname: "/",
       state: {

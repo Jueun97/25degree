@@ -29,6 +29,7 @@ const Header = ({ authService, changeCity, mypageSign }) => {
   const onLogout = () => {
     setUserId(null);
     history.replace(location.state.userId, null);
+    alert("로그아웃 되었습니다.");
     history.push("/");
     authService.logout();
   };
