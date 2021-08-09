@@ -2,7 +2,7 @@
 .container {
   display: flex;
   justify-content: space-around;
-  width: 60%;
+  width: 70%;
   margin: auto;
   padding: 1em 0;
 }
@@ -32,12 +32,17 @@
   .container{
     width: 80%;
   }
+  .category{
+    font-size: 1rem;
+  }
 }
 @media screen and (max-width: 700px) {
   .container{
-    width: 90%;
+    flex-wrap: wrap;
+    width: 70%;
   }
   .category{
+    margin-top: 3px;
     font-size: 1rem;
   }
 }
