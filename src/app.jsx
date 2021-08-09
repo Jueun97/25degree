@@ -47,7 +47,6 @@ function App({ authService, getData, uploadImages }) {
       getData //
         .getWeather(city[0].coord.lat, city[0].coord.lon)
         .then((datas) => {
-          console.log(datas);
           setData({
             currentTemp: datas.current.temp,
             currentIcon: datas.current.weather[0].icon,
@@ -137,7 +136,6 @@ function App({ authService, getData, uploadImages }) {
       return post;
     });
     getData.updatePost({ postId, message, userId });
-    console.log("update post posts, filteredposts", posts, filteredPosts);
     setPosts(tempPosts);
     setFilteredPosts(tempFilteredPosts);
   };
