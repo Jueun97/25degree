@@ -13,6 +13,9 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
     const [dropdown, setDropdown] = useState(false);
     const [likedIcon, setLikedIcon] = useState(farHeart);
     const [defaultHeart, setDefaultHeart] = useState(styles.click);
+    const [overcoat] = useState(post.overcoat == '아우터' ? '' : `#${post.overcoat}`)
+    const [underwear] = useState(post.underwear == '이너웨어' ? '' : `#${post.underwear}`)
+    const [type] = useState(post.type == '체질' ? '' : `#${post.type}`)
     const history = useHistory();
     useEffect(() => {
         if (userId === null) 
@@ -82,10 +85,10 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
                 }
             </header>
             <section className={styles.messageContainer}>
-                {!edit &&
+                {!edit && 
                     <>
                         <p>{post.description}</p>
-                        <div className={styles.category}>{`#${post.gender}#${post.overcoat}#${post.top}#${post.type}#${post.underwear}#${post.suitablity}#${post.style}`}</div>
+                        <div className={styles.category}>{`#${post.gender}${overcoat}#${post.top}${type}${underwear}#${post.suitablity}#${post.style}#섭씨${post.degree}도`}</div>
                     </>
                 }
                 {edit &&

@@ -13,7 +13,11 @@ const Section = ({ data, address, posts, user }) => {
   const [filteredPosts, setFIlteredPosts] = useState("");
 
   const onClickCategory = (category) => {
-    if (category) posts = posts.filter((post) => post.style === category);
+    if (category == '온도') {
+      posts = posts.filter((post) => data.currentTemp-1 <= post.degree && post.degree <= data.currentTemp+1);
+    } else {
+      if (category) posts = posts.filter((post) => post.style === category);
+    }
     setFIlteredPosts(posts);
   };
 

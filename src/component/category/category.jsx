@@ -6,7 +6,7 @@ const Category = ({ onClickCategory }) => {
     const [student, setStudent] = useState(styles.unClicked);
     const [casual, setCasual] = useState(styles.unClicked);
     const [dating, setDating] = useState(styles.unClicked);
-
+    const [degree, setDegree] = useState(styles.unClicked);
     const onClick = (event) => {
         const category = event.target.value;
         onClickCategory(category);
@@ -15,6 +15,7 @@ const Category = ({ onClickCategory }) => {
         setCasual(styles.unClicked);
         setStudent(styles.unClicked);
         setDating(styles.unClicked);
+        setDegree(styles.unClicked);
         switch (category) {
             case '':
                 setAll(styles.clicked);
@@ -31,6 +32,9 @@ const Category = ({ onClickCategory }) => {
             case '데이트룩':
                 setDating(styles.clicked);
                 break;
+            case '온도':
+                setDegree(styles.clicked);
+                break;
             default:
                 new Error("잘못된 카테고리입니다.");
         }
@@ -42,6 +46,7 @@ const Category = ({ onClickCategory }) => {
             <button className={`${styles.category} ${student}`} onClick={onClick} value='학생룩'>학생룩</button>
             <button className={`${styles.category} ${casual}`} onClick={onClick} value='캐주얼룩'>캐주얼룩</button>
             <button className={`${styles.category} ${dating}`} onClick={onClick} value='데이트룩'>데이트룩</button>
+            <button className={`${styles.category} ${degree}`} onClick={onClick} value='온도'>현재 온도</button>
         </div>
     );
 };
