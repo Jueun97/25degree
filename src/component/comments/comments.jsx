@@ -21,7 +21,7 @@ const Comments = ({filteredComments,uploadComment,postId,userId,user }) => {
     return (
         <section className={styles.container}>
             {/* 로그인 한 사용자 이미지 삽입 */}
-                {userId &&  <div className={styles.reply}><img className={styles.image} src={userProfile === 'null'?'./images/user.png':userProfile} alt="'" />
+                {userId &&  <div className={styles.reply}><img className={styles.image} src={userProfile === 'null' ? './images/user.png':userProfile} alt="'" />
             <input ref={commentRef} className={styles.input} type="text" />
             <input className={styles.button} type="submit" value="확인" onClick={onClick}></input>
             </div>}
