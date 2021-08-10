@@ -9,18 +9,18 @@
 ## 사용 기술
 ### 1. Front-end
 
-|<img src="/readme/logo/html.png" width="200">|<img src="/readme/logo/post2.png" width="200">|<img src="/readme/logo/js.png" width="200">|
+|<img src="/readme/logo/html.png" width="150">|<img src="/readme/logo/post2.png" width="150">|<img src="/readme/logo/js.png" width="150">|
 |:---: |:---: |:---:|
 |HTML|PostCSS|Javascript|
 
 
 ### 2. Back-end
-|<img src="/readme/logo/node.png" width="200" height="200">|<img src="/readme/logo/express.png" width="200" height="200">|<img src="/readme/logo/mysql.png" width="200" height="200">|
+|<img src="/readme/logo/node.png" width="150" height="150">|<img src="/readme/logo/express.png" width="150" height="150">|<img src="/readme/logo/mysql.png" width="150" height="150">|
 |:---:|:--:|:--:|
 |Node.js|express|mysql|
 
 ### 3. Library
-|<img src="/readme/logo/react.png" width="200">|
+|<img src="/readme/logo/react.png" width="150">|
 |:--:|
 |React|
 
