@@ -60,9 +60,9 @@
 
 <img src="/readme/images/category.png" width="800" height="40">
 
-> ~룩 : 옷 스타일 별 분류
-> 온도 : 현재 온도에 따른 분류
-> female/male : 여성/남성 별 옷차림 분류
+>- ~룩 : 옷 스타일 별 분류
+>- 온도 : 현재 온도에 따른 분류
+>- female/male : 여성/남성 별 옷차림 분류
 
 <br>
 
