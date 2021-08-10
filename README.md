@@ -26,21 +26,22 @@
 
 
 ## 주요 기능
-#### 1. 요일별 / 시간별 날씨 확인 기능
-#### 2. 온도별 옷차림 추천 기능
-#### 3. 로그인 / 회원가입 기능
-#### 4. 게시물 업로드/수정/삭제 기능
-#### 5. 게시물  좋아요 / 댓글 달기 기능
+### 1. 요일별 / 시간별 날씨 확인 기능
+### 2. 온도별 옷차림 추천 기능
+### 3. 로그인 / 회원가입 기능
+### 4. 게시물 업로드/수정/삭제 기능
+### 5. 게시물  좋아요 / 댓글 달기 기능
 
 ## 미리보기 
 ### 1. 메인 페이지
-<img src="/readme/images/mainpage.gif">
+<img src="/readme/images/mainpage.gif" width="800">
 <br>
 <br>
-1. 메인 페이지 헤더
 
-<img src="/readme/images/header1.png"  height="40">
-<img src="/readme/images/header2.png" height="40">
+**1. 메인 페이지 헤더**
+
+<img src="/readme/images/header1.png" width="700" height="40">
+<img src="/readme/images/header2.png" width="700" height="40">
 
 > - 로고 : 로고 클릭 시 메인페이지로 이동
 > - 지역 선택 : 원하는 지역을 검색하여 해당 지역의 온도 확인 가능
@@ -51,19 +52,26 @@
 >- 마이페이지로 이동
 >- 게시물 업로드
 >- 회원정보 수정
->- 로그아웃 
+>- 로그아웃
+ 
+<br>
 
-2. 메인 페이지 카테고리
+**2. 메인 페이지 카테고리**
 
-<img src="/readme/images/category.png"  height="40">
+<img src="/readme/images/category.png" width="800" height="40">
 
 > ~룩 : 옷 스타일 별 분류
 > 온도 : 현재 온도에 따른 분류
 > female/male : 여성/남성 별 옷차림 분류
 
+<br>
+
 ### 2. 날씨 확인 및 온도별 옷차림 추천 서비스
 <img src="/readme/images/weatherbox.png" width="800"><br>
-1. 온도별 옷차림 종류
+
+<br>
+
+**1. 온도별 옷차림 종류**
 
 |30℃ 이상|27~29℃|23~26℃|19~22℃|
 |:--:|:--:|:--:|:--:|
@@ -71,25 +79,32 @@
 |**15~18℃**|**10~14℃**|**6~9℃**|**5℃ 이하**|
 |<img src="/readme/images/image5.PNG" width="200">|<img src="/readme/images/image6.PNG" width="200">|<img src="/readme/images/image7.PNG" width="200">|<img src="/readme/images/image8.PNG" width="200">|
 
+<br>
 
 ### 3. 로그인 및 회원가입 
 <div>
-<img src="/readme/images/login.png" width="500">
-<img src="/readme/images/join.png" width="500">
+<img src="/readme/images/login.png" width="400">
+<img src="/readme/images/join.png" width="400">
 </div>
 
+<br>
+
 ### 4. 게시물 업로드 페이지
-<img src="/readme/images/upload.png">
+<img src="/readme/images/upload.png" width="800">
+
+<br>
 
 ### 5. 게시물 예시
-<img src="/readme/images/post.gif">
+<img src="/readme/images/post.gif" width="800">
 
 > - 바 아이콘 : 게시물 수정 / 삭제 기능
 > - 댓글 달기 가능
 > - 좋아요 누르기 가능
 
+<br>
+
 ### 6. 마이페이지
-<img src="/readme/images/mypage.gif">
+<img src="/readme/images/mypage.gif" width="800">
 
 > - 내 게시물 : 로그인 한 사용자가 업로드한 게시물
 > - 좋아요 : 로그인 한 사용자가 좋아요 누른 게시물
