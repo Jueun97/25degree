@@ -8,7 +8,7 @@ const Mypage = ({ posts, likes, user }) => {
   const location = useLocation();
   const [userId] = useState(location.state.userId);
   const [userProfile] = useState(
-    location.state.userProfile === 'null'
+    location.state.userProfile === null
       ? './images/user.png'
       :location.state.userProfile
   );
