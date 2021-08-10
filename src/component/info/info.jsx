@@ -88,7 +88,7 @@ const Info = ({ post, updatePost, deletePost, filteredComments, uploadComment,fi
                 {!edit && 
                     <>
                         <p>{post.description}</p>
-                        <div className={styles.category}>{`#${post.gender}${overcoat}#${post.top}${type}${underwear}#${post.suitablity}#${post.style}#섭씨${post.degree}도`}</div>
+                        <div className={styles.category}>{`#${post.gender}${overcoat}#${post.top}${type}${underwear}#${post.suitablity}#${post.style}#${post.degree}℃`}</div>
                     </>
                 }
                 {edit &&
