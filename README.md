@@ -67,9 +67,9 @@
 
 |30℃ 이상|27~29℃|23~26℃|19~22℃|
 |:--:|:--:|:--:|:--:|
-|<img src="/readme/images/image1.png" width="200">|<img src="/readme/images/image2.png" width="200">|<img src="/readme/images/image3.png" width="200">|<img src="/readme/images/image4.png" width="200">|
+|<img src="/readme/images/image1.PNG" width="200">|<img src="/readme/images/image2.PNG" width="200">|<img src="/readme/images/image3.PNG" width="200">|<img src="/readme/images/image4.PNG" width="200">|
 |**15~18℃**|**10~14℃**|**6~9℃**|**5℃ 이하**|
-|<img src="/readme/images/image5.png" width="200">|<img src="/readme/images/image6.png" width="200">|<img src="/readme/images/image7.png" width="200">|<img src="/readme/images/image8.png" width="200">|
+|<img src="/readme/images/image5.PNG" width="200">|<img src="/readme/images/image6.PNG" width="200">|<img src="/readme/images/image7.PNG" width="200">|<img src="/readme/images/image8.PNG" width="200">|
 
 
 ### 3. 로그인 및 회원가입 
