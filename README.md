@@ -62,7 +62,7 @@
 > female/male : 여성/남성 별 옷차림 분류
 
 ### 2. 날씨 확인 및 온도별 옷차림 추천 서비스
-<img src="/readme/images/weatherBox.png" ><br>
+<img src="/readme/images/weatherbox.png" width="800"><br>
 1. 온도별 옷차림 종류
 
 |30℃ 이상|27~29℃|23~26℃|19~22℃|
