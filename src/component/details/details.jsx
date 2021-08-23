@@ -3,7 +3,7 @@ import styles from './details.module.css';
 import Info from '../info/info';
 import Images from '../images/images';
 import {useLocation} from "react-router"
-const Details = ({data,updatePost,comments,deletePost,uploadComment,likes,popLikes,pushLikes,user}) => {
+const Details = ({updatePost,comments,deletePost,uploadComment,likes,popLikes,pushLikes,user}) => {
     const location = useLocation();
     const post = location.state.post;
     const userId = location.state.userId;
@@ -15,7 +15,7 @@ const Details = ({data,updatePost,comments,deletePost,uploadComment,likes,popLik
         <div className={styles.container}>
             <div className={styles.details}>
                 <Images images={post.images}></Images>
-                <Info data={data}post={post} updatePost={updatePost} deletePost={deletePost} filteredComments={filteredComments} uploadComment={uploadComment} filteredLikes={filteredLikes} popLikes={popLikes} pushLikes={pushLikes} userId={userId} userProfile={userProfile} user={user}></Info>
+                <Info post={post} updatePost={updatePost} deletePost={deletePost} filteredComments={filteredComments} uploadComment={uploadComment} filteredLikes={filteredLikes} popLikes={popLikes} pushLikes={pushLikes} userId={userId} userProfile={userProfile} user={user}></Info>
             </div>
         </div>
     );

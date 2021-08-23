@@ -16,14 +16,16 @@ const Mypage = ({ posts, likes, user }) => {
   const [filteredLikedPosts, setFilteredLikedPosts] = useState("");
   const [myPostBtn, setMyPostBtn] = useState(styles.clicked);
   const [likesBtn, setLikesBtn] = useState(styles.unClicked);
+
   useEffect(() => {
     setFilteredPosts(posts.filter((post) => post.userId === userId));
   }, [posts, userId]);
+  
   function onClickMypost() {
     let tempPosts = [...posts];
     tempPosts = tempPosts.filter((post) => post.userId === userId);
     setFilteredPosts(tempPosts);
-    setFilteredLikedPosts("");
+    setFilteredLikedPosts('');
     setMyPostBtn(styles.clicked);
     setLikesBtn(styles.unClicked);
   }
@@ -35,7 +37,7 @@ const Mypage = ({ posts, likes, user }) => {
       tempLikes.map((like) => like.postId).includes(post.postId)
     );
     setFilteredLikedPosts(tempPosts);
-    setFilteredPosts("");
+    setFilteredPosts('');
     setMyPostBtn(styles.unClicked);
     setLikesBtn(styles.clicked);
   }

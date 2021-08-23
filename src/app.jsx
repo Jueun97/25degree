@@ -12,12 +12,9 @@ import GoogleMap from "./service/geocode";
 function App({ authService, getData, uploadImages }) {
   const [city, setCity] = useState("location");
   const [user, setUser] = useState([]);
-
   const [posts, setPosts] = useState([]);
-  const [reversedPosts, setreversedPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
-  const [filteredPosts, setFilteredPosts] = useState([]);
 
   const [data, setData] = useState({
     currentTemp: null,
@@ -57,12 +54,9 @@ function App({ authService, getData, uploadImages }) {
       setAddress({ state: "", city: city[0].value });
     }
     getData.getPost().then((data) => {
-      let tempdata = [...data];
-      tempdata.map((data) => (data.images = data.images.split(",")));
-      setPosts(tempdata);
-      let reversedTempdata = [...data];
-      reversedTempdata = reversedTempdata.reverse();
-      setreversedPosts(reversedTempdata);
+      data.map((d) => (d.images = d.images.split(",")));
+      data.reverse();
+      setPosts(data);
     });
     getData.getComment().then((data) => {
       setComments(data);
@@ -79,7 +73,6 @@ function App({ authService, getData, uploadImages }) {
     setCity(cityData);
   };
   const joinUser = (userData) => {
-    const tempUser = [...user];
     const newUser = {
       userId: userData.userId,
       name: userData.name,
@@ -88,17 +81,13 @@ function App({ authService, getData, uploadImages }) {
       email: userData.email,
       profile: userData.profile,
     };
-    tempUser.push(newUser);
     getData.addUser(newUser);
   };
-  const filterPosts = (userId) => {
-    let tempPosts = [...posts];
-    tempPosts = tempPosts.filter((post) => post.userId === userId);
-    setFilteredPosts(tempPosts);
+  const updateUser = (userData) => {
+    getData.updateUser(userData);
   };
   const uploadPost = (post) => {
     const tempPosts = [...posts];
-    const tempFilteredPosts = [...filteredPosts];
     const postId = new Date();
     const newPost = {
       postId: postId,
@@ -116,63 +105,47 @@ function App({ authService, getData, uploadImages }) {
       region: post.region,
     };
     getData.uploadPost(newPost);
-    tempPosts.push(newPost);
-    setPosts(tempPosts);
-    tempFilteredPosts.push(newPost);
-    setFilteredPosts(tempFilteredPosts);
-    let reversedTempPosts = [...tempPosts];
-    reversedTempPosts = reversedTempPosts.reverse();
-    setreversedPosts(reversedTempPosts);
+/*     tempPosts.push(newPost); */
+    getData.getPost().then((data) => {
+      data.map((d) => (d.images = d.images.split(",")));
+      data.reverse();
+      setPosts(data);
+    });
+/*     setPosts(tempPosts);  */
   };
   const updatePost = (postId, message, userId) => {
     const tempPosts = [...posts];
-    const tempFilteredPosts = [...filteredPosts];
     tempPosts.map((post) => {
-      if (post.postId === postId) post.description = message;
-      return post;
-    });
-    tempFilteredPosts.map((post) => {
       if (post.postId === postId) post.description = message;
       return post;
     });
     getData.updatePost({ postId, message, userId });
     setPosts(tempPosts);
-    setFilteredPosts(tempFilteredPosts);
-  };
-  const updateUser = (userData) => {
-    getData.updateUser(userData);
   };
   const deletePost = (postId, userId) => {
     let tempPosts = [...posts];
-    let tempFilteredPosts = [...filteredPosts];
     tempPosts = tempPosts.filter((post) => {
-      return post.postId !== postId;
-    });
-    tempFilteredPosts = tempFilteredPosts.filter((post) => {
       return post.postId !== postId;
     });
     getData.deletePost(postId, userId);
     setPosts(tempPosts);
-    setFilteredPosts(tempFilteredPosts);
-    let reversedTempPosts = [...tempPosts];
-    reversedTempPosts = reversedTempPosts.reverse()
-    setreversedPosts(reversedTempPosts);
   };
   const uploadComment = (upload_data) => {
     const tempComments = [...comments];
     tempComments.push(upload_data);
+   // setComments(tempComments);
     getData.uploadComment(upload_data);
-    setComments(tempComments);
+    getData.getComment().then((data) => {
+      setComments(data);
+    });
   };
   const pushLikes = (postId, userId) => {
-    //userId 정보도 필요함!!
     const tempLikes = [...likes];
     tempLikes.push({ likeId: new Date(), userId: userId, postId: postId });
     getData.uploadLikes({ postId, userId });
     setLikes(tempLikes);
   };
   const popLikes = (postId, userId) => {
-    //userId 정보도 필요함!!
     const tempLikes = [...likes];
     const index = tempLikes.findIndex(
       (like) => like.postId === postId && like.userId === userId
@@ -191,7 +164,7 @@ function App({ authService, getData, uploadImages }) {
               userId={null}
               changeCity={changeCity}
             />
-            <Section data={data} address={address} posts={reversedPosts} user={user} />
+            <Section data={data} address={address} posts={posts} user={user} />
           </Route>
           <Route exact path="/login">
             <Inform
@@ -212,8 +185,6 @@ function App({ authService, getData, uploadImages }) {
           </Route>
           <Route exact path="/mypage">
             <Mypage
-              filterPosts={filterPosts}
-              filteredPostsOriginal={filteredPosts}
               posts={posts}
               likes={likes}
               user={user}
@@ -229,7 +200,6 @@ function App({ authService, getData, uploadImages }) {
           </Route>
           <Route path="/detail">
             <Details
-              data={filteredPosts}
               updatePost={updatePost}
               deletePost={deletePost}
               comments={comments}
