@@ -15,9 +15,9 @@
 
 
 ### 2. Back-end
-|<img src="/readme/logo/node.png" width="150" height="150">|<img src="/readme/logo/express.png" width="150" height="150">|<img src="/readme/logo/mysql.png" width="150" height="150">|
-|:---:|:--:|:--:|
-|Node.js|express|mysql|
+|<img src="/readme/logo/node.png" width="150" height="150">|<img src="/readme/logo/express.png" width="150" height="150">|<img src="/readme/logo/mysql.png" width="150" height="150">|<img src="/readme/logo/oracle.jpeg" width="150" height="150">|
+|:---:|:--:|:--:|:--:|
+|Node.js|Express|MySQL|Oracle Cloud|
 
 
 <br>
