@@ -1,0 +1,26 @@
+@value makerDarkGrey,makerBlack from '../../../common/colors.css';
+
+.container{
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+.user_login1{
+    margin-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid makerDarkGrey;
+}
+.user_login2{
+    margin-top: 10px;
+}
+.user_find{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+.mypage{
+    margin: auto;
+    width: 20em;
+    justify-content: space-between;
+    padding: 1.2em;
+}

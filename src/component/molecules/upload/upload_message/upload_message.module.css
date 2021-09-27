@@ -1,0 +1,9 @@
+.textBox{
+    display: flex;
+    justify-content: center;
+}
+.textarea{
+    width: 90%;
+    height: 100px;
+    outline-color:none;
+}

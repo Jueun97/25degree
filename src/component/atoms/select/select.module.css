@@ -1,0 +1,27 @@
+@value makerDarkGrey,makerOrange from '../../../common/colors.css';
+
+.user_join_edit{
+    width: 17em;
+    height: 2.5em;
+    outline-color: makerDarkGrey;
+    border: 1px solid makerBlack;
+}
+.header{
+    width: 20%;
+    height: 2.3em;
+    border: 2px solid makerOrange;
+    outline-color: makerOrange;
+}
+.upload{
+    font-size: 1.5em;
+    width: 5em;
+    padding: 0.4em 0;
+    margin: 3px 0;
+    text-align: center;
+}
+@media screen and (max-width: 550px) {
+    .header {
+      display: none;
+    }
+}
+  

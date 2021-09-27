@@ -1,0 +1,60 @@
+@value makerDarkGrey from '../../../common/colors.css';
+.container{
+    display: flex;
+    width: 80%;
+    height: 70%;
+    border: 1px solid makerDarkGrey;
+    margin:auto;
+}
+.imageBox{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-flow: wrap;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    border-right: 1px solid makerDarkGrey;
+}
+.content{
+    width: 50%;
+    height: 100%;
+    padding: 1em;
+}
+.comment{
+    height: 55%;
+}
+
+.imageBox::-webkit-scrollbar {
+    width: 0;
+    border: none;
+}
+
+@media screen and (max-width:950px) {
+    .container{
+        font-size: 0.9em;
+    }
+}
+@media screen and (max-width:800px) {
+    .container{
+        flex-direction: column;
+        align-items: center;
+        height: 90%;
+        font-size: small;
+    }
+    .content{
+        border-top: 1px solid makerDarkGrey;
+    }
+    .content,.imageBox{
+        width: 100%;
+        height: 50%;
+    }
+}
+@media screen and (max-width:550px) {
+    .container{
+        width: 90%;
+    }
+    .content{
+        height: 35%;
+    }
+}

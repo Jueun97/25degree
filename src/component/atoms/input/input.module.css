@@ -1,0 +1,15 @@
+@value makerGrey, makerOrange,makerDarkGrey, makerBlue, makerBlack, makerWhite from '../../../common/colors.css';
+
+.user_login_find, .user_join_edit{
+    width: 17em;
+    height: 2.5em;
+    outline-color: makerDarkGrey;
+
+}
+.comment{
+    width: 80%;
+    height: 2em;
+}
+.upload{
+    display: none;
+}

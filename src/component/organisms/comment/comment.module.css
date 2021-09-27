@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.commentsBox{
+    display: flex;
+    flex-direction: column;
+    padding:0 7px;
+    overflow: scroll;
+}
+.commentsBox::-webkit-scrollbar {
+    width: 0;
+    border: none;
+}
+
+@media screen and (max-width : 950px) {
+    .commentsBox{
+        height: 90%;
+    }
+}
+
+@media screen and (max-width : 800px) {
+    .commentsBox{
+        height: 70%;
+    }
+}

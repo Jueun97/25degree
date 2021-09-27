@@ -1,0 +1,14 @@
+@value makerWhite from '../../../common/colors.css';
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  background-color: makerWhite;
+  margin: 0.5em;
+  overflow: scroll;
+}
+
+.tempContainer {
+  margin: 0.2em 0.3em;
+  text-align: center;
+}

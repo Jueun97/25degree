@@ -1,0 +1,27 @@
+@value makerOrange from '../../../common/colors.css';
+.user_logo{
+    color: makerOrange;
+    padding: 0.5em;
+}
+.recommendTitle {
+    margin-bottom: 0;
+    font-family: "Noto Sans KR", sans-serif;
+}
+.address {
+    text-align: center;
+    font-family: "Noto Sans KR", sans-serif;
+}
+.currentTemp{
+    font-size: 2em;
+}
+@media screen and (max-width : 800px) {
+    .address {
+        font-size: 0.9em;
+    }
+    .recommendTitle {
+        font-size: 0.9em;
+    }
+    .currentTemp{
+        font-size: 1.5em;
+    }
+}

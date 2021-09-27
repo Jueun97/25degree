@@ -1,0 +1,11 @@
+.user_login_find{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+ 
+}
+.user_join_edit{
+    margin-bottom: 20px;
+}
+

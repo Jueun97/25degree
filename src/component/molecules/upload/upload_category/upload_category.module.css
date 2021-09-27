@@ -1,0 +1,8 @@
+.selectBox{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+    width: 70%;
+    margin:auto;
+    padding-bottom: 50px;
+}

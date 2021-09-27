@@ -1,0 +1,23 @@
+@value makerDarkGrey,makerOrange from '../../../common/colors.css';
+.loadingBar{
+    display: none;
+    position: absolute;
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid makerDarkGrey;
+    border-top: 3px solid makerOrange;
+    animation: spin 2s linear infinite;
+  }
+.loadingBar.loading{
+    display: block;
+  }
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+  

@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    align-items: center;
+}
+.comment{
+    width: 85%;
+    height: 100%;
+    margin-left: 7px;
+}
+@media screen and (max-width : 850px) {
+    .comment{
+        width: 90%;
+    }
+    
+}

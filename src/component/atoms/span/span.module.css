@@ -1,0 +1,51 @@
+.user_login{
+    margin-top:20px;
+    color: lightgray;
+}
+.horizontal{
+    margin-left: 5px;
+}
+.vertical{
+    margin-top: 20px;
+    font-size: 1.7em;
+    font-weight: bolder;
+}
+.likes{
+    margin-left: 10px;
+    font-weight: bold;
+}
+.comment{
+    margin-left: 5px;
+}
+.temp {
+    font-size: 0.8rem;
+    margin: 0.2em;
+    word-break: keep-all;
+}
+#tempMin {
+  color: blue;
+}
+
+#tempMax {
+  color: red;
+}
+
+#tempDay {
+  font-size: 0.8rem;
+  margin: 0.2em;
+  word-break: keep-all;
+  font-weight: bold;
+}
+.hourly{
+    font-size: 0.9em;
+}
+.hourly#temp{
+    font-weight: bold;
+}
+.hourly#tempTime{
+    word-break: keep-all;
+  
+}
+.hourly#tempDay{
+    color:navy;
+}

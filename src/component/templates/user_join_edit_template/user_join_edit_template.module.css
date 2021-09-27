@@ -1,0 +1,25 @@
+@value makerGrey,makerDarkGrey from '../../../common/colors.css';
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: makerDarkGrey;
+    width: fit-content;
+    height: fit-content;
+    padding: 3em;
+    margin:auto;
+
+}
+.box.loading{
+    pointer-events: none;
+    opacity: 0.3;
+}

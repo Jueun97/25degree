@@ -1,0 +1,21 @@
+.category{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+    width: 80%;
+    margin: auto;
+}
+@media screen and (max-width: 900px) {
+    .category {
+        font-size: 0.8em;
+        width: 90%;
+    }
+}
+  
+@media screen and (max-width: 700px) {
+    .category {
+        width: 75%;
+    }
+}
+  
+  

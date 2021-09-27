@@ -1,0 +1,14 @@
+@value makerWhite, makerOrange from '../../../common/colors.css';
+
+.container {
+  display: flex;
+  overflow-x: auto;
+  margin: 0.5em;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin: 0.2em 0.4em;
+  text-align: center;
+}

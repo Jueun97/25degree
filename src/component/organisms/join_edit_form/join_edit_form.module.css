@@ -1,0 +1,9 @@
+.container{
+  position: static;
+
+}
+.box{
+    display: flex;
+    align-items: flex-start;
+    
+}

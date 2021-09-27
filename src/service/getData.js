@@ -14,7 +14,7 @@ class GetData {
     return result;
   }
 
-  async getUserInfo() {
+  getUserInfo = async () => {
     const result = await axios
       .get(`${base_url}/UserInfo`)
       .then((res) => res.data)
@@ -22,72 +22,6 @@ class GetData {
         console.log(error);
       });
     return result;
-  }
-  addUser = (upload_data) => {
-    console.log(upload_data);
-    axios
-      .post(`${base_url}/addUser`, upload_data)
-      .then((response) => {
-        console.log(response);
-        return response;
-      })
-      .catch((error) => {
-        console.log(`getData error ${error}`);
-      });
-  };
-  updateUser = (userInfo) => {
-    console.log("userinfo", userInfo);
-    axios
-      .post(`${base_url}/updateUser`, userInfo)
-      .then((response) => {
-        console.log(response);
-        return response;
-      })
-      .catch((error) => {
-        console.log(`getData error ${error}`);
-      });
-  };
-  uploadPost = (upload_data) => {
-    let url = `${base_url}/uploadPost`;
-    let data = upload_data;
-    axios.post(url, data).then((response) => {
-      const data = response.data;
-      return data;
-    });
-  };
-  updatePost = (upload_data) => {
-    let url = `${base_url}/updatePost`;
-    let data = upload_data;
-    axios.post(url, data).then((response) => {
-      const data = response.data;
-      return data;
-    });
-  };
-  deletePost = (postId, userId) => {
-    let url = `${base_url}/deletePost`;
-    let data = { postId, userId };
-    axios.post(url, data).then((response) => {
-      const data = response.data;
-      return data;
-    });
-  };
-  uploadComment = (upload_data) => {
-    let url = `${base_url}/uploadComment`;
-    axios.post(url, upload_data).then((response) => {
-      console.log(response.data);
-    });
-  };
-  uploadLikes = (upload_data) => {
-    let url = `${base_url}/uploadLikes`;
-    axios.post(url, upload_data).then((response) => {
-      console.log(response.data);
-    });
-  };
-  deleteLikes = (upload_data) => {
-    let url = `${base_url}/deleteLikes`;
-    axios.post(url, upload_data).then((response) => {
-      console.log(response.data);
-    });
   };
   getPost = async () => {
     let url = `${base_url}/UserPost`;
@@ -113,6 +47,57 @@ class GetData {
       .then((data) => data);
     return comments;
   };
+  addUser = (upload_data) => {
+    axios
+      .post(`${base_url}/addUser`, upload_data)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.log(`getData error ${error}`);
+      });
+  };
+  updateUser = (userInfo) => {
+    axios
+      .post(`${base_url}/updateUser`, userInfo)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.log(`getData error ${error}`);
+      });
+  };
+  uploadPost = (upload_data) => {
+    let url = `${base_url}/uploadPost`;
+    let data = upload_data;
+    axios.post(url, data).then((response) => {
+      const data = response.data;
+      return data;
+    });
+  };
+  updatePost = (upload_data) => {
+    let url = `${base_url}/updatePost`;
+    let data = upload_data;
+    axios.post(url, data).then(response => response.data);
+  };
+  deletePost = (postId, userId) => {
+    let url = `${base_url}/deletePost`;
+    let data = { postId, userId };
+    axios.post(url, data).then(response => response.data);
+  };
+  uploadComment = (upload_data) => {
+    let url = `${base_url}/uploadComment`;
+    axios.post(url, upload_data);
+  };
+  uploadLikes = (upload_data) => {
+    let url = `${base_url}/uploadLikes`;
+    axios.post(url, upload_data);
+  };
+  deleteLikes = (upload_data) => {
+    let url = `${base_url}/deleteLikes`;
+    axios.post(url, upload_data);
+  };
+
 }
 
 export default GetData;

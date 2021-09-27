@@ -1,0 +1,30 @@
+@value makerDarkGrey,makerBlue from '../../../common/colors.css';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 30%;
+
+}
+.container.editContainer{
+    height: 50%;
+}
+.textareaBox{
+    margin: 20px 0;
+    height: 100%;
+    resize: none;
+    outline: none;
+}
+.messageBox{
+    display: block;
+    width: 100%;
+    max-height: 100%;
+    overflow: scroll;
+    word-break: break-all;
+    margin:5px 0;
+}
+.categoryBox{
+    color: makerBlue;
+
+}

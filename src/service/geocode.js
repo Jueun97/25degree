@@ -40,7 +40,7 @@ const GoogleMap = async (latitude, longitude) => {
       }
     )
     .then((res) => ((address.state = res.state), (address.city = res.city)));
-  console.log(address);
+
   return address;
 };
 

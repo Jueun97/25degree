@@ -1,0 +1,15 @@
+.detail{
+    font-size: 1.5em;
+    cursor: pointer;
+}
+.likes{
+    font-size: 1.5em;
+    color: red;
+    cursor: pointer;
+}
+.upload{
+    transition: transform 200ms ease-in;
+}
+.container:hover .upload{
+    transform: scale(1.2);
+}

@@ -1,0 +1,15 @@
+@value makerOrange from '../../../common/colors.css';
+
+.header{
+    color: makerOrange;
+    cursor: pointer;
+}
+.recommendContent{
+    margin:0;
+    font-weight: normal;
+}
+@media screen and (max-width : 800px) {
+    .recommendContent {
+        font-size: 0.9em;
+    }
+}

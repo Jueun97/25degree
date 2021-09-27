@@ -1,0 +1,92 @@
+@value makerBlue,makerOrange,makerWhite,makerBlack from '../../../common/colors.css';
+
+.button{
+    color: makerWhite;
+    font-weight: bold;
+    background-color: makerBlue;
+    outline: none;
+    border:0;
+    padding: 0.5em 1.2em;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+.user{
+    margin-top: 15px;
+}
+.user_login1{
+    margin: 0 2em;
+    background-color: makerWhite;
+    color: makerBlue;
+    border: 1px solid makerBlue;
+}
+.user_login2{
+    background-color: transparent;
+    color: makerBlack;
+    font-weight:normal;
+    font-size: 0.8em;
+}
+.user_find{
+    background-color: transparent;
+    color: makerBlack;
+    font-size: 1.3em;
+    font-weight: normal;
+}
+.user_find:hover{
+    color:makerOrange;
+}
+.user_join_edit{
+    background-color: transparent;
+    border:1px solid makerBlack;
+    padding: 0.4em 0;
+    font-size: 1em;
+    margin-left: 3px;
+
+}
+.user_join_edit_submit{
+    display: block;
+    margin:auto;
+}
+.header{
+    background-color: transparent;
+    color: makerBlack;
+    font-weight: normal;
+    border: 2px solid makerOrange;
+}
+.category{
+    font-size: 1.3em;
+    padding: 0.3em 1.2em;
+    margin: 3px 0;
+}
+.category:hover{
+    background-color: makerOrange;
+}
+.menu{
+    background-color: transparent;
+    color: makerBlack;
+    width: 9em;
+    font-size: 1.1em;
+    font-weight: normal;
+    text-align:start;
+}
+.mypage{
+    font-size: 1.3em;
+}
+.mypage:hover{
+    background-color: makerOrange;
+}
+.upload{
+    display: block;
+    margin:auto;
+}
+.editMessage{
+    align-self: center;
+}
+.rebundancyChecked{
+    background-color: makerOrange;
+    pointer-events: none;
+}
+.comment{
+    width: 6em;
+    font-size: small;
+}

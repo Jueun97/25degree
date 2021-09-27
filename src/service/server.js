@@ -104,15 +104,15 @@ app.post("/updateUser", function (req, res) {
 app.post("/uploadPost", function (req, res) {
   console.log(req.body);
   const userId = req.body.userId;
-  const images = req.body.images.toString();
-  const description = req.body.description;
+  const images = req.body.imagesUrl.toString();
+  const description = req.body.message;
   const gender = req.body.gender;
   const overcoat = req.body.overcoat;
   const top = req.body.top;
   const underwear = req.body.underwear;
   const suitablity = req.body.suitablity;
   const style = req.body.style;
-  const type = req.body.constitution;
+  const type = req.body.type;
   const degree = req.body.degree ? req.body.degree : 0;
   const region = req.body.region ? req.body.region : "korea";
   const query = `insert into UserPost (userId,images,description,gender,overcoat,top,underwear,suitablity,style,type,degree,region) values ('${userId}','${images}','${description}','${gender}','${overcoat}','${top}','${underwear}','${suitablity}','${style}','${type}',${degree},'${region}')`;
@@ -128,7 +128,8 @@ app.post("/updatePost", function (req, res) {
   console.log(req.body);
   const postId = req.body.postId;
   const userId = req.body.userId;
-  const message = req.body.message;
+  const message = req.body.editedMessage;
+  console.log(postId, userId, message);
   const query = `update UserPost set description='${message}' where postId=${postId} and userId='${userId}'`;
   db.query(query, function (error, results) {
     if (error) {
@@ -166,7 +167,7 @@ app.post("/uploadComment", function (req, res) {
   });
 });
 app.post("/uploadLikes", function (req, res) {
-  console.log(req.body);
+  console.log("push",req.body);
   const postId = req.body.postId;
   const userId = req.body.userId;
   const query = `insert into Liked (userId,postId) values ('${userId}',${postId})`;
@@ -179,7 +180,7 @@ app.post("/uploadLikes", function (req, res) {
   });
 });
 app.post("/deleteLikes", function (req, res) {
-  console.log(req.body);
+  console.log("pop",req.body);
   const postId = req.body.postId;
   const userId = req.body.userId;
   const query = `delete from Liked where postId=${postId} and userId = '${userId}'`;

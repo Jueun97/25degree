@@ -13,14 +13,12 @@ class Images {
                 headers: { "X-Requested-With": "XMLHttpRequest" },
             }).then(response => {
                 const data = response.data;
-                console.log("images", data);
                 const fileURL = data.url // You should store this URL for future references in your app
                 return fileURL;
             })
         })
 
         const urls = axios.all(uploaders).then((urls) => {
-            console.log("hello!!!", urls);
             return urls;
 
             // ... perform after upload is successful operation
