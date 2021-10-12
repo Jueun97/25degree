@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './upload_message.module.css';
-import Heading2 from '../../atoms/heading2/heading2';
+import Heading2 from '../../../atoms/heading2/heading2';
 const UploadMessage = () => {
     return (
         <div>

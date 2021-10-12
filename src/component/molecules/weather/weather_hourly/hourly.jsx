@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./hourly.module.css";
-import Span from "../../atoms/span/span";
+import Span from "../../../atoms/span/span";
 const Hourly = ({ hourly }) => {
   let date = new Date().getHours() - 1;
   let day = ["내일", "모레"];

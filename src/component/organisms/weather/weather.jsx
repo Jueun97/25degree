@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './weather.module.css';
-import Hourly from '../../molecules/weather_hourly/hourly';
-import Daily from '../../molecules/weather_daily/daily';
+import Hourly from '../../molecules/weather/weather_hourly/hourly';
+import Daily from '../../molecules/weather/weather_daily/daily';
 import Heading1 from '../../atoms/heading1/heading1';
 const Weather = ({ data, address }) => {
     return (

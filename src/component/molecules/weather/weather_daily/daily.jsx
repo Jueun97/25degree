@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./daily.module.css";
-import Span from '../../atoms/span/span';
+import Span from '../../../atoms/span/span';
 const Daily = ({ daily }) => {
   let date = new Date().getDay();
   let day = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
