@@ -8,6 +8,7 @@
     flex-direction: column;
     padding:0 7px;
     overflow: scroll;
+
 }
 .commentsBox::-webkit-scrollbar {
     width: 0;
@@ -22,6 +23,6 @@
 
 @media screen and (max-width : 800px) {
     .commentsBox{
-        height: 70%;
+        height: 100%;
     }
 }

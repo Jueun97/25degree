@@ -22,7 +22,7 @@
     padding: 1em;
 }
 .comment{
-    height: 55%;
+  height: 70%;
 }
 
 .imageBox::-webkit-scrollbar {
@@ -50,11 +50,15 @@
         height: 50%;
     }
 }
-@media screen and (max-width:550px) {
+@media screen and (max-width:500px) {
     .container{
         width: 90%;
     }
     .content{
         height: 35%;
     }
+    .comment{
+        height: 100%;
+    }
+
 }
