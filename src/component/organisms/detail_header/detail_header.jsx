@@ -5,7 +5,7 @@ import Menu from '../../molecules/menu/menu';
 import Icon from '../../atoms/icon/icon';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-const DetailHeader = ({post,postUser,userId,onClickMenu,onClickIcon,menu}) => {
+const DetailHeader = ({post,postUser,onClickMenu,onClickIcon,menu}) => {
     const menuTitle = ['EDIT', 'DELETE'];
     const userProfile = postUser && postUser.profile !== 'null'? postUser.profile :'./images/user.png';
 

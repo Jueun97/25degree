@@ -34,12 +34,8 @@ const GoogleMap = async (latitude, longitude) => {
           }
         }
         return { state, city };
-      },
-      (error) => {
-        console.error(error);
       }
-    )
-    .then((res) => ((address.state = res.state), (address.city = res.city)));
+    ).then((res) => ((address.state = res.state), (address.city = res.city)));
 
   return address;
 };

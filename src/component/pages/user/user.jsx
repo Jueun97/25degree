@@ -4,6 +4,8 @@ import { useHistory, useLocation } from "react-router";
 import UserFindTemplate from '../../templates/user_find_template/user_find_template';
 import UserJoinEditTemplate from '../../templates/user_join_edit_template/user_join_edit_template';
 import UserLoginTemplate from '../../templates/user_login_template/user_login_template';
+import emailjs from 'emailjs-com';
+emailjs.init(process.env.REACT_APP_EMAILJS_USERID);
 
 const User = ({ authService, userHandler,uploadImages,users,status }) => {
     const history = useHistory();
@@ -11,6 +13,8 @@ const User = ({ authService, userHandler,uploadImages,users,status }) => {
     const { user } = location.state ? location.state : '';
     const [rebundancyStatus, setRebundancyStatus] = useState(status === "edit" ? true : false);
     const [loading, setLoading] = useState('');
+    const [findAction, setFindAction] = useState('');
+    const [findData, setFindData] = useState('');
 
     const loginHandler = (event) => {
         event.preventDefault();
@@ -134,13 +138,62 @@ const User = ({ authService, userHandler,uploadImages,users,status }) => {
             history.push({
                 pathname: "/",
                 state: {
-                    user:newUser
+                    user: newUser
                 }
             });
 
-        }else {
+        } else {
             alert("아이디 중복확인 해주세요.");
         }
+    };
+    const findHandler = (event) => {
+        event.preventDefault();
+        const userName = event.target.children[0].children[0].children[1].value;
+        const userEmail = event.target.children[0].children[1].children[1].value;
+        let find = false;
+        if (findAction) {
+            users.forEach((user) => {
+                if (user.name === userName && user.email === userEmail) {
+                    find = true;
+        
+                    emailjs.send("service_hofy9uc", "template_jm5y4rx", {
+                        to_name: userName,
+                        find_action: findAction,
+                        find_data: findAction === 'id' ? user.userId : user.password,
+                        email: userEmail,
+                    })
+                        .then(
+                            (result) => {
+                                console.log(result.text);
+                                history.push({
+                                    pathname: "/login",
+                                    state: {
+                                        user
+                                    }
+                                });
+                            },
+                            (error) => {
+                                console.log(error.text);
+                            }
+                        );
+                    setFindAction('');
+                    setFindData('');
+                        
+                    alert("이메일을 확인해주세요!");
+                };
+            });
+            if (!find) alert("정보가 없습니다.");
+        }
+        else
+            alert("아이디 찾기 or 비밀번호 찾기 선택해주세요!")
+          
+    };
+    const onClickFindAction = (event) => {
+        const findAction = event.target.value;
+        if (findAction === '아이디 찾기')
+            setFindAction('id');
+        else
+            setFindAction('password');
     }
 
     const onCheckIdRedundancy = (event) => {
@@ -167,7 +220,7 @@ const User = ({ authService, userHandler,uploadImages,users,status }) => {
     return (
         <div className={styles.container}>
             {status === "login" && <UserLoginTemplate onSubmit={loginHandler} googleLoginHandler={googleLoginHandler} githubLoginHandler={githubLoginHandler}/>}
-            {status === "find" && <UserFindTemplate />}
+            {status === "find" && <UserFindTemplate findHandler={findHandler} onClickFindAction={onClickFindAction} />}
             {(status === "join" || status === "edit") && <UserJoinEditTemplate user={user} rebundancyStatus={rebundancyStatus} onSubmit={joinEditHandler} onCheckIdRedundancy={onCheckIdRedundancy} onChagneInput={onChagneInput} loading={loading} />}
         </div>
     );
