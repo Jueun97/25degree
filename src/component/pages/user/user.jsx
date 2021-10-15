@@ -220,7 +220,7 @@ const User = ({ authService, userHandler,uploadImages,users,status }) => {
     return (
         <div className={styles.container}>
             {status === "login" && <UserLoginTemplate onSubmit={loginHandler} googleLoginHandler={googleLoginHandler} githubLoginHandler={githubLoginHandler}/>}
-            {status === "find" && <UserFindTemplate findHandler={findHandler} onClickFindAction={onClickFindAction} />}
+            {status === "find" && <UserFindTemplate findHandler={findHandler} onClickFindAction={onClickFindAction}  findAction={findAction}/>}
             {(status === "join" || status === "edit") && <UserJoinEditTemplate user={user} rebundancyStatus={rebundancyStatus} onSubmit={joinEditHandler} onCheckIdRedundancy={onCheckIdRedundancy} onChagneInput={onChagneInput} loading={loading} />}
         </div>
     );

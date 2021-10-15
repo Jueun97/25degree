@@ -32,6 +32,9 @@
     font-size: 1.3em;
     font-weight: normal;
 }
+.user_find.clicked{
+    color: makerOrange;
+}
 .user_find:hover{
     color:makerOrange;
 }
