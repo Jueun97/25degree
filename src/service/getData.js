@@ -32,7 +32,7 @@ class GetData {
     return posts;
   };
   getComment = async () => {
-    let url = `${base_url}/Comment`;
+    let url = `${base_url}/comments`;
     const comments = await axios
       .get(url)
       .then((response) => response.data)
@@ -87,8 +87,9 @@ class GetData {
     axios.delete(url).then(response => response.data);
   };
   uploadComment = (upload_data) => {
-    let url = `${base_url}/uploadComment`;
-    axios.post(url, upload_data);
+    const url = `${base_url}/comment?postId=${upload_data.postId}&writer=${upload_data.writer}`;
+    const data = upload_data.description;
+    axios.put(url, data);
   };
   uploadLikes = (upload_data) => {
     let url = `${base_url}/uploadLikes`;

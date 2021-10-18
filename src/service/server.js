@@ -41,7 +41,7 @@ app.get("/posts", (req, res) => {
     }
   });
 });
-app.get("/Comment", function (req, res) {
+app.get("/comments", function (req, res) {
   const query = "select * from Comment";
   db.query(query, function (error, results) {
     if (error) {
@@ -152,11 +152,11 @@ app.delete("/post", function (req, res) {
     }
   });
 });
-app.post("/uploadComment", function (req, res) {
+app.put("/comment", function (req, res) {
   console.log(">", req.body);
-  const postId = req.body.postId;
+  const postId = req.query.postId;
   const description = req.body.description;
-  const writer = req.body.writer;
+  const writer = req.query.writer;
   const query = `insert into Comment (postId,writer,description,time) values ('${postId}','${writer}','${description}',(now()))`;
   db.query(query, function (error, results) {
     if (error) {
