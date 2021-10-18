@@ -28,10 +28,10 @@ const Card = ({user }) => {
         
         switch (menu) {
             case '마이페이지':
-                path = '/mypage';
+                path = `/mypage/${user.userId}`;
                 break;
             case '개인정보수정':
-                path = '/settings';
+                path = `/settings/${user.userId}`;
                 break;
             case '업로드':
                 path = '/upload';

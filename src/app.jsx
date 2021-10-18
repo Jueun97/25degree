@@ -104,16 +104,16 @@ const onPopLikes = (userId, postId) => {
           <Route exact path="/joinUser">
             <User uploadImages={uploadImages} userHandler={joinUser} users={users} status="join" />
           </Route>
-          <Route exact path="/settings">
+          <Route exact path="/settings/:userId">
             <User userHandler={updateUser} users={users} status="edit" uploadImages={uploadImages}/>
           </Route>
-          <Route exact path="/mypage">
+          <Route exact path="/mypage/:userId">
             <Mypage posts={posts} likes={likes}/>
           </Route>
           <Route exact path="/upload">
             <Upload uploadPost={uploadPost} uploadImages={uploadImages}/>
           </Route>
-          <Route path="/detail">
+          <Route path="/detail/:postId">
             <Detail getData={getData} posts={posts} likes={likes} users={users} onPushLikes={onPushLikes} onPopLikes={onPopLikes} deletePost={deletePost}/>
           </Route>
         </Switch>

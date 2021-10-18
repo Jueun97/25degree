@@ -5,7 +5,7 @@ const Post = ({ postId, user,src, alt }) => {
     const history = useHistory();
     const onClickPost = () => {
         history.push({
-            pathname: './detail',
+            pathname: `../detail/${postId}`,
             state: {
                 postId,
                 user
