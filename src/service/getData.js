@@ -40,12 +40,12 @@ class GetData {
     return comments;
   };
   getLikes = async () => {
-    let url = `${base_url}/Likes`;
-    const comments = await axios
+    let url = `${base_url}/likes`;
+    const likes = await axios
       .get(url)
       .then((response) => response.data)
       .then((data) => data);
-    return comments;
+    return likes;
   };
   addUser = (upload_data) => {
     const url = `${base_url}/user`;
@@ -92,12 +92,12 @@ class GetData {
     axios.put(url, data);
   };
   uploadLikes = (upload_data) => {
-    let url = `${base_url}/uploadLikes`;
-    axios.post(url, upload_data);
+    const url = `${base_url}/like?postId=${upload_data.postId}&userId=${upload_data.userId}`;
+    axios.post(url);
   };
   deleteLikes = (upload_data) => {
-    let url = `${base_url}/deleteLikes`;
-    axios.post(url, upload_data);
+    const url = `${base_url}/like?postId=${upload_data.postId}&userId=${upload_data.userId}`;
+    axios.delete(url);
   };
 
 }

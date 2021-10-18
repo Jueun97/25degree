@@ -51,7 +51,7 @@ app.get("/comments", function (req, res) {
     }
   });
 });
-app.get("/Likes", function (req, res) {
+app.get("/likes", function (req, res) {
   const query = "select * from Liked";
   db.query(query, function (error, results) {
     if (error) {
@@ -166,10 +166,10 @@ app.put("/comment", function (req, res) {
     }
   });
 });
-app.post("/uploadLikes", function (req, res) {
-  console.log("push",req.body);
-  const postId = req.body.postId;
-  const userId = req.body.userId;
+app.post("/like", function (req, res) {
+  console.log("push",req.query);
+  const postId = req.query.postId;
+  const userId = req.query.userId;
   const query = `insert into Liked (userId,postId) values ('${userId}',${postId})`;
   db.query(query, function (error, results) {
     if (error) {
@@ -179,10 +179,10 @@ app.post("/uploadLikes", function (req, res) {
     }
   });
 });
-app.post("/deleteLikes", function (req, res) {
-  console.log("pop",req.body);
-  const postId = req.body.postId;
-  const userId = req.body.userId;
+app.delete("/like", function (req, res) {
+  console.log("pop",req.query);
+  const postId = req.query.postId;
+  const userId = req.query.userId;
   const query = `delete from Liked where postId=${postId} and userId = '${userId}'`;
   db.query(query, function (error, results) {
     if (error) {
