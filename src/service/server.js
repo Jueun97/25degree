@@ -31,7 +31,7 @@ app.get("/UserInfo", function (req, res) {
     }
   });
 });
-app.get("/UserPost", (req, res) => {
+app.get("/posts", (req, res) => {
   const query = "select * from UserPost";
   db.query(query, function (error, results) {
     if (error) {
@@ -61,7 +61,7 @@ app.get("/Likes", function (req, res) {
     }
   });
 });
-app.post("/addUser", function (req, res) {
+app.post("/User", function (req, res) {
   console.log(req.body);
   const userId = req.body.userId;
   const name = req.body.name;
@@ -78,7 +78,7 @@ app.post("/addUser", function (req, res) {
     }
   });
 });
-app.post("/updateUser", function (req, res) {
+app.put("/User", function (req, res) {
   console.log(req.body);
   const defaultUserId = req.body.defaultUserId;
   const userId = req.body.userId;
@@ -101,7 +101,7 @@ app.post("/updateUser", function (req, res) {
   });
 });
 
-app.post("/uploadPost", function (req, res) {
+app.post("/post", function (req, res) {
   console.log(req.body);
   const userId = req.body.userId;
   const images = req.body.imagesUrl.toString();
@@ -124,11 +124,11 @@ app.post("/uploadPost", function (req, res) {
     }
   });
 });
-app.post("/updatePost", function (req, res) {
-  console.log(req.body);
-  const postId = req.body.postId;
-  const userId = req.body.userId;
-  const message = req.body.editedMessage;
+app.put("/post", function (req, res) {
+  console.log(req.body, req.query);
+  const postId = req.query.postId;
+  const userId = req.query.userId;
+  const message = req.body.message;
   console.log(postId, userId, message);
   const query = `update UserPost set description='${message}' where postId=${postId} and userId='${userId}'`;
   db.query(query, function (error, results) {
@@ -139,12 +139,12 @@ app.post("/updatePost", function (req, res) {
     }
   });
 });
-app.post("/deletePost", function (req, res) {
-  console.log("delete", req.body);
-  const postId = req.body.postId;
-  const userId = req.body.userId;
+app.delete("/post", function (req, res) {
+  console.log("delete", req.query);
+  const postId = req.query.postId;
+  const userId = req.query.userId;
   const query = `delete from UserPost where postId=${postId} and userId='${userId}'`;
-  db.query(query, function (error, results) {
+  db.query(query, function (error) {
     if (error) {
       console.log(error);
     } else {

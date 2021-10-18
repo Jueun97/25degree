@@ -24,7 +24,7 @@ class GetData {
     return result;
   };
   getPost = async () => {
-    let url = `${base_url}/UserPost`;
+    let url = `${base_url}/posts`;
     const posts = await axios
       .get(url)
       .then((response) => response.data)
@@ -49,7 +49,7 @@ class GetData {
   };
   addUser = (upload_data) => {
     axios
-      .post(`${base_url}/addUser`, upload_data)
+      .post(`${base_url}/User`, upload_data)
       .then((response) => {
         return response;
       })
@@ -59,7 +59,7 @@ class GetData {
   };
   updateUser = (userInfo) => {
     axios
-      .post(`${base_url}/updateUser`, userInfo)
+      .put(`${base_url}/User`, userInfo)
       .then((response) => {
         return response;
       })
@@ -68,7 +68,7 @@ class GetData {
       });
   };
   uploadPost = (upload_data) => {
-    let url = `${base_url}/uploadPost`;
+    let url = `${base_url}/post`;
     let data = upload_data;
     axios.post(url, data).then((response) => {
       const data = response.data;
@@ -76,14 +76,13 @@ class GetData {
     });
   };
   updatePost = (upload_data) => {
-    let url = `${base_url}/updatePost`;
-    let data = upload_data;
-    axios.post(url, data).then(response => response.data);
+    const url = `${base_url}/post?postId=${upload_data.postId}&userId=${upload_data.userId}`;
+    const data = { message: upload_data.editedMessage };
+    axios.put(url, data).then(response => response.data);
   };
   deletePost = (postId, userId) => {
-    let url = `${base_url}/deletePost`;
-    let data = { postId, userId };
-    axios.post(url, data).then(response => response.data);
+    let url = `${base_url}/post?postId=${postId}&userId=${userId}`;
+    axios.delete(url).then(response => response.data);
   };
   uploadComment = (upload_data) => {
     let url = `${base_url}/uploadComment`;
