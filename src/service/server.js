@@ -21,7 +21,7 @@ const db = mysql.createConnection({
 
 db.connect();
 
-app.get("/UserInfo", function (req, res) {
+app.get("/users", function (req, res) {
   db.query("Select * from UserInfo", function (error, results) {
     if (error) {
       console.log(error);
@@ -61,7 +61,7 @@ app.get("/Likes", function (req, res) {
     }
   });
 });
-app.post("/User", function (req, res) {
+app.post("/user", function (req, res) {
   console.log(req.body);
   const userId = req.body.userId;
   const name = req.body.name;
@@ -78,7 +78,7 @@ app.post("/User", function (req, res) {
     }
   });
 });
-app.put("/User", function (req, res) {
+app.put("/user", function (req, res) {
   console.log(req.body);
   const defaultUserId = req.body.defaultUserId;
   const userId = req.body.userId;

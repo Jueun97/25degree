@@ -16,7 +16,7 @@ class GetData {
 
   getUserInfo = async () => {
     const result = await axios
-      .get(`${base_url}/UserInfo`)
+      .get(`${base_url}/users`)
       .then((res) => res.data)
       .catch((error) => {
         console.log(error);
@@ -48,8 +48,10 @@ class GetData {
     return comments;
   };
   addUser = (upload_data) => {
+    const url = `${base_url}/user`;
+    const data = upload_data;
     axios
-      .post(`${base_url}/User`, upload_data)
+      .post(url,data)
       .then((response) => {
         return response;
       })
@@ -59,7 +61,7 @@ class GetData {
   };
   updateUser = (userInfo) => {
     axios
-      .put(`${base_url}/User`, userInfo)
+      .put(`${base_url}/user`, userInfo)
       .then((response) => {
         return response;
       })
